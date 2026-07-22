@@ -42,9 +42,8 @@ export default function SuppliersPage() {
       setSuppliers(suppliers.map(s => s.id === editItem.id ? { ...s, ...form } : s));
       toast(t('toast.updated'), 'success');
     } else {
-      const newS: Supplier = { id: Date.now(), ...form, rating: 4.0, onTimeDelivery: 90, totalOrders: 0, activeOrders: 0 };
+      const newS: Supplier = { id: Date.now(), ...form, categoryAr: form.category, rating: 4.0, onTimeDelivery: 90, totalOrders: 0, activeOrders: 0 };
       setSuppliers([...suppliers, newS]);
-      dbSave('suppliers', newS);
       toast(t('toast.added'), 'success');
     }
     setModalOpen(false);
