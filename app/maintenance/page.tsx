@@ -35,6 +35,9 @@ export default function MaintenancePage() {
   const { toast } = useToast();
   const [items, setItems] = useState<Maint[]>([...maintenanceData]);
   const [modalOpen, setModalOpen] = useState(false);
+  const SECRET_PW = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || '';
+  const [password, setPassword] = useState('');
+  const [pwError, setPwError] = useState('');
   const [form, setForm] = useState({ machine:'', type:'Preventive', priority:'medium', technician:'', scheduledDate:'', estimatedHours:'', description:'' });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -65,7 +68,7 @@ export default function MaintenancePage() {
   return (
     <div className="animate-in">
       <PageHeader title={t('maintenance.title')} subtitle={t('maintenance.subtitle')}
-        action={<Button variant="primary" onClick={()=>setModalOpen(true)}><MdAdd aria-hidden="true" size={16}/>{t('common.scheduleMaintenance')}</Button>}
+        action={<Button variant="primary" onClick={()=>{ setPassword(''); setPwError(''); setModalOpen(true); }}><MdAdd aria-hidden="true" size={16}/>{t('common.scheduleMaintenance')}</Button>}
       />
 
       {/* KPI Cards - responsive */}
@@ -171,9 +174,26 @@ export default function MaintenancePage() {
           <FormField label={t('maintenance.form.description')}>
             <Textarea value={form.description} onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>)=>setForm({...form,description:e.target.value})} placeholder={lang==='ar'?'اوصف عمل الصيانة...':'Describe the maintenance work...'} />
           </FormField>
+          <FormField label={lang==='ar'?'كلمة المرور':'Password'} required>
+
+            <Input type="password" value={password}
+
+              onChange={e=>{ setPassword(e.target.value); setPwError(''); }}
+
+              placeholder={lang==='ar'?'أدخل كلمة المرور':'Enter password'}
+
+              error={!!pwError} />
+
+            {pwError && <div style={{ fontSize:11.5, color:'#dc2626', marginTop:4 }}>⚠ {pwError}</div>}
+
+          </FormField>
+
           <FormActions>
+
             <Button variant="secondary" type="button" onClick={()=>setModalOpen(false)}>{t('common.cancel')}</Button>
+
             <Button variant="primary" type="submit">{t('common.scheduleMaintenance')}</Button>
+
           </FormActions>
         </form>
       </Modal>

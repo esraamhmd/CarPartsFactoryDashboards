@@ -54,6 +54,7 @@ const toEmployee = (d: any): Employee => ({
 });
 
 const BLANK: EmployeeForm = { name:'', email:'', phone:'', role:'', department:'Production', shift:'morning', salary:5000, status:'active' };
+const SECRET_PASSWORD = 'admin';
 
 const BarChart = dynamic(() => import('recharts').then(m => m.BarChart), { ssr: false });
 const Bar = dynamic(() => import('recharts').then(m => m.Bar), { ssr: false });
@@ -77,6 +78,8 @@ export default function EmployeesPage() {
   const [deleteId, setDeleteId] = useState<number | null>(null);
   const [form, setForm] = useState<EmployeeForm>({ ...BLANK });
   const [errors, setErrors] = useState<Partial<Record<keyof EmployeeForm, string>>>({});
+  const [password, setPassword] = useState('');
+  const [pwError, setPwError] = useState('');
   const [page, setPage] = useState(1);
   const PER_PAGE = 10;
 
@@ -140,6 +143,13 @@ export default function EmployeesPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // Check password for new employees only
+    if (!editItem) {
+      if (password !== SECRET_PASSWORD) {
+        setPwError(lang==='ar'?'كلمة المرور غير صحيحة':'Incorrect password');
+        return;
+      }
+    }
     const result = employeeSchema.safeParse(form);
     if (!result.success) {
       const errs: typeof errors = {};
@@ -389,6 +399,18 @@ export default function EmployeesPage() {
               </Select>
             </FormField>
           </FormRow>
+          {!editItem && (
+            <FormField label={lang==='ar'?'كلمة المرور':'Password'} required>
+              <Input
+                type="password"
+                value={password}
+                onChange={e=>{ setPassword(e.target.value); setPwError(''); }}
+                placeholder={lang==='ar'?'أدخل كلمة المرور':'Enter password'}
+                error={!!pwError}
+              />
+              {pwError && <div style={{ fontSize:11.5, color:'var(--danger)', marginTop:4 }}>⚠ {pwError}</div>}
+            </FormField>
+          )}
           <FormActions>
             <Button variant="secondary" type="button" onClick={()=>setModalOpen(false)}>{t('common.cancel')}</Button>
             <Button variant="primary" type="submit">{editItem ? t('common.save') : t('common.addEmployee')}</Button>

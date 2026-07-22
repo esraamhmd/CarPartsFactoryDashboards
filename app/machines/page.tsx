@@ -26,6 +26,11 @@ export default function MachinesPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [editItem, setEditItem] = useState<Machine|null>(null);
   const [deleteId, setDeleteId] = useState<number|null>(null);
+  const SECRET_PW = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || '';
+  const [password, setPassword] = useState('');
+  const [pwError, setPwError] = useState('');
+  const [deletePw, setDeletePw] = useState('');
+  const [deletePwError, setDeletePwError] = useState('');
   const [form, setForm] = useState({ name:'', type:'CNC', status:'running', assignedTo:'', location:'Line A', nextMaintenance:'' });
 
   const running = machines.filter(m=>m.status==='running').length;
@@ -33,11 +38,17 @@ export default function MachinesPage() {
   const underPerforming = machines.filter(m=>m.status==='under-performing').length;
   const avgUtil = machines.length ? Math.round(machines.reduce((s,m)=>s+m.utilization,0)/machines.length) : 0;
 
-  const openAdd = () => { setEditItem(null); setForm({ name:'',type:'CNC',status:'running',assignedTo:'',location:'Line A',nextMaintenance:'' }); setModalOpen(true); };
-  const openEdit = (m: Machine) => { setEditItem(m); setForm({ name:m.name,type:m.type,status:m.status,assignedTo:m.assignedTo,location:m.location,nextMaintenance:m.nextMaintenance }); setModalOpen(true); };
+  const openAdd = () => { setEditItem(null); setForm({ name:'',type:'CNC',status:'running',assignedTo:'',location:'Line A',nextMaintenance:'' }); setPassword(''); setPwError(''); setModalOpen(true); };
+  const openEdit = (m: Machine) => { setEditItem(m); setForm({ name:m.name,type:m.type,status:m.status,assignedTo:m.assignedTo,location:m.location,nextMaintenance:m.nextMaintenance }); setPassword(''); setPwError(''); setModalOpen(true); };
 
   const handleSubmit = (e: React.FormEvent) => {
+
     e.preventDefault();
+
+    if (!password) { setPwError(lang==='ar'?'كلمة المرور مطلوبة':'Password is required'); return; }
+
+    if (password !== SECRET_PW) { setPwError(lang==='ar'?'كلمة المرور غير صحيحة':'Incorrect password'); return; }
+
     if (!form.name) { toast(t('common.required')+'!','error'); return; }
     if (editItem) {
       setMachines(machines.map(m=>m.id===editItem.id?{...m,...form}:m));
@@ -124,7 +135,7 @@ export default function MachinesPage() {
               </div>
               <div style={{ display:'flex', gap:4 }}>
                 <button onClick={()=>openEdit(m)} aria-label="Edit" style={{ background:'rgba(0,85,218,0.1)', border:'none', borderRadius:7, padding:6, cursor:'pointer', color:'#0055DA', display:'flex' }}  onMouseDown={e=>e.preventDefault()}><MdEdit aria-hidden="true" size={13}/></button>
-                <button onClick={()=>setDeleteId(m.id)} aria-label="Delete" style={{ background:'rgba(204,0,0,0.1)', border:'none', borderRadius:7, padding:6, cursor:'pointer', color:'#CC0000', display:'flex' }} ><MdDelete aria-hidden="true" size={13}/></button>
+                <button onClick={()=>{ setDeleteId(m.id); setDeletePw(''); setDeletePwError(''); }} aria-label="Delete" style={{ background:'rgba(204,0,0,0.1)', border:'none', borderRadius:7, padding:6, cursor:'pointer', color:'#CC0000', display:'flex' }} ><MdDelete aria-hidden="true" size={13}/></button>
               </div>
             </div>
             <Badge variant={statusToVariant(m.status)}>{lang==='ar'?({'running':'تعمل','maintenance':'صيانة','under-performing':'أداء ضعيف','idle':'خاملة','offline':'غير متصل'}[m.status]||m.status):m.status.replace(/-/g,' ')}</Badge>
@@ -187,7 +198,22 @@ export default function MachinesPage() {
               <Input type="date" value={form.nextMaintenance} onChange={e=>setForm(p=>({...p, nextMaintenance:e.target.value}))} />
             </FormField>
           </FormRow>
+          <FormField label={lang==='ar'?'كلمة المرور':'Password'} required>
+
+            <Input type="password" value={password}
+
+              onChange={e=>{ setPassword(e.target.value); setPwError(''); }}
+
+              placeholder={lang==='ar'?'أدخل كلمة المرور':'Enter password'}
+
+              error={!!pwError} />
+
+            {pwError && <div style={{ fontSize:11.5, color:'#dc2626', marginTop:4 }}>⚠ {pwError}</div>}
+
+          </FormField>
+
           <FormActions>
+
             <Button variant="secondary" type="button" onClick={()=>setModalOpen(false)}>{t('common.cancel')}</Button>
             <Button variant="primary" type="submit">{editItem?t('common.save'):t('common.addMachine')}</Button>
           </FormActions>
@@ -198,6 +224,26 @@ export default function MachinesPage() {
         <div style={{ textAlign:'center', padding:'8px 0 16px' }}>
           <MdDelete aria-hidden="true" size={40} style={{ color:'#CC0000', marginBottom:12 }} />
           <p style={{ fontSize:14, fontWeight:600, marginBottom:20 }}>{lang==='ar'?'حذف هذه الآلة؟':'Delete this machine?'}</p>
+          <div style={{ marginBottom:16, textAlign:'start' }}>
+
+            <label style={{ fontSize:12.5, fontWeight:600, color:'var(--text-secondary)', display:'block', marginBottom:6 }}>
+
+              {lang==='ar'?'كلمة المرور':'Password'}*
+
+            </label>
+
+            <input type="password" value={deletePw}
+
+              onChange={e=>{ setDeletePw(e.target.value); setDeletePwError(''); }}
+
+              placeholder={lang==='ar'?'أدخل كلمة المرور':'Enter password'}
+
+              style={{ width:'100%', padding:'9px 12px', borderWidth:'1px', borderStyle:'solid', borderColor:deletePwError?'#dc2626':'var(--border)', borderRadius:8, fontSize:13, background:'var(--bg-input)', color:'var(--text-primary)', outline:'none', boxSizing:'border-box' as any }} />
+
+            {deletePwError && <div style={{ fontSize:11.5, color:'#dc2626', marginTop:4 }}>⚠ {deletePwError}</div>}
+
+          </div>
+
           <div style={{ display:'flex', gap:10, justifyContent:'center' }}>
             <Button variant="secondary" onClick={()=>setDeleteId(null)}>{t('common.cancel')}</Button>
             <Button variant="danger" onClick={()=>deleteId&&handleDelete(deleteId)}>{t('common.delete')}</Button>

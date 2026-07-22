@@ -49,6 +49,9 @@ export default function DepartmentsPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [activeDept, setActiveDept] = useState<string | null>(null);
   const [form, setForm] = useState({ name:'', manager:'', description:'' });
+  const [password, setPassword] = useState('');
+  const [pwError, setPwError] = useState('');
+  const SECRET_PW = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || '';
 
   // Load extra departments from DB on mount
   useEffect(() => {
@@ -92,8 +95,14 @@ export default function DepartmentsPage() {
   const tooltipStyle = { background:'var(--bg-card)', border:'1px solid var(--border)', borderRadius:8, fontSize:12 };
 
   const handleAdd = async (e: React.FormEvent) => {
+
     e.preventDefault();
+
     if (!form.name.trim()) { toast(t('common.required') + '!', 'error'); return; }
+
+    if (!password) { setPwError(lang==='ar'?'كلمة المرور مطلوبة':'Password is required'); return; }
+
+    if (password !== SECRET_PW) { setPwError(lang==='ar'?'كلمة المرور غير صحيحة':'Incorrect password'); return; }
     if (BASE_DEPTS.includes(form.name)) { toast(lang==='ar'?'هذا القسم موجود بالفعل':'Department already exists', 'error'); return; }
 
     // Add to UI immediately
@@ -144,7 +153,7 @@ export default function DepartmentsPage() {
         title={t('departments.title')}
         subtitle={deptStats.length + ' ' + t('departments.subtitle')}
         action={
-          <Button variant="primary" onClick={() => { setForm({name:'',manager:'',description:''}); setModalOpen(true); }}>
+          <Button variant="primary" onClick={() => { setForm({name:'',manager:'',description:''}); setPassword(''); setPwError(''); setModalOpen(true); }}>
             <MdAdd aria-hidden="true" size={16}/>{t('common.addDepartment')}
           </Button>
         }
@@ -291,9 +300,32 @@ export default function DepartmentsPage() {
             <Textarea value={form.description} onChange={e=>setForm({...form,description:e.target.value})}
               placeholder={lang==='ar'?'وصف القسم...':'Department description...'} />
           </FormField>
+          <FormField label={lang==='ar'?'كلمة المرور':'Password'} required>
+
+            <Input
+
+              type="password"
+
+              value={password}
+
+              onChange={e=>{ setPassword(e.target.value); setPwError(''); }}
+
+              placeholder={lang==='ar'?'أدخل كلمة المرور':'Enter password'}
+
+              error={!!pwError}
+
+            />
+
+            {pwError && <div style={{ fontSize:11.5, color:'#dc2626', marginTop:4 }}>⚠ {pwError}</div>}
+
+          </FormField>
+
           <FormActions>
+
             <Button variant="secondary" type="button" onClick={()=>setModalOpen(false)}>{t('common.cancel')}</Button>
+
             <Button variant="primary" type="submit">{t('common.addDepartment')}</Button>
+
           </FormActions>
         </form>
       </Modal>

@@ -26,17 +26,31 @@ export default function SuppliersPage() {
   const [editItem, setEditItem] = useState<Supplier | null>(null);
   const [deleteId, setDeleteId] = useState<number | null>(null);
   const [form, setForm] = useState({ name:'', contact:'', email:'', phone:'', country:'Egypt', category:'Raw Materials', status:'active' });
+  const SECRET_PW = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || '';
+  const [password, setPassword] = useState('');
+  const [pwError, setPwError] = useState('');
+  const [deletePw, setDeletePw] = useState('');
+  const [deletePwError, setDeletePwError] = useState('');
 
   const sortedByRating = [...suppliers].sort((a, b) => b.rating - a.rating);
   const active = suppliers.filter(s => s.status === 'active').length;
   const avgRating = suppliers.length ? (suppliers.reduce((s, sup) => s + sup.rating, 0) / suppliers.length).toFixed(1) : '0';
   const totalOrders = suppliers.reduce((s, sup) => s + sup.totalOrders, 0);
 
-  const openAdd = () => { setEditItem(null); setForm({ name:'',contact:'',email:'',phone:'',country:'Egypt',category:'Raw Materials',status:'active' }); setModalOpen(true); };
-  const openEdit = (s: Supplier) => { setEditItem(s); setForm({ name:s.name,contact:s.contact,email:s.email,phone:s.phone,country:s.country,category:s.category,status:s.status }); setModalOpen(true); };
+  const openAdd = () => { setEditItem(null); setForm({ name:'',contact:'',email:'',phone:'',country:'Egypt',category:'Raw Materials',status:'active' }); setPassword(''); setPwError(''); setModalOpen(true); };
+  const openEdit = (s: Supplier) => { setEditItem(s); setForm({ name:s.name,contact:s.contact,email:s.email,phone:s.phone,country:s.country,category:s.category,status:s.status }); setPassword(''); setPwError(''); setModalOpen(true); };
 
   const handleSubmit = (e: React.FormEvent) => {
+
     e.preventDefault();
+
+    if (!editItem) {
+
+      if (!password) { setPwError(lang==='ar'?'كلمة المرور مطلوبة':'Password is required'); return; }
+
+      if (password !== SECRET_PW) { setPwError(lang==='ar'?'كلمة المرور غير صحيحة':'Incorrect password'); return; }
+
+    }
     if (!form.name || !form.contact) { toast(t('common.required')+'!','error'); return; }
     if (editItem) {
       setSuppliers(suppliers.map(s => s.id === editItem.id ? { ...s, ...form } : s));
@@ -49,7 +63,19 @@ export default function SuppliersPage() {
     setModalOpen(false);
   };
 
-  const handleDelete = (id: number) => { setSuppliers(suppliers.filter(s => s.id !== id)); setDeleteId(null); toast(t('toast.deleted'), 'success'); };
+  const handleDelete = (id: number) => {
+
+    if (!deletePw) { setDeletePwError(lang==='ar'?'كلمة المرور مطلوبة':'Password is required'); return; }
+
+    if (deletePw !== SECRET_PW) { setDeletePwError(lang==='ar'?'كلمة المرور غير صحيحة':'Incorrect password'); return; }
+
+    setSuppliers(suppliers.filter(s => s.id !== id));
+
+    setDeleteId(null);
+
+    toast(t('toast.deleted'), 'success');
+
+  };
 
   return (
     <div className="animate-in">
@@ -140,7 +166,7 @@ export default function SuppliersPage() {
                   <td>
                     <div style={{ display:'flex', gap:6 }}>
                       <button onClick={()=>openEdit(s)} aria-label="Edit" style={{ background:'rgba(0,85,218,0.1)', border:'none', borderRadius:7, padding:6, cursor:'pointer', color:'#0055DA', display:'flex' }} onMouseDown={e=>e.preventDefault()}><MdEdit aria-hidden="true" size={14}/></button>
-                      <button onClick={()=>setDeleteId(s.id)} aria-label="Delete" style={{ background:'rgba(204,0,0,0.1)', border:'none', borderRadius:7, padding:6, cursor:'pointer', color:'#CC0000', display:'flex' }}><MdDelete aria-hidden="true" size={14}/></button>
+                      <button onClick={()=>{ setDeleteId(s.id); setDeletePw(''); setDeletePwError(''); }} aria-label="Delete" style={{ background:'rgba(204,0,0,0.1)', border:'none', borderRadius:7, padding:6, cursor:'pointer', color:'#CC0000', display:'flex' }}><MdDelete aria-hidden="true" size={14}/></button>
                     </div>
                   </td>
                 </tr>
@@ -186,6 +212,14 @@ export default function SuppliersPage() {
               </Select>
             </FormField>
           </FormRow>
+          <FormField label={lang==='ar'?'كلمة المرور':'Password'} required>
+            <Input type="password" value={password}
+              onChange={e=>{ setPassword(e.target.value); setPwError(''); }}
+              placeholder={lang==='ar'?'أدخل كلمة المرور':'Enter password'}
+              error={!!pwError} />
+            {pwError && <div style={{ fontSize:11.5, color:'#dc2626', marginTop:4 }}>⚠ {pwError}</div>}
+          </FormField>
+
           <FormActions>
             <Button variant="secondary" type="button" onClick={()=>setModalOpen(false)}>{t('common.cancel')}</Button>
             <Button variant="primary" type="submit">{editItem ? t('common.save') : t('common.addSupplier')}</Button>
@@ -196,7 +230,24 @@ export default function SuppliersPage() {
       <Modal isOpen={deleteId!==null} onClose={()=>setDeleteId(null)} title={t('common.delete')} size="sm">
         <div style={{ textAlign:'center', padding:'8px 0 16px' }}>
           <MdDelete aria-hidden="true" size={40} style={{ color:'#CC0000', marginBottom:12 }} />
-          <p style={{ fontSize:14, fontWeight:600, marginBottom:20 }}>{lang==='ar'?'حذف هذا المورد؟':'Delete this supplier?'}</p>
+          <p style={{ fontSize:14, fontWeight:600, marginBottom:12 }}>{lang==='ar'?'حذف هذا المورد؟':'Delete this supplier?'}</p>
+
+          <div style={{ marginBottom:16, textAlign:'start' }}>
+
+            <label style={{ fontSize:12.5, fontWeight:600, color:'var(--text-secondary)', display:'block', marginBottom:6 }}>{lang==='ar'?'كلمة المرور':'Password'}*</label>
+
+            <input type="password" value={deletePw}
+
+              onChange={e=>{ setDeletePw(e.target.value); setDeletePwError(''); }}
+
+              placeholder={lang==='ar'?'أدخل كلمة المرور':'Enter password'}
+
+              style={{ width:'100%', padding:'9px 12px', borderWidth:'1px', borderStyle:'solid', borderColor:deletePwError?'#dc2626':'var(--border)', borderRadius:8, fontSize:13, background:'var(--bg-input)', color:'var(--text-primary)', outline:'none', boxSizing:'border-box' as any }} />
+
+            {deletePwError && <div style={{ fontSize:11.5, color:'#dc2626', marginTop:4 }}>⚠ {deletePwError}</div>}
+
+          </div>
+
           <div style={{ display:'flex', gap:10, justifyContent:'center' }}>
             <Button variant="secondary" onClick={()=>setDeleteId(null)}>{t('common.cancel')}</Button>
             <Button variant="danger" onClick={()=>deleteId&&handleDelete(deleteId)}>{t('common.delete')}</Button>

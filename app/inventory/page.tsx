@@ -25,6 +25,9 @@ export default function InventoryPage() {
   const [page, setPage] = useState(1);
   const PER_PAGE = 10;
   const { t, lang } = useI18n();
+  const SECRET_PW = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || '';
+  const [password, setPassword] = useState('');
+  const [pwError, setPwError] = useState('');
   const { toast } = useToast();
   const [inventory, setInventory] = useState<Item[]>([...inventoryData]);
   const [search, setSearch] = useState('');
@@ -212,6 +215,20 @@ export default function InventoryPage() {
               <Input value={form.location} onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>)=>setForm({...form,location:e.target.value})} placeholder="Warehouse A-1" />
             </FormField>
           </FormRow>
+          <FormField label={lang==='ar'?'كلمة المرور':'Password'} required>
+
+            <Input type="password" value={password}
+
+              onChange={e=>{ setPassword(e.target.value); setPwError(''); }}
+
+              placeholder={lang==='ar'?'أدخل كلمة المرور':'Enter password'}
+
+              error={!!pwError} />
+
+            {pwError && <div style={{ fontSize:11.5, color:'#dc2626', marginTop:4 }}>⚠ {pwError}</div>}
+
+          </FormField>
+
           <FormActions>
             <Button variant="secondary" type="button" onClick={()=>setModalOpen(false)}>{t('common.cancel')}</Button>
             <Button variant="primary" type="submit">{t('common.addItem')}</Button>

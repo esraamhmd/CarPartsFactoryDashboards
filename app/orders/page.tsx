@@ -44,6 +44,7 @@ export default function OrdersPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (SECRET_PW && password !== SECRET_PW) { setPwError(lang==='ar'?'كلمة مرور خاطئة':'Wrong password'); return; }
     if (!form.customer || !form.product) { toast(t('common.required')+'!','error'); return; }
     const newOrder: Order = {
       id: 'ORD-2025-00'+Math.floor(Math.random()*900+100),
@@ -60,8 +61,10 @@ export default function OrdersPage() {
   };
 
   const handleDelete = (id: string) => {
+    if (SECRET_PW && deletePassword !== SECRET_PW) { setDeletePwError(lang==='ar'?'كلمة مرور خاطئة':'Wrong password'); return; }
     setOrders(orders.filter(o=>o.id!==id));
     setDeleteId(null);
+    setDeletePassword('');
     toast(t('toast.deleted'),'success');
   };
 

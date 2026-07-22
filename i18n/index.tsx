@@ -175,6 +175,7 @@ const AR: Record<string, string> = {
   'payroll.deductions': 'الخصومات',
   /* inventory */
   'inventory.title': 'المخزون',
+  'inventory.subtitle': 'إدارة مخزون قطع الغيار والمواد',
   'inventory.form.location': 'الموقع',
   'inventory.form.supplier': 'المورد',
   'inventory.form.price': 'السعر',
@@ -202,6 +203,7 @@ const AR: Record<string, string> = {
   'inventory.form.minStock': 'الحد الأدنى',
   /* orders */
   'orders.title': 'الطلبات',
+  'orders.subtitle': 'إدارة طلبات العملاء والشحن',
   'orders.form.priority': 'الأولوية',
   'orders.form.quantity': 'الكمية',
   'orders.form.product': 'المنتج',
@@ -240,6 +242,7 @@ const AR: Record<string, string> = {
   'customers.lastOrder': 'آخر طلب',
   /* suppliers */
   'suppliers.title': 'الموردون',
+  'suppliers.subtitle': 'إدارة الموردين والمشتريات',
   'suppliers.form.category': 'الفئة',
   'suppliers.form.phone': 'رقم الهاتف',
   'suppliers.form.email': 'البريد الإلكتروني',
@@ -533,6 +536,7 @@ const EN: Record<string, string> = {
   'payroll.deductions': 'Deductions',
   /* inventory */
   'inventory.title': 'Inventory',
+  'inventory.subtitle': 'Manage spare parts and materials inventory',
   'inventory.form.location': 'Location',
   'inventory.form.supplier': 'Supplier',
   'inventory.form.price': 'Price',
@@ -560,6 +564,7 @@ const EN: Record<string, string> = {
   'inventory.form.minStock': 'Min Stock',
   /* orders */
   'orders.title': 'Orders',
+  'orders.subtitle': 'Manage customer orders and shipping',
   'orders.form.priority': 'Priority',
   'orders.form.quantity': 'Quantity',
   'orders.form.product': 'Product',
@@ -598,6 +603,7 @@ const EN: Record<string, string> = {
   'customers.lastOrder': 'Last Order',
   /* suppliers */
   'suppliers.title': 'Suppliers',
+  'suppliers.subtitle': 'Manage suppliers and procurement',
   'suppliers.form.category': 'Category',
   'suppliers.form.phone': 'Phone',
   'suppliers.form.email': 'Email',
