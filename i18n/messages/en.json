@@ -1,0 +1,224 @@
+{
+  "nav": {
+    "dashboard": "Dashboard", "employees": "Employees", "departments": "Departments",
+    "production": "Production", "machines": "Machines", "inventory": "Inventory",
+    "suppliers": "Suppliers", "orders": "Orders", "customers": "Customers",
+    "defects": "Defects", "quality": "Quality Control", "maintenance": "Maintenance",
+    "payroll": "Payroll", "attendance": "Attendance", "finance": "Finance",
+    "analytics": "Analytics", "reports": "Reports", "notifications": "Notifications",
+    "settings": "Settings"
+  },
+  "groups": { "people": "PEOPLE", "factory": "FACTORY", "supply": "SUPPLY CHAIN", "quality": "QUALITY", "insights": "INSIGHTS", "system": "SYSTEM" },
+  "common": {
+    "search": "Search anything...", "filter": "Filter", "export": "Export", "add": "Add",
+    "edit": "Edit", "delete": "Delete", "save": "Save", "cancel": "Cancel",
+    "close": "Close", "view": "View All", "loading": "Loading...", "noData": "No data",
+    "actions": "Actions", "status": "Status", "date": "Date", "name": "Name",
+    "total": "Total", "today": "Today", "thisMonth": "This Month", "thisWeek": "This Week",
+    "markAllRead": "Mark All Read", "download": "Download", "generate": "Generate Report",
+    "addEmployee": "Add Employee", "addMachine": "Add Machine", "addItem": "Add Item",
+    "createOrder": "Create Order", "addSupplier": "Add Supplier", "addCustomer": "Add Customer",
+    "reportDefect": "Report Defect", "newInspection": "New Inspection",
+    "scheduleMaintenance": "Schedule Maintenance", "exportPayroll": "Export Payroll",
+    "addDepartment": "Add Department", "saveChanges": "Save Changes",
+    "updatePassword": "Update Password", "submit": "Submit", "reset": "Reset",
+    "searchPlaceholder": "Search...", "email": "Email", "phone": "Phone",
+    "address": "Address", "confirm": "Confirm", "back": "Back", "next": "Next",
+    "optional": "Optional", "required": "Required", "role": "Role"
+  },
+  "toast": {
+    "saved": "Saved successfully!", "deleted": "Deleted successfully!",
+    "error": "Something went wrong.", "added": "Added successfully!",
+    "updated": "Updated successfully!", "copied": "Copied to clipboard!"
+  },
+  "dashboard": {
+    "title": "Dashboard", "subtitle": "Car Parts Factory — Real-time Overview",
+    "totalEmployees": "Total Employees", "activeMachines": "Active Machines",
+    "productionToday": "Production This Week", "inventoryAlerts": "Inventory Alerts",
+    "defectRate": "Defect Rate", "revenue": "Revenue",
+    "pendingOrders": "Pending Orders", "attendanceRate": "Attendance Rate",
+    "active": "active", "runningNow": "Running now", "unitsProduced": "Units produced",
+    "itemsNeedAttention": "Items need attention", "thisWeek": "This week",
+    "thisMonth": "This month", "inProgress": "In progress",
+    "monthlyProduction": "Monthly Production", "targetVsActual": "Target vs Actual (units)",
+    "expenseBreakdown": "Expense Breakdown", "dailyProduction": "Daily Production This Week",
+    "machineStatus": "Machine Status", "recentOrders": "Recent Orders",
+    "todayAttendance": "Today's Attendance", "target": "Target", "actual": "Actual",
+    "order": "Order", "customer": "Customer", "checkIn": "Check In",
+    "vsLastMonth": "vs last month"
+  },
+  "employees": {
+    "title": "Employees", "addEmployee": "Add Employee",
+    "active": "Active", "onLeave": "On Leave", "morningShift": "Morning Shift",
+    "avgPerformance": "Avg Performance", "performanceVsAttendance": "Performance vs Attendance",
+    "byDepartment": "By Department", "role": "Role", "department": "Department",
+    "shift": "Shift", "attendance": "Attendance", "performance": "Performance",
+    "salary": "Salary", "joinDate": "Join Date", "allDepartments": "All Departments",
+    "searchPlaceholder": "Search employees...", "results": "results",
+    "form": {
+      "title": "Add New Employee", "editTitle": "Edit Employee",
+      "fullName": "Full Name", "email": "Email Address", "phone": "Phone",
+      "role": "Job Role", "department": "Department", "shift": "Shift",
+      "salary": "Salary (EGP)", "joinDate": "Join Date", "status": "Status"
+    }
+  },
+  "machines": {
+    "title": "Machines", "subtitle": "machines monitored",
+    "running": "Running", "inMaintenance": "In Maintenance",
+    "underPerforming": "Under-Performing", "avgUtilization": "Avg Utilization",
+    "utilizationChart": "Machine Utilization (%)", "statusOverview": "Status Overview",
+    "utilization": "Utilization", "efficiency": "Efficiency",
+    "downtime": "Downtime (h)", "assignedTo": "Assigned To",
+    "nextMaintenance": "Next Maintenance", "location": "Location",
+    "form": { "title": "Add Machine", "machineName": "Machine Name", "type": "Type", "location": "Location", "assignTo": "Assign To" }
+  },
+  "inventory": {
+    "title": "Inventory", "subtitle": "Stock management & alerts",
+    "totalItems": "Total Items", "totalValue": "Total Value", "lowStock": "Low Stock",
+    "outOfStock": "Out of Stock", "stockLevels": "Stock Levels (Quantity)",
+    "byCategory": "By Category", "itemName": "Item Name", "category": "Category",
+    "quantity": "Quantity", "minStock": "Min. Stock", "unitPrice": "Unit Price",
+    "totalVal": "Total Value", "supplier": "Supplier", "searchPlaceholder": "Search inventory...",
+    "form": { "title": "Add Inventory Item", "itemName": "Item Name", "category": "Category", "quantity": "Quantity", "unit": "Unit", "minStock": "Min Stock", "reorderPoint": "Reorder Point", "price": "Unit Price", "supplier": "Supplier", "location": "Location" }
+  },
+  "orders": {
+    "title": "Orders", "subtitle": "Track and manage customer orders",
+    "totalOrders": "Total Orders", "pending": "Pending", "inProduction": "In Production",
+    "completedShipped": "Completed/Shipped", "totalValue": "Total Value",
+    "ordersByStatus": "Orders by Status", "activeProgress": "Active Order Progress",
+    "allOrders": "All Orders", "orderId": "Order ID", "customer": "Customer",
+    "product": "Product", "qty": "Qty", "priority": "Priority",
+    "progress": "Progress", "delivery": "Delivery",
+    "form": { "title": "Create New Order", "customer": "Customer", "product": "Product", "quantity": "Quantity", "priority": "Priority", "deliveryDate": "Delivery Date", "notes": "Notes" }
+  },
+  "finance": {
+    "title": "Finance", "subtitle": "Revenue, expenses and profit overview",
+    "revenue": "Revenue", "expenses": "Expenses", "netProfit": "Net Profit",
+    "profitMargin": "Profit Margin", "vsLastMonth": "vs last month",
+    "revenueVsExpenses": "Revenue vs Expenses vs Profit",
+    "expenseCategories": "Expense Categories", "recentTransactions": "Recent Transactions",
+    "description": "Description", "amount": "Amount"
+  },
+  "production": {
+    "title": "Production", "subtitle": "Lines, output, and efficiency tracking",
+    "weekOutput": "This Week Output", "weekTarget": "Weekly Target",
+    "efficiency": "Efficiency", "totalDefects": "Total Defects",
+    "thisWeek": "this week", "units": "units",
+    "dailyOutput": "Daily Output This Week", "monthlyTrend": "Monthly Trend (6 months)",
+    "weeklySummary": "Weekly Production Summary",
+    "week": "Week", "target": "Target", "actual": "Actual",
+    "variance": "Variance", "unitsToday": "Units Today"
+  },
+  "attendance": {
+    "title": "Attendance", "subtitle": "Daily check-ins and workforce tracking",
+    "present": "Present", "late": "Late", "absent": "Absent",
+    "attendanceRate": "Attendance Rate", "weeklyTrend": "Weekly Attendance Trend",
+    "todaySummary": "Today Summary", "presentOnTime": "Present & On-Time",
+    "lateArrivals": "Late Arrivals", "todayLog": "Today's Attendance Log",
+    "employee": "Employee", "shift": "Shift", "checkIn": "Check In", "checkOut": "Check Out"
+  },
+  "payroll": {
+    "title": "Payroll", "subtitle": "January 2025 payroll management",
+    "totalNetPay": "Total Net Pay", "totalBonuses": "Total Bonuses",
+    "totalDeductions": "Total Deductions", "employees": "Employees",
+    "netPayByEmployee": "Net Pay by Employee", "payBreakdown": "Pay Breakdown",
+    "payslips": "January 2025 Payslips", "baseSalary": "Base Salary",
+    "bonus": "Bonus", "overtime": "Overtime", "deductions": "Deductions", "netPay": "Net Pay"
+  },
+  "maintenance": {
+    "title": "Maintenance", "subtitle": "Schedule and track machine maintenance",
+    "inProgress": "In Progress", "scheduled": "Scheduled",
+    "totalJobs": "Total Jobs", "estHours": "Total Est. Hours",
+    "priority": "Priority", "technician": "Technician", "hours": "Est. Hours",
+    "hoursByMachine": "Maintenance Hours by Machine", "scheduledDate": "Scheduled Date",
+    "form": { "title": "Schedule Maintenance", "machine": "Machine", "type": "Type", "priority": "Priority", "technician": "Technician", "date": "Scheduled Date", "hours": "Estimated Hours", "description": "Description" }
+  },
+  "suppliers": {
+    "title": "Suppliers", "subtitle": "Manage and monitor your supply chain partners",
+    "activeSuppliers": "Active Suppliers", "avgRating": "Avg Rating",
+    "totalOrders": "Total Orders", "underReview": "Under Review",
+    "onTimeDelivery": "On-Time Delivery Performance (%)",
+    "topByRating": "Top Suppliers by Rating", "allSuppliers": "All Suppliers",
+    "contact": "Contact", "category": "Category", "rating": "Rating",
+    "onTime": "On-Time", "totalOrd": "Total Orders", "activeOrd": "Active Orders",
+    "form": { "title": "Add Supplier", "name": "Supplier Name", "contact": "Contact Person", "email": "Email", "phone": "Phone", "country": "Country", "category": "Category" }
+  },
+  "customers": {
+    "title": "Customers", "subtitle": "Manage customer accounts and order history",
+    "totalCustomers": "Total Customers", "totalRevenue": "Total Revenue",
+    "totalOrders": "Total Orders", "avgSatisfaction": "Avg Satisfaction",
+    "revenueByCustomer": "Revenue by Customer ($K)", "topCustomers": "Top Customers",
+    "allCustomers": "All Customers", "contact": "Contact",
+    "totalSpent": "Total Spent", "lastOrder": "Last Order", "orders": "orders",
+    "form": { "title": "Add Customer", "name": "Company Name", "contact": "Contact Person", "email": "Email", "phone": "Phone" }
+  },
+  "defects": {
+    "title": "Defects", "subtitle": "Quality issue tracking and analysis",
+    "totalDefects": "Total Defects", "criticalIssues": "Critical Issues",
+    "resolved": "Resolved", "open": "Open",
+    "byType": "Defects by Type", "bySeverity": "By Severity",
+    "statusBreakdown": "Status Breakdown", "defectLog": "Defect Log",
+    "type": "Type", "part": "Part", "count": "Count", "severity": "Severity",
+    "line": "Line", "inspector": "Inspector",
+    "form": { "title": "Report Defect", "type": "Defect Type", "part": "Affected Part", "count": "Count", "severity": "Severity", "line": "Production Line", "description": "Description" }
+  },
+  "quality": {
+    "title": "Quality Control", "subtitle": "Inspection reports and quality metrics",
+    "passRate": "Pass Rate", "avgScore": "Avg Quality Score",
+    "inspectionsMTD": "Inspections (MTD)", "failedChecks": "Failed Checks",
+    "radarTitle": "Quality Metrics Radar", "scoresTitle": "Inspection Scores",
+    "reportsTitle": "Inspection Reports", "reportId": "Report ID",
+    "item": "Item", "inspector": "Inspector", "checks": "Checks",
+    "failed": "Failed", "score": "Score", "result": "Result"
+  },
+  "analytics": {
+    "title": "Analytics", "subtitle": "KPIs, trends, forecasts and factory performance",
+    "kpiTrends": "KPI Trends (6 months)",
+    "kpiSubtitle": "Efficiency · Quality · Customer Satisfaction",
+    "factoryRadar": "Factory Performance Radar",
+    "forecast": "Production Forecast", "forecastSubtitle": "Actual + 3-month forecast",
+    "revenueTrend": "Revenue vs Profit Trend",
+    "revenueSubtitle": "Monthly financial performance",
+    "kpiSummary": "Top KPIs Summary",
+    "factoryEfficiency": "Factory Efficiency", "qualityPassRate": "Quality Pass Rate",
+    "machineUptime": "Machine Uptime", "onTimeDelivery": "On-Time Delivery",
+    "employeeAttendance": "Employee Attendance"
+  },
+  "reports": {
+    "title": "Reports", "subtitle": "Generate and download factory reports",
+    "totalReports": "Total Reports", "pdfReports": "PDF Reports",
+    "excelReports": "Excel Reports", "generatedMonth": "Generated This Month",
+    "download": "Download"
+  },
+  "notifications": {
+    "title": "Notifications", "unread": "unread notification",
+    "unreads": "unread notifications", "total": "Total",
+    "errors": "Errors", "warnings": "Warnings",
+    "markRead": "Mark read",
+    "types": { "error": "Error", "warning": "Warning", "success": "Success", "info": "Info" }
+  },
+  "settings": {
+    "title": "Settings", "subtitle": "Configure your MotorSync dashboard",
+    "general": "General", "appearance": "Appearance",
+    "notificationPrefs": "Notifications", "security": "Security", "language": "Language",
+    "factoryName": "Factory Name", "factoryId": "Factory ID",
+    "location": "Location", "managerEmail": "Manager Email", "contactPhone": "Contact Phone",
+    "generalSettings": "General Settings", "themeMode": "Theme Mode",
+    "lightMode": "Light Mode", "darkMode": "Dark Mode", "brandColors": "Brand Colors",
+    "interfaceLang": "Interface Language",
+    "currentPassword": "Current Password", "newPassword": "New Password",
+    "confirmPassword": "Confirm New Password",
+    "notifItems": {
+      "lowStock": "Low Stock Alerts", "lowStockDesc": "When inventory falls below minimum",
+      "machineFailure": "Machine Failure Alerts", "machineFailureDesc": "Real-time machine status notifications",
+      "attendance": "Attendance Alerts", "attendanceDesc": "Daily attendance summary",
+      "maintenance": "Maintenance Reminders", "maintenanceDesc": "Upcoming scheduled maintenance",
+      "orderUpdates": "Order Updates", "orderUpdatesDesc": "New orders and status changes",
+      "qualityAlerts": "Quality Control Alerts", "qualityAlertsDesc": "Failed inspection reports"
+    }
+  },
+  "departments": {
+    "title": "Departments", "subtitle": "departments across the factory",
+    "avgPerf": "Avg Perf.", "avgSalary": "Avg Salary", "headcount": "Headcount by Department"
+  }
+}

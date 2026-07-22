@@ -1,0 +1,191 @@
+{
+  "summary": {
+    "revenue": 3850000,
+    "expenses": 2100000,
+    "profit": 1750000,
+    "profitMargin": 45.5
+  },
+  "monthly": [
+    {
+      "month": "Jul",
+      "revenue": 2500000,
+      "expenses": 1500000,
+      "profit": 1000000
+    },
+    {
+      "month": "Aug",
+      "revenue": 2700000,
+      "expenses": 1600000,
+      "profit": 1100000
+    },
+    {
+      "month": "Sep",
+      "revenue": 2650000,
+      "expenses": 1580000,
+      "profit": 1070000
+    },
+    {
+      "month": "Oct",
+      "revenue": 2850000,
+      "expenses": 1700000,
+      "profit": 1150000
+    },
+    {
+      "month": "Nov",
+      "revenue": 2950000,
+      "expenses": 1750000,
+      "profit": 1200000
+    },
+    {
+      "month": "Dec",
+      "revenue": 2900000,
+      "expenses": 1720000,
+      "profit": 1180000
+    },
+    {
+      "month": "Jan",
+      "revenue": 3850000,
+      "expenses": 2100000,
+      "profit": 1750000
+    }
+  ],
+  "expenses_breakdown": [
+    {
+      "name": "Raw Materials",
+      "nameAr": "المواد الخام",
+      "value": 820000
+    },
+    {
+      "name": "Salaries",
+      "nameAr": "الرواتب",
+      "value": 650000
+    },
+    {
+      "name": "Utilities",
+      "nameAr": "المرافق",
+      "value": 320000
+    },
+    {
+      "name": "Maintenance",
+      "nameAr": "الصيانة",
+      "value": 210000
+    },
+    {
+      "name": "Logistics",
+      "nameAr": "اللوجستيات",
+      "value": 100000
+    }
+  ],
+  "transactions": [
+    {
+      "id": "TXN-001",
+      "type": "income",
+      "description": "Order ORD-2026-002 Payment",
+      "amount": 45000,
+      "date": "2026-01-05",
+      "status": "completed",
+      "statusAr": "مكتمل",
+      "typeAr": "دخل",
+      "descriptionAr": "دفعة الطلب ORD-2026-002"
+    },
+    {
+      "id": "TXN-002",
+      "type": "expense",
+      "description": "Raw Materials — Cairo Metal Works",
+      "amount": -28000,
+      "date": "2026-01-06",
+      "status": "completed",
+      "statusAr": "مكتمل",
+      "typeAr": "مصروف",
+      "descriptionAr": "مواد خام — أعمال القاهرة المعدنية"
+    },
+    {
+      "id": "TXN-003",
+      "type": "income",
+      "description": "Order ORD-2026-006 Payment",
+      "amount": 95000,
+      "date": "2026-01-10",
+      "status": "completed",
+      "statusAr": "مكتمل",
+      "typeAr": "دخل",
+      "descriptionAr": "دفعة الطلب ORD-2026-006"
+    },
+    {
+      "id": "TXN-004",
+      "type": "expense",
+      "description": "Machine Maintenance",
+      "amount": -12000,
+      "date": "2026-01-11",
+      "status": "completed",
+      "statusAr": "مكتمل",
+      "typeAr": "مصروف",
+      "descriptionAr": "صيانة الآلات"
+    },
+    {
+      "id": "TXN-005",
+      "type": "expense",
+      "description": "Monthly Salaries — January 2026",
+      "amount": -650000,
+      "date": "2026-01-12",
+      "status": "pending",
+      "statusAr": "قيد الانتظار",
+      "typeAr": "مصروف",
+      "descriptionAr": "الرواتب الشهرية — يناير ٢٠٢٦"
+    },
+    {
+      "id": "TXN-006",
+      "type": "income",
+      "description": "Order ORD-2026-009 Payment",
+      "amount": 41400,
+      "date": "2026-01-08",
+      "status": "completed",
+      "statusAr": "مكتمل",
+      "typeAr": "دخل",
+      "descriptionAr": "دفعة الطلب ORD-2026-009"
+    },
+    {
+      "id": "TXN-007",
+      "type": "income",
+      "description": "Order ORD-2026-012 Payment",
+      "amount": 22000,
+      "date": "2026-01-12",
+      "status": "completed",
+      "statusAr": "مكتمل",
+      "typeAr": "دخل",
+      "descriptionAr": "دفعة الطلب ORD-2026-012"
+    },
+    {
+      "id": "TXN-008",
+      "type": "expense",
+      "description": "Utilities — Electricity & Water",
+      "amount": -18500,
+      "date": "2026-01-13",
+      "status": "completed",
+      "statusAr": "مكتمل",
+      "typeAr": "مصروف",
+      "descriptionAr": "فواتير المرافق — كهرباء ومياه"
+    },
+    {
+      "id": "TXN-009",
+      "type": "income",
+      "description": "Order ORD-2026-015 Payment",
+      "amount": 37500,
+      "date": "2026-01-07",
+      "status": "completed",
+      "statusAr": "مكتمل",
+      "typeAr": "دخل",
+      "descriptionAr": "دفعة الطلب ORD-2026-015"
+    },
+    {
+      "id": "TXN-010",
+      "type": "expense",
+      "description": "Supplier Invoice — Delta Auto Parts",
+      "amount": -65000,
+      "date": "2026-01-09",
+      "status": "pending",
+      "statusAr": "قيد الانتظار",
+      "typeAr": "مصروف",
+      "descriptionAr": "فاتورة مورد — دلتا لقطع السيارات"
+    }
+  ]
+}

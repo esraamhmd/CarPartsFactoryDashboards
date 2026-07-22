@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /login
+Allow: /signup
+Allow: /auth/callback
+Disallow: /api/
+
+Sitemap: https://motorsync.vercel.app/sitemap.xml
