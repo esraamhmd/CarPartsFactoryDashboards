@@ -137,8 +137,8 @@ export default function CustomersPage() {
                   <td><Badge variant={statusToVariant(c.status)}>{lang==='ar'?({'active':'نشط','inactive':'غير نشط','on-hold':'معلق','vip':'مميز'}[c.status]||c.status):tStatus(c.status)}</Badge></td>
                   <td>
                     <div style={{ display:'flex', gap:6 }}>
-                      <button onClick={()=>openEdit(c)} aria-label="Edit" style={{ background:'rgba(0,85,218,0.1)', border:'none', borderRadius:7, padding:6, cursor:'pointer', color:'#0055DA', display:'flex' }} aria-label="Edit" onMouseDown={e=>e.preventDefault()}><MdEdit aria-hidden="true" size={14} aria-hidden="true"/></button>
-                      <button onClick={()=>setDeleteId(c.id)} aria-label="Delete" style={{ background:'rgba(204,0,0,0.1)', border:'none', borderRadius:7, padding:6, cursor:'pointer', color:'#CC0000', display:'flex' }} aria-label="Delete"><MdDelete aria-hidden="true" size={14} aria-hidden="true"/></button>
+                      <button onClick={()=>openEdit(c)} aria-label="Edit" style={{ background:'rgba(0,85,218,0.1)', border:'none', borderRadius:7, padding:6, cursor:'pointer', color:'#0055DA', display:'flex' }} onMouseDown={e=>e.preventDefault()}><MdEdit aria-hidden="true" size={14}/></button>
+                      <button onClick={()=>setDeleteId(c.id)} aria-label="Delete" style={{ background:'rgba(204,0,0,0.1)', border:'none', borderRadius:7, padding:6, cursor:'pointer', color:'#CC0000', display:'flex' }}><MdDelete aria-hidden="true" size={14}/></button>
                     </div>
                   </td>
                 </tr>

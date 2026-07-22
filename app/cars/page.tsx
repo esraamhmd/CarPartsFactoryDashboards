@@ -157,7 +157,7 @@ export default function CarsPage() {
             <input value={search} onChange={e=>{setSearch(e.target.value);setPage(1);}}
               placeholder={lang==='ar'?'بحث عن ماركة، موديل، عميل...':'Search make, model, client...'}
               style={{ background:'none', border:'none', outline:'none', fontSize:13, color:'var(--text-primary)', width:'100%' }} />
-            {search && <button onClick={()=>{setSearch('');setPage(1);}} style={{ background:'none', border:'none', cursor:'pointer', color:'var(--text-muted)', display:'flex', padding:0 }}><MdClose aria-hidden="true" size={13} aria-hidden="true"/></button>}
+            {search && <button onClick={()=>{setSearch('');setPage(1);}} style={{ background:'none', border:'none', cursor:'pointer', color:'var(--text-muted)', display:'flex', padding:0 }}><MdClose aria-hidden="true" size={13}/></button>}
           </div>
           <select value={fuelFilter} onChange={e=>{setFuelFilter(e.target.value);setPage(1);}}
             style={{ background:'var(--bg-input)', borderWidth:'1px',borderStyle:'solid',borderColor:'var(--border)', borderRadius:8, padding:'7px 12px', fontSize:13, color:'var(--text-primary)', cursor:'pointer', outline:'none' }}>

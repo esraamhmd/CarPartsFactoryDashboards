@@ -163,7 +163,7 @@ export default function OrdersPage() {
                   <td className="hide-mobile" style={{ fontWeight:700 }}>${o.total.toLocaleString()}</td>
                   <td><Badge variant={statusToVariant(o.status)}>{lang==='ar'?({'pending':'معلق','in-production':'قيد الإنتاج','quality-check':'فحص الجودة','shipped':'مشحون','completed':'مكتمل','cancelled':'ملغي'}[o.status]||o.status):o.status.replace(/-/g,' ')}</Badge></td>
                   <td>
-                    <button onClick={()=>setDeleteId(o.id)} aria-label="Delete" style={{ background:'rgba(204,0,0,0.1)', border:'none', borderRadius:7, padding:7, cursor:'pointer', color:'#CC0000', display:'flex' }} aria-label="Delete"><MdDelete aria-hidden="true" size={14} aria-hidden="true"/></button>
+                    <button onClick={()=>setDeleteId(o.id)} aria-label="Delete" style={{ background:'rgba(204,0,0,0.1)', border:'none', borderRadius:7, padding:7, cursor:'pointer', color:'#CC0000', display:'flex' }}><MdDelete aria-hidden="true" size={14}/></button>
                   </td>
                 </tr>
               ))}
