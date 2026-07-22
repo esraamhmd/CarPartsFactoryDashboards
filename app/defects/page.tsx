@@ -55,7 +55,7 @@ export default function DefectsPage() {
     const newD: Defect = {
       id: Date.now(), type:form.type, typeAr:form.type, part:form.part, partAr:form.part,
       description:form.description||'', count:Number(form.count)||1,
-      severity:form.severity as Defect['severity'], severityAr:form.severity,
+      severity:form.severity as Defect['severity'], severityAr:form.severity, inspectorAr:form.inspector||'',
       line:form.line, lineAr:form.line, date:new Date().toISOString().split('T')[0],
       status:'open', statusAr:'open', inspector:form.inspector,
     };
