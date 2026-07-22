@@ -47,7 +47,7 @@ export default function OrdersPage() {
     if (!form.customer || !form.product) { toast(t('common.required')+'!','error'); return; }
     const newOrder: Order = {
       id: 'ORD-2025-00'+Math.floor(Math.random()*900+100),
-      customer: form.customer, product: form.product,
+      customer: form.customer, product: form.product, productAr: form.product, notes: form.notes||'',
       quantity: Number(form.quantity)||1, total: Math.floor(Math.random()*90000+10000),
       status: 'pending', priority: form.priority as Order['priority'],
       orderDate: new Date().toISOString().split('T')[0],
