@@ -46,6 +46,12 @@ export default function InventoryPage() {
       reorderPoint:min*1.5, price:Number(form.price)||0,
       supplier:form.supplier, location:form.location,
       status: qty===0?'out-of-stock':qty<=min?'low-stock':'available',
+      unitPrice: Number(form.price)||0,
+      totalValue: Number(form.quantity)*(Number(form.price)||0),
+      lastRestocked: new Date().toISOString().split('T')[0],
+      nameAr: form.name,
+      categoryAr: form.category,
+      statusAr: 'متاح',
     };
     setInventory([...inventory, newItem]);
     toast(t('toast.added'),'success');
