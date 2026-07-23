@@ -30,6 +30,11 @@ const PIE_COLORS = ['#00E0BA','#FF3483','#FFD400','#0055DA','#91008D','#00C68D',
 
 export default function DefectsPage() {
   const { t, lang, tStatus, tSeverity, tNum } = useI18n();
+  const SECRET_PW = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || '';
+  const [password, setPassword] = useState('');
+  const [pwError, setPwError] = useState('');
+  const [deletePassword, setDeletePassword] = useState('');
+  const [deletePwError, setDeletePwError] = useState('');
   const [page, setPage] = useState(1);
   const PER_PAGE = 10;
   const { toast } = useToast();
@@ -51,6 +56,7 @@ export default function DefectsPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (SECRET_PW && password !== SECRET_PW) { setPwError(lang==='ar'?'كلمة مرور خاطئة':'Wrong password'); return; }
     if (!form.part) { toast(t('common.required')+'!','error'); return; }
     const newD: Defect = {
       id: Date.now(), type:form.type, typeAr:form.type, part:form.part, partAr:form.part,
@@ -236,8 +242,19 @@ export default function DefectsPage() {
           <FormField label={t('defects.form.description')}>
             <Textarea value={form.description} onChange={e=>setForm(p=>({...p, description:e.target.value}))} placeholder={lang==='ar'?'اوصف العيب...':'Describe the defect...'} />
           </FormField>
+          <FormField label={lang==='ar'?'كلمة المرور':'Password'} required>
+
+            <Input type="password" value={password} onChange={e=>{setPassword(e.target.value);setPwError('');}}
+
+              placeholder={lang==='ar'?'أدخل كلمة المرور':'Enter password'} />
+
+            {pwError && <div style={{color:'#dc2626',fontSize:12,marginTop:4}}>{pwError}</div>}
+
+          </FormField>
+
           <FormActions>
-            <Button variant="secondary" type="button" onClick={()=>setModalOpen(false)}>{t('common.cancel')}</Button>
+
+            <Button variant="secondary" type="button" onClick={()=>{setModalOpen(false);setPassword('');setPwError('');}}>{t('common.cancel')}</Button>
             <Button variant="primary" type="submit">{t('common.reportDefect')}</Button>
           </FormActions>
         </form>

@@ -42,6 +42,34 @@ const GROUPS: Record<string,string> = {
 
 interface Props { isOpen?: boolean; onClose?: () => void; }
 
+function useFactoryName() {
+
+  const [name, setName] = React.useState(useFactoryName());
+
+  React.useEffect(() => {
+
+    const saved = localStorage.getItem('motorsync_factory_name');
+
+    if (saved) setName(saved);
+
+    const handler = () => {
+
+      const n = localStorage.getItem('motorsync_factory_name');
+
+      if (n) setName(n);
+
+    };
+
+    window.addEventListener('storage', handler);
+
+    return () => window.removeEventListener('storage', handler);
+
+  }, []);
+
+  return name;
+
+}
+
 export default function Sidebar({ isOpen, onClose }: Props) {
   const pathname = usePathname();
   const { t, isRTL } = useI18n();

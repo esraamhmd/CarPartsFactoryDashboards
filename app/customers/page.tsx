@@ -19,6 +19,11 @@ export default function CustomersPage() {
   const [page, setPage] = useState(1);
   const PER_PAGE = 10;
   const { t, lang, tStatus } = useI18n();
+  const SECRET_PW = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || '';
+  const [password, setPassword] = useState('');
+  const [pwError, setPwError] = useState('');
+  const [deletePassword, setDeletePassword] = useState('');
+  const [deletePwError, setDeletePwError] = useState('');
   const { toast } = useToast();
   const [customers, setCustomers] = useState<Customer[]>([...customersData]);
   const [modalOpen, setModalOpen] = useState(false);
@@ -48,7 +53,12 @@ export default function CustomersPage() {
     setModalOpen(false);
   };
 
-  const handleDelete = (id: number) => { setCustomers(customers.filter(c=>c.id!==id)); setDeleteId(null); toast(t('toast.deleted'),'success'); };
+  const handleDelete = (id: number) => {
+    if (SECRET_PW && deletePassword !== SECRET_PW) { setDeletePwError(lang==='ar'?'كلمة مرور خاطئة':'Wrong password'); return; }
+    setCustomers(customers.filter(c=>c.id!==id));
+    setDeleteId(null); setDeletePassword('');
+    toast(t('toast.deleted'),'success');
+  };
 
   return (
     <div className="animate-in">
@@ -166,8 +176,19 @@ export default function CustomersPage() {
               <Input value={form.phone} onChange={e=>setForm(p=>({...p, phone:e.target.value}))} placeholder="+20-2-1234-5678" />
             </FormField>
           </FormRow>
+          <FormField label={lang==='ar'?'كلمة المرور':'Password'} required>
+
+            <Input type="password" value={password} onChange={e=>{setPassword(e.target.value);setPwError('');}}
+
+              placeholder={lang==='ar'?'أدخل كلمة المرور':'Enter password'} />
+
+            {pwError && <div style={{color:'#dc2626',fontSize:12,marginTop:4}}>{pwError}</div>}
+
+          </FormField>
+
           <FormActions>
-            <Button variant="secondary" type="button" onClick={()=>setModalOpen(false)}>{t('common.cancel')}</Button>
+
+            <Button variant="secondary" type="button" onClick={()=>{setModalOpen(false);setPassword('');setPwError('');}}>{t('common.cancel')}</Button>
             <Button variant="primary" type="submit">{editItem?t('common.save'):t('common.addCustomer')}</Button>
           </FormActions>
         </form>
@@ -178,7 +199,19 @@ export default function CustomersPage() {
           <MdDelete aria-hidden="true" size={40} style={{ color:'#CC0000', marginBottom:12 }} />
           <p style={{ fontSize:14, fontWeight:600, marginBottom:20 }}>{lang==='ar'?'حذف هذا العميل؟':'Delete this customer?'}</p>
           <div style={{ display:'flex', gap:10, justifyContent:'center' }}>
-            <Button variant="secondary" onClick={()=>setDeleteId(null)}>{t('common.cancel')}</Button>
+            <div style={{marginBottom:12,textAlign:'start'}}>
+
+            <input type="password" value={deletePassword} onChange={e=>{setDeletePassword(e.target.value);setDeletePwError('');}}
+
+              placeholder={lang==='ar'?'أدخل كلمة المرور':'Enter password'}
+
+              style={{width:'100%',padding:'9px 12px',borderRadius:8,border:'1px solid var(--border)',background:'var(--bg-input)',fontSize:13,color:'var(--text-primary)',outline:'none'}} />
+
+            {deletePwError && <div style={{color:'#dc2626',fontSize:12,marginTop:4}}>{deletePwError}</div>}
+
+          </div>
+
+          <Button variant="secondary" onClick={()=>{setDeleteId(null);setDeletePassword('');setDeletePwError('');}}>{t('common.cancel')}</Button>
             <Button variant="danger" onClick={()=>deleteId&&handleDelete(deleteId)}>{t('common.delete')}</Button>
           </div>
         </div>

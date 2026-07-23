@@ -27,6 +27,11 @@ export default function OrdersPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [deleteId, setDeleteId] = useState<string|null>(null);
   const [form, setForm] = useState({ customer:'', product:'', quantity:'', priority:'medium', deliveryDate:'', notes:'' });
+  const SECRET_PW = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || '';
+  const [password, setPassword] = useState('');
+  const [pwError, setPwError] = useState('');
+  const [deletePassword, setDeletePassword] = useState('');
+  const [deletePwError, setDeletePwError] = useState('');
 
   const statusSummary = useMemo(() => {
     const allStatuses = ['pending','in-production','quality-check','shipped','completed','cancelled'];
@@ -201,8 +206,19 @@ export default function OrdersPage() {
           <FormField label={t('orders.form.notes')}>
             <Textarea value={form.notes} onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>)=>setForm({...form,notes:e.target.value})} placeholder={lang==='ar'?'ملاحظات اختيارية...':'Optional notes...'} />
           </FormField>
+          <FormField label={lang==='ar'?'كلمة المرور':'Password'} required>
+
+            <Input type="password" value={password} onChange={e=>{setPassword(e.target.value);setPwError('');}}
+
+              placeholder={lang==='ar'?'أدخل كلمة المرور':'Enter password'} />
+
+            {pwError && <div style={{color:'#dc2626',fontSize:12,marginTop:4}}>{pwError}</div>}
+
+          </FormField>
+
           <FormActions>
-            <Button variant="secondary" type="button" onClick={()=>setModalOpen(false)}>{t('common.cancel')}</Button>
+
+            <Button variant="secondary" type="button" onClick={()=>{setModalOpen(false);setPassword('');setPwError('');}}>{t('common.cancel')}</Button>
             <Button variant="primary" type="submit">{t('common.createOrder')}</Button>
           </FormActions>
         </form>
@@ -213,7 +229,19 @@ export default function OrdersPage() {
           <MdDelete aria-hidden="true" size={40} style={{ color:'#CC0000', marginBottom:12 }} />
           <p style={{ fontSize:14, fontWeight:600, marginBottom:20 }}>{lang==='ar'?`حذف الطلب ${deleteId}؟`:`Delete order ${deleteId}?`}</p>
           <div style={{ display:'flex', gap:10, justifyContent:'center' }}>
-            <Button variant="secondary" onClick={()=>setDeleteId(null)}>{t('common.cancel')}</Button>
+            <div style={{marginBottom:12}}>
+
+            <input type="password" value={deletePassword} onChange={e=>{setDeletePassword(e.target.value);setDeletePwError('');}}
+
+              placeholder={lang==='ar'?'أدخل كلمة المرور':'Enter password'}
+
+              style={{width:'100%',padding:'9px 12px',borderRadius:8,border:'1px solid var(--border)',background:'var(--bg-input)',fontSize:13,color:'var(--text-primary)',outline:'none'}} />
+
+            {deletePwError && <div style={{color:'#dc2626',fontSize:12,marginTop:4}}>{deletePwError}</div>}
+
+          </div>
+
+          <Button variant="secondary" onClick={()=>{setDeleteId(null);setDeletePassword('');setDeletePwError('');}}>{t('common.cancel')}</Button>
             <Button variant="danger" onClick={()=>deleteId && handleDelete(deleteId)}>{t('common.delete')}</Button>
           </div>
         </div>

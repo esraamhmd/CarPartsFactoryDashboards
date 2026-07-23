@@ -23,9 +23,7 @@ const reports = [
 export default function ReportsPage() {
   const { t, lang } = useI18n();
   const { toast } = useToast();
-  const [generateOpen, setGenerateOpen] = useState(false);
   const [genForm, setGenForm] = useState({ module:'production', format:'PDF', period:'monthly' });
-  const [generating, setGenerating] = useState(false);
   const [downloading, setDownloading] = useState<number|null>(null);
 
   const handleDownload = (report: typeof reports[0]) => {
@@ -47,20 +45,10 @@ export default function ReportsPage() {
     }, 1200);
   };
 
-  const handleGenerate = (e: React.FormEvent) => {
-    e.preventDefault();
-    setGenerating(true);
-    setTimeout(() => {
-      setGenerating(false);
-      setGenerateOpen(false);
-      toast(`${genForm.module} report generated successfully!`, 'success');
-    }, 2000);
-  };
-
   return (
     <div className="animate-in">
       <PageHeader title={t('reports.title')} subtitle={t('reports.subtitle')}
-        action={<Button variant="primary" onClick={()=>setGenerateOpen(true)}><MdAdd aria-hidden="true" size={16}/>{t('common.generate')}</Button>}
+        
       />
 
       <div className="grid-4" style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:16, marginBottom:28 }}>
@@ -106,43 +94,6 @@ export default function ReportsPage() {
           );
         })}
       </div>
-
-      <Modal isOpen={generateOpen} onClose={()=>setGenerateOpen(false)} title={t('common.generate')} size="sm">
-        <form onSubmit={handleGenerate}>
-          <FormField label={lang==='ar'?'القسم':'Module'}>
-            <Select value={genForm.module} onChange={e=>setGenForm({...genForm,module:e.target.value})}>
-              {[
-                {v:'production',  ar:'الإنتاج'},
-                {v:'employees',   ar:'الموظفون'},
-                {v:'inventory',   ar:'المخزون'},
-                {v:'finance',     ar:'المالية'},
-                {v:'quality',     ar:'الجودة'},
-                {v:'maintenance', ar:'الصيانة'},
-                {v:'suppliers',   ar:'الموردون'},
-                {v:'orders',      ar:'الطلبات'},
-              ].map(m=><option key={m.v} value={m.v}>{lang==='ar'?m.ar:m.v.charAt(0).toUpperCase()+m.v.slice(1)}</option>)}
-            </Select>
-          </FormField>
-          <FormField label={lang==='ar'?'التنسيق':'Format'}>
-            <Select value={genForm.format} onChange={e=>setGenForm({...genForm,format:e.target.value})}>
-              <option value="PDF">PDF</option>
-              <option value="Excel">Excel</option>
-            </Select>
-          </FormField>
-          <FormField label={lang==='ar'?'الفترة':'Period'}>
-            <Select value={genForm.period} onChange={e=>setGenForm({...genForm,period:e.target.value})}>
-              <option value="daily">{lang==='ar'?'يومي':'Daily'}</option>
-              <option value="weekly">{lang==='ar'?'أسبوعي':'Weekly'}</option>
-              <option value="monthly">{lang==='ar'?'شهري':'Monthly'}</option>
-              <option value="quarterly">{lang==='ar'?'ربع سنوي':'Quarterly'}</option>
-            </Select>
-          </FormField>
-          <FormActions>
-            <Button variant="secondary" type="button" onClick={()=>setGenerateOpen(false)}>{t('common.cancel')}</Button>
-            <Button variant="primary" type="submit">{generating ? (lang==='ar'?'جارٍ الإنشاء...':'Generating...') : t('common.generate')}</Button>
-          </FormActions>
-        </form>
-      </Modal>
     </div>
   );
 }

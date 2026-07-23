@@ -1,6 +1,10 @@
 'use client';
 
-import { useState, Suspense } from 'react';
+const SURL = 'https://vopgydykkzxcfnnqoize.supabase.co';
+const SKEY = 'sb_publishable_aTFOgIF4IwUsj0c2ehHiLw_slfSIWxi';
+const H = {'apikey':SKEY,'Authorization':'Bearer '+SKEY,'Content-Type':'application/json','Prefer':'return=minimal'};
+
+import { useState, useEffect, Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import { MdAdd, MdCheckCircle, MdCancel, MdEdit, MdDelete } from 'react-icons/md';
 import PageHeader from '@/components/ui/PageHeader';
@@ -40,6 +44,11 @@ export default function QualityPage() {
   const [page, setPage] = useState(1);
   const PER_PAGE = 10;
   const { t, lang, isRTL, tNum } = useI18n();
+  const SECRET_PW = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || '';
+  const [password, setPassword] = useState('');
+  const [pwError, setPwError] = useState('');
+  const [deletePassword, setDeletePassword] = useState('');
+  const [deletePwError, setDeletePwError] = useState('');
   const { toast } = useToast();
   const [inspections, setInspections] = useState(initInspections);
   const [modalOpen, setModalOpen] = useState(false);
@@ -51,6 +60,36 @@ export default function QualityPage() {
   const avgScore = Math.round(inspections.reduce((s, i) => s + i.score, 0) / inspections.length);
 
   // Arabic metric labels
+  // Load from DB on mount
+
+  useEffect(() => {
+
+    fetch(SURL+'/rest/v1/quality_inspections?select=*&order=id.desc&limit=500',{
+
+      headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}
+
+    }).then(r=>r.json()).then(data=>{
+
+      if(Array.isArray(data)&&data.length>0){
+
+        setQuality(data.map((d:any)=>({
+
+          id:d.id, item:d.item||'', itemAr:d.item||'',
+
+          inspector:d.inspector||'', date:d.date||'',
+
+          result:d.status||'pass', score:Number(d.score)||0,
+
+          checks:20, failed:0,
+
+        })));
+
+      }
+
+    }).catch(()=>{});
+
+  },[]);
+
   const qualityMetrics = [
     { metric: lang === 'ar' ? 'الأبعاد' : 'Dimensional',  value: 94 },
     { metric: lang === 'ar' ? 'السطح' : 'Surface',         value: 88 },
@@ -63,12 +102,30 @@ export default function QualityPage() {
   const openAdd = () => { setEditItem(null); setForm({ item:'', inspector:'Sara Mohamed', checks:'20' }); setModalOpen(true); };
   const openEdit = (insp: typeof initInspections[0]) => { setEditItem(insp); setForm({ item: insp.item, inspector: insp.inspector, checks: String(insp.checks) }); setModalOpen(true); };
 
+  useEffect(() => {
+    fetch(SURL+'/rest/v1/quality_inspections?select=*&order=id.desc&limit=500',{
+      headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}
+    }).then(r=>r.json()).then(data=>{
+      if(Array.isArray(data)&&data.length>0){
+        setInspections(data.map((d:any)=>({
+          id:String(d.id), item:d.item||'', inspector:d.inspector||'',
+          date:d.date||'', result:d.status||'pass', score:Number(d.score)||0,
+          checks:20, failed:0,
+        })));
+      }
+    }).catch(()=>{});
+  },[]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (SECRET_PW && password !== SECRET_PW) { setPwError(lang==='ar'?'كلمة مرور خاطئة':'Wrong password'); return; }
     if (!form.item) { toast(lang === 'ar' ? 'اسم العنصر مطلوب!' : 'Item name required!', 'error'); return; }
     if (editItem) {
       setInspections(inspections.map(i => i.id === editItem.id ? { ...i, item: form.item, inspector: form.inspector, checks: Number(form.checks) } : i));
       toast(lang === 'ar' ? 'تم تحديث الفحص!' : 'Inspection updated!', 'success');
+      fetch(SURL+'/rest/v1/quality_inspections?id=eq.'+editItem.id,{method:'PATCH',headers:H,body:JSON.stringify({
+        item: form.item, inspector: form.inspector,
+      })}).catch(()=>{});
     } else {
       const failed = Math.floor(Math.random() * 3);
       const score = Math.round(80 + Math.random() * 20);
@@ -80,6 +137,10 @@ export default function QualityPage() {
       };
       setInspections([newI, ...inspections]);
       toast(lang === 'ar' ? 'تمت إضافة الفحص!' : 'Inspection added!', 'success');
+      fetch(SURL+'/rest/v1/quality_inspections',{method:'POST',headers:H,body:JSON.stringify({
+        item: form.item, inspector: form.inspector, status: failed===0?'pass':'fail',
+        score: score, date: new Date().toISOString().split('T')[0], notes:'',
+      })}).catch(()=>{});
     }
     setModalOpen(false);
   };
@@ -88,6 +149,7 @@ export default function QualityPage() {
     setInspections(inspections.filter(i => i.id !== id));
     setDeleteId(null);
     toast(lang === 'ar' ? 'تم حذف الفحص!' : 'Inspection deleted!', 'success');
+    fetch(SURL+'/rest/v1/quality_inspections?id=eq.'+id,{method:'DELETE',headers:H}).catch(()=>{});
   };
 
   const ttStyle = { background:'var(--bg-card)', borderWidth:'1px',borderStyle:'solid',borderColor:'var(--border)', borderRadius:8, fontSize:12 };
@@ -229,8 +291,15 @@ export default function QualityPage() {
               <Input type="number" value={form.checks} onChange={e=>setForm(p=>({...p, checks:e.target.value}))} min="1" />
             </FormField>
           </FormRow>
+          <div style={{marginBottom:12}}>
+            <label style={{display:'block',fontSize:12.5,fontWeight:600,color:'var(--text-secondary)',marginBottom:6}}>{lang==='ar'?'كلمة المرور':'Password'} *</label>
+            <input type="password" value={password} onChange={e=>{setPassword(e.target.value);setPwError('');}}
+              placeholder={lang==='ar'?'أدخل كلمة المرور':'Enter password'}
+              style={{width:'100%',padding:'9px 12px',borderRadius:8,border:'1px solid var(--border)',background:'var(--bg-input)',fontSize:13,color:'var(--text-primary)',outline:'none'}} />
+            {pwError && <div style={{color:'#dc2626',fontSize:12,marginTop:4}}>{pwError}</div>}
+          </div>
           <FormActions>
-            <Button variant="secondary" type="button" onClick={()=>setModalOpen(false)}>{lang==='ar'?'إلغاء':'Cancel'}</Button>
+            <Button variant="secondary" type="button" onClick={()=>{setModalOpen(false);setPassword('');setPwError('');}}>{lang==='ar'?'إلغاء':'Cancel'}</Button>
             <Button variant="primary" type="submit">{editItem?(lang==='ar'?'حفظ':'Save'):(lang==='ar'?'إضافة':'Add')}</Button>
           </FormActions>
         </form>
@@ -243,9 +312,22 @@ export default function QualityPage() {
             <MdDelete aria-hidden="true" size={24} style={{ color:'var(--primary)' }} />
           </div>
           <p style={{ fontSize:15, fontWeight:600, marginBottom:6 }}>{lang==='ar'?'حذف هذا الفحص؟':'Delete this inspection?'}</p>
-          <p style={{ fontSize:13, color:'var(--text-muted)', marginBottom:22 }}>{lang==='ar'?'لا يمكن التراجع عن هذا الإجراء.':'This action cannot be undone.'}</p>
+          <p style={{ fontSize:13, color:'var(--text-muted)', marginBottom:14 }}>{lang==='ar'?'لا يمكن التراجع عن هذا الإجراء.':'This action cannot be undone.'}</p>
+
+          <div style={{marginBottom:14,textAlign:'start'}}>
+
+            <input type="password" value={deletePassword} onChange={e=>{setDeletePassword(e.target.value);setDeletePwError('');}}
+
+              placeholder={lang==='ar'?'أدخل كلمة المرور':'Enter password'}
+
+              style={{width:'100%',padding:'9px 12px',borderRadius:8,border:'1px solid var(--border)',background:'var(--bg-input)',fontSize:13,color:'var(--text-primary)',outline:'none'}} />
+
+            {deletePwError && <div style={{color:'#dc2626',fontSize:12,marginTop:4}}>{deletePwError}</div>}
+
+          </div>
+
           <div style={{ display:'flex', gap:10, justifyContent:'center' }}>
-            <Button variant="secondary" onClick={()=>setDeleteId(null)}>{lang==='ar'?'إلغاء':'Cancel'}</Button>
+            <Button variant="secondary" onClick={()=>{setDeleteId(null);setDeletePassword('');setDeletePwError('');}}>{lang==='ar'?'إلغاء':'Cancel'}</Button>
             <Button variant="danger" onClick={()=>deleteId&&handleDelete(deleteId)}>{lang==='ar'?'حذف':'Delete'}</Button>
           </div>
         </div>
