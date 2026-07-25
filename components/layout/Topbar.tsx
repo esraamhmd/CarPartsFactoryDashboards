@@ -150,7 +150,7 @@ export default function Topbar({ onMenuClick }: { onMenuClick: () => void }) {
         </div>
 
         {showSearch && suggestions.length > 0 && (
-          <div style={{ position:'absolute', top:46, insetInlineStart:0, background:'var(--bg-card)', borderWidth:'1px',borderStyle:'solid',borderColor:'var(--border)', borderRadius:12, width:'100%', boxShadow:'0 12px 40px rgba(0,0,0,0.18)', zIndex:500, overflow:'hidden' }}>
+          <div style={{ position:'absolute', top:46, insetInlineStart:0, background:'var(--bg-card)', borderWidth:'1px',borderStyle:'solid',borderColor:'var(--border)', borderRadius:12, width:'100%', boxShadow:'0 12px 40px rgba(0,0,0,0.18)', zIndex:500, overflowY:'auto', maxHeight:'60vh' }}>
             {suggestions.map(r=>{
               const Icon=r.icon;
               return (
@@ -160,7 +160,7 @@ export default function Topbar({ onMenuClick }: { onMenuClick: () => void }) {
                   onMouseLeave={e=>(e.currentTarget.style.background='transparent')}>
                   <Icon size={15} style={{ color:'#c81e1e', flexShrink:0 }}/>
                   <span style={{ fontSize:13, fontWeight:600 }}>{lang==='ar'?r.labelAr:r.label}</span>
-                  <span style={{ fontSize:11, color:'var(--text-muted)', marginInlineStart:'auto' }}>{r.path}</span>
+                  <span style={{ fontSize:11, color:'var(--text-muted)', marginInlineStart:'auto', flexShrink:0 }}>{r.path}</span>
 
                 </div>
               );
