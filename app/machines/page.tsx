@@ -141,7 +141,7 @@ export default function MachinesPage() {
       </div>
 
       {/* Machine Cards */}
-      <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(280px,1fr))', gap:16 }}>
+      <div className="machines-grid">
         {machines.slice((page-1)*PER_PAGE, page*PER_PAGE).map(m=>(
           <div key={m.id} className="card card-hover" style={{ padding:20 }}>
             <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', marginBottom:14 }}>
