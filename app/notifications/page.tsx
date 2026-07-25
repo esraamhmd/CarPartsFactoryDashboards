@@ -89,7 +89,7 @@ export default function NotificationsPage() {
                   <Icon size={18} style={{ color }} />
                 </div>
                 <div style={{ flex:1, minWidth:0 }}>
-                  <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', gap:12 }}>
+                  <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', gap:12, flexWrap:'wrap' }}>
                     <div style={{ flex:1 }}>
                       <div style={{ fontWeight:600, fontSize:14, marginBottom:3, display:'flex', alignItems:'center', gap:8 }}>
                         {title}
