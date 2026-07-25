@@ -5,6 +5,8 @@ import Link from 'next/link';
 
 export default function LoginPage() {
   const [tab,      setTab]      = useState<'login'|'reset'>('login');
+  const savedLang = typeof window !== 'undefined' ? localStorage.getItem('ms_lang') : 'en';
+  const isAr = savedLang === 'ar';
   const [email,    setEmail]    = useState('');
   const [password, setPassword] = useState('');
   const [showPass, setShowPass] = useState(false);
@@ -145,8 +147,8 @@ export default function LoginPage() {
         </div>
           {tab === 'login' ? (
             <>
-              <h2 style={{ fontSize:'20px', fontWeight:700, color:'#fff', margin:'0 0 4px' }}>Welcome back</h2>
-              <p style={{ fontSize:'13px', color:'rgba(255,255,255,0.42)', margin:'0 0 22px' }}>Sign in to access your dashboard</p>
+              <h2 style={{ fontSize:'20px', fontWeight:700, color:'#fff', margin:'0 0 4px' }}>{isAr?'مرحباً بعودتك':'Welcome back'}</h2>
+              <p style={{ fontSize:'13px', color:'rgba(255,255,255,0.42)', margin:'0 0 22px' }}>{isAr?'سجّل دخولك للوصول إلى لوحة التحكم':'Sign in to access your dashboard'}</p>
 
               {error && <div style={{ background:'rgba(220,38,38,0.13)', border:'1px solid rgba(220,38,38,0.35)', borderRadius:'9px', padding:'10px 14px', marginBottom:'18px', fontSize:'13px', color:'#f87171' }}>{error}</div>}
 
@@ -182,7 +184,7 @@ export default function LoginPage() {
 
                 <button type="submit" disabled={loading}
                   style={{ width:'100%', padding:'13px', background: loading ? 'rgba(200,30,30,0.5)' : 'linear-gradient(135deg,#c81e1e,#e63535)', color:'#fff', border:'none', borderRadius:'10px', fontSize:'14px', fontWeight:700, cursor: loading ? 'not-allowed' : 'pointer', boxShadow:'0 4px 20px rgba(200,30,30,0.35)', fontFamily:'inherit' }}>
-                  {loading ? 'Signing in…' : 'Sign In'}
+                  {loading ? 'Signing in…' : isAr?'تسجيل الدخول':'Sign In'}
                 </button>
               </form>
 
@@ -206,7 +208,7 @@ export default function LoginPage() {
                 </div>
                 <button type="submit" disabled={loading}
                   style={{ width:'100%', padding:'13px', background: loading ? 'rgba(200,30,30,0.5)' : 'linear-gradient(135deg,#c81e1e,#e63535)', color:'#fff', border:'none', borderRadius:'10px', fontSize:'14px', fontWeight:700, cursor: loading ? 'not-allowed' : 'pointer', fontFamily:'inherit' }}>
-                  {loading ? 'Sending…' : 'Send Reset Email'}
+                  {loading ? 'Sending…' : isAr?'إرسال رابط الاسترداد':'Send Reset Email'}
                 </button>
               </form>
               <div style={{ textAlign:'center', marginTop:'16px' }}>
