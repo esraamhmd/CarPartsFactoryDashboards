@@ -14,7 +14,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
   // Restore language direction on mount
   useEffect(() => {
-    const savedLang = localStorage.getItem('lang');
+    const savedLang = localStorage.getItem('ms_lang');
     if (savedLang === 'ar') {
       document.documentElement.dir = 'rtl';
       document.documentElement.lang = 'ar';
