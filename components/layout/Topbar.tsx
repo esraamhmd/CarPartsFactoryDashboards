@@ -254,7 +254,7 @@ export default function Topbar({ onMenuClick }: { onMenuClick: () => void }) {
                 </button>
 
                 {isGuest ? (
-                  <button onClick={()=>{localStorage.removeItem('lang');document.documentElement.dir='ltr';router.push('/login');setShowUser(false);}}
+                  <button onClick={()=>{router.push('/login');setShowUser(false);}}
                     style={{ display:'flex', alignItems:'center', gap:10, width:'100%', padding:'8px 10px', borderRadius:8, border:'none', background:'none', cursor:'pointer', color:'#c81e1e', fontSize:13, fontWeight:600, fontFamily:'inherit' }}
                     onMouseEnter={e=>(e.currentTarget.style.background='var(--primary-bg)')}
                     onMouseLeave={e=>(e.currentTarget.style.background='none')}>
