@@ -33,6 +33,8 @@ async function sbPost(path: string, body: object, extraHeaders?: Record<string,s
 }
 
 export default function SignupPage() {
+  const savedLang = typeof window !== 'undefined' ? localStorage.getItem('ms_lang') : 'en';
+  const isAr = savedLang === 'ar';
   const [form,       setForm]       = useState({ fullName:'', email:'', password:'', confirm:'' });
   const [showPass,   setShowPass]   = useState(false);
   const [loading,    setLoading]    = useState(false);
@@ -123,7 +125,7 @@ export default function SignupPage() {
       }
 
       setLoading(false);
-      showToast('Account created!');
+      showToast(isAr?'تم إنشاء الحساب!':'Account created!');
       setSuccess(true);
 
     } catch (e: any) {
@@ -139,7 +141,7 @@ export default function SignupPage() {
       headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
       body: JSON.stringify({ email:'guest@motorsync.com', full_name:'Guest', logged_in_at: new Date().toISOString() }),
     });
-    showToast('Entering as guest…');
+    showToast(isAr?'جاري الدخول كضيف…':'Entering as guest…');
     setTimeout(go, 600);
   };
 
@@ -209,27 +211,27 @@ export default function SignupPage() {
         </div>  
 
         <div style={{ background:'rgba(255,255,255,0.05)', border:'1px solid rgba(255,255,255,0.10)', borderRadius:18, padding:'28px 28px 22px', backdropFilter:'blur(24px)' }}>
-          <h2 style={{ fontSize:19, fontWeight:700, color:'#fff', marginBottom:5 }}>Create Account</h2>
-          <p style={{ fontSize:13, color:'rgba(255,255,255,0.42)', marginBottom:22 }}>Fill in your details to get started</p>
+          <h2 style={{ fontSize:19, fontWeight:700, color:'#fff', marginBottom:5 }}>{isAr?'إنشاء حساب':'Create Account'}</h2>
+          <p style={{ fontSize:13, color:'rgba(255,255,255,0.42)', marginBottom:22 }}>{isAr?'أدخل بياناتك للبدء':'Fill in your details to get started'}</p>
           {error && <div style={{ background:'rgba(220,38,38,0.13)', border:'1px solid rgba(220,38,38,0.35)', borderRadius:9, padding:'10px 14px', marginBottom:18, fontSize:13, color:'#f87171' }}>{error}</div>}
         
           <form onSubmit={handleSignup} noValidate>
             <div style={{ marginBottom:12 }}>
-              <label style={{ display:'block', fontSize:13, fontWeight:600, color:'rgba(255,255,255,0.65)', marginBottom:7 }}>Full Name</label>
+              <label style={{ display:'block', fontSize:13, fontWeight:600, color:'rgba(255,255,255,0.65)', marginBottom:7 }}>{isAr?'الاسم الكامل':'Full Name'}</label>
               <div style={{ position:'relative' }}>
                 <span style={{ position:'absolute', left:14, top:'50%', transform:'translateY(-50%)', pointerEvents:'none', display:'flex' }}><IconPerson /></span>
                 <input type="text" value={form.fullName} onChange={e=>setForm(p=>({...p, fullName:e.target.value}))} placeholder="Ahmed Hassan" style={inp} onFocus={fo} onBlur={bl} autoComplete="name" required />
               </div>
             </div>
             <div style={{ marginBottom:12 }}>
-              <label style={{ display:'block', fontSize:13, fontWeight:600, color:'rgba(255,255,255,0.65)', marginBottom:7 }}>Email Address</label>
+              <label style={{ display:'block', fontSize:13, fontWeight:600, color:'rgba(255,255,255,0.65)', marginBottom:7 }}>{isAr?'البريد الإلكتروني':'Email Address'}</label>
               <div style={{ position:'relative' }}>
                 <span style={{ position:'absolute', left:14, top:'50%', transform:'translateY(-50%)', pointerEvents:'none', display:'flex' }}><IconEmail /></span>
                 <input type="email" value={form.email} onChange={e=>setForm(p=>({...p, email:e.target.value}))} placeholder="ahmed@company.com" style={inp} onFocus={fo} onBlur={bl} autoComplete="email" required />
               </div>
             </div>
             <div style={{ marginBottom:12 }}>
-              <label style={{ display:'block', fontSize:13, fontWeight:600, color:'rgba(255,255,255,0.65)', marginBottom:7 }}>Password</label>
+              <label style={{ display:'block', fontSize:13, fontWeight:600, color:'rgba(255,255,255,0.65)', marginBottom:7 }}>{isAr?'كلمة المرور':'Password'}</label>
               <div style={{ position:'relative' }}>
                 <span style={{ position:'absolute', left:14, top:'50%', transform:'translateY(-50%)', pointerEvents:'none', display:'flex' }}><IconLock /></span>
                 <input type={showPass?'text':'password'} value={form.password} onChange={e=>setForm(p=>({...p, password:e.target.value}))} placeholder="Min. 6 characters" style={{ ...inp, paddingRight:42 }} onFocus={fo} onBlur={bl} autoComplete="new-password" required />
@@ -240,7 +242,7 @@ export default function SignupPage() {
               </div>
             </div>
             <div style={{ marginBottom:22 }}>
-              <label style={{ display:'block', fontSize:13, fontWeight:600, color:'rgba(255,255,255,0.65)', marginBottom:7 }}>Confirm Password</label>
+              <label style={{ display:'block', fontSize:13, fontWeight:600, color:'rgba(255,255,255,0.65)', marginBottom:7 }}>{isAr?'تأكيد كلمة المرور':'Confirm Password'}</label>
               <div style={{ position:'relative' }}>
                 <span style={{ position:'absolute', left:14, top:'50%', transform:'translateY(-50%)', pointerEvents:'none', display:'flex' }}><IconLock /></span>
                 <input type="password" value={form.confirm} onChange={e=>setForm(p=>({...p, confirm:e.target.value}))} placeholder="Repeat your password" style={inp} onFocus={fo} onBlur={bl} autoComplete="new-password" required />
@@ -254,7 +256,7 @@ export default function SignupPage() {
 
           <div style={{ textAlign:'center', marginTop:16, fontSize:13 }}>
             <span style={{ color:'rgba(255,255,255,0.4)' }}>Already have an account? </span>
-            <Link href="/login" style={{ color:'#c81e1e', fontWeight:600, textDecoration:'none' }}>Sign In</Link>
+            <Link href="/login" style={{ color:'#c81e1e', fontWeight:600, textDecoration:'none' }}>{isAr?'تسجيل الدخول':'Sign In'}</Link>
           </div>
         </div>
 
