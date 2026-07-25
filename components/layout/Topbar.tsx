@@ -68,9 +68,6 @@ export default function Topbar({ onMenuClick }: { onMenuClick: () => void }) {
   }, []);
 
   const logout = () => {
-    localStorage.removeItem('lang');
-    document.documentElement.dir = 'ltr';
-    document.documentElement.lang = 'en';
     try { localStorage.removeItem('ms_user'); } catch {}
     setUser(null);
     window.location.href = '/login';
