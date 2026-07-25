@@ -419,13 +419,19 @@ input:focus, select:focus, textarea:focus {
   }
 }
 
+
+@media (max-width: 599px) {
+  
+}
+
 .machines-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
   gap: 16px;
 }
+@media (max-width: 1023px) {
+  .machines-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
 @media (max-width: 599px) {
-  .machines-grid {
-    grid-template-columns: 1fr;
-  }
+  .machines-grid { grid-template-columns: 1fr !important; }
 }
