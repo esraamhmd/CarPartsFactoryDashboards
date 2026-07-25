@@ -142,7 +142,7 @@ export default function LoginPage() {
             style={{ width:'100%', padding:'13px', background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.10)', borderRadius:'10px', color:'rgba(255,255,255,0.55)', fontSize:'14px', fontWeight:600, cursor:'pointer', fontFamily:'inherit' }}
             onMouseEnter={e=>{e.currentTarget.style.background='rgba(255,255,255,0.09)';e.currentTarget.style.color='#fff';}}
             onMouseLeave={e=>{e.currentTarget.style.background='rgba(255,255,255,0.04)';e.currentTarget.style.color='rgba(255,255,255,0.55)';}}>
-            Try without signing in
+            {isAr?'المتابعة بدون تسجيل':'Try without signing in'}
           </button>
         </div>
           {tab === 'login' ? (
@@ -154,7 +154,7 @@ export default function LoginPage() {
 
               <form onSubmit={handleLogin} noValidate>
                 <div style={{ marginBottom:'14px' }}>
-                  <label style={{ display:'block', fontSize:'13px', fontWeight:600, color:'rgba(255,255,255,0.65)', marginBottom:'7px' }}>Email Address</label>
+                  <label style={{ display:'block', fontSize:'13px', fontWeight:600, color:'rgba(255,255,255,0.65)', marginBottom:'7px' }}>{isAr?'البريد الإلكتروني':'Email Address'}</label>
                   <div style={{ position:'relative' }}>
                     <svg style={{ position:'absolute', left:'14px', top:'50%', transform:'translateY(-50%)', pointerEvents:'none' }} width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
                     <input type="email" value={email} onChange={e=>setEmail(e.target.value)} placeholder={isAr?'admin@motorsync.com':'admin@motorsync.com'} style={inp} autoComplete="email" required />
@@ -162,7 +162,7 @@ export default function LoginPage() {
                 </div>
 
                 <div style={{ marginBottom:'6px' }}>
-                  <label style={{ display:'block', fontSize:'13px', fontWeight:600, color:'rgba(255,255,255,0.65)', marginBottom:'7px' }}>Password</label>
+                  <label style={{ display:'block', fontSize:'13px', fontWeight:600, color:'rgba(255,255,255,0.65)', marginBottom:'7px' }}>{isAr?'كلمة المرور':'Password'}</label>
                   <div style={{ position:'relative' }}>
                     <svg style={{ position:'absolute', left:'14px', top:'50%', transform:'translateY(-50%)', pointerEvents:'none' }} width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
                     <input type={showPass?'text':'password'} value={password} onChange={e=>setPassword(e.target.value)} placeholder="••••••••" style={{ ...inp, paddingRight:'44px' }} autoComplete="current-password" required />
@@ -178,29 +178,29 @@ export default function LoginPage() {
                 <div style={{ textAlign:'right', marginBottom:'20px' }}>
                   <button type="button" onClick={()=>{setTab('reset');setError('');}}
                     style={{ background:'none', border:'none', cursor:'pointer', fontSize:'13px', color:'rgba(255,255,255,0.5)', fontFamily:'inherit', padding:'8px 0' }}>
-                    Forgot password?
+                    {isAr?'نسيت كلمة المرور؟':'Forgot password?'}
                   </button>
                 </div>
 
                 <button type="submit" disabled={loading}
                   style={{ width:'100%', padding:'13px', background: loading ? 'rgba(200,30,30,0.5)' : 'linear-gradient(135deg,#c81e1e,#e63535)', color:'#fff', border:'none', borderRadius:'10px', fontSize:'14px', fontWeight:700, cursor: loading ? 'not-allowed' : 'pointer', boxShadow:'0 4px 20px rgba(200,30,30,0.35)', fontFamily:'inherit' }}>
-                  {loading ? 'Signing in…' : isAr?'تسجيل الدخول':'Sign In'}
+                  {loading ? (isAr?'جاري التسجيل…':'Signing in…') : isAr?'تسجيل الدخول':'Sign In'}
                 </button>
               </form>
 
               <div style={{ textAlign:'center', marginTop:'16px', fontSize:'13px' }}>
-                <span style={{ color:'rgba(255,255,255,0.4)' }}>Don&apos;t have an account? </span>
-                <Link href="/signup" style={{ color:'#c81e1e', fontWeight:600, textDecoration:'none' }}>Sign Up</Link>
+                <span style={{ color:'rgba(255,255,255,0.4)' }}>{isAr?'ليس لديك حساب؟ ':"Don't have an account? "}</span>
+                <Link href="/signup" style={{ color:'#c81e1e', fontWeight:600, textDecoration:'none' }}>{isAr?'سجّل الآن':'Sign Up'}</Link>
               </div>
             </>
           ) : (
             <>
-              <h2 style={{ fontSize:'20px', fontWeight:700, color:'#fff', margin:'0 0 4px' }}>Reset Password</h2>
+              <h2 style={{ fontSize:'20px', fontWeight:700, color:'#fff', margin:'0 0 4px' }}>{isAr?'إعادة تعيين كلمة المرور':'Reset Password'}</h2>
               <p style={{ fontSize:'13px', color:'rgba(255,255,255,0.42)', margin:'0 0 22px' }}>Enter your email to receive a reset link</p>
               {error && <div style={{ background:'rgba(220,38,38,0.13)', border:'1px solid rgba(220,38,38,0.35)', borderRadius:'9px', padding:'10px 14px', marginBottom:'18px', fontSize:'13px', color:'#f87171' }}>{error}</div>}
               <form onSubmit={handleReset} noValidate>
                 <div style={{ marginBottom:'22px' }}>
-                  <label style={{ display:'block', fontSize:'13px', fontWeight:600, color:'rgba(255,255,255,0.65)', marginBottom:'7px' }}>Email Address</label>
+                  <label style={{ display:'block', fontSize:'13px', fontWeight:600, color:'rgba(255,255,255,0.65)', marginBottom:'7px' }}>{isAr?'البريد الإلكتروني':'Email Address'}</label>
                   <div style={{ position:'relative' }}>
                     <svg style={{ position:'absolute', left:'14px', top:'50%', transform:'translateY(-50%)', pointerEvents:'none' }} width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
                     <input type="email" value={email} onChange={e=>setEmail(e.target.value)} placeholder={isAr?'admin@motorsync.com':'admin@motorsync.com'} style={inp} required />
@@ -208,13 +208,13 @@ export default function LoginPage() {
                 </div>
                 <button type="submit" disabled={loading}
                   style={{ width:'100%', padding:'13px', background: loading ? 'rgba(200,30,30,0.5)' : 'linear-gradient(135deg,#c81e1e,#e63535)', color:'#fff', border:'none', borderRadius:'10px', fontSize:'14px', fontWeight:700, cursor: loading ? 'not-allowed' : 'pointer', fontFamily:'inherit' }}>
-                  {loading ? 'Sending…' : isAr?'إرسال رابط الاسترداد':'Send Reset Email'}
+                  {loading ? (isAr?'جاري الإرسال…':'Sending…') : isAr?'إرسال رابط الاسترداد':'Send Reset Email'}
                 </button>
               </form>
               <div style={{ textAlign:'center', marginTop:'16px' }}>
                 <button onClick={()=>{setTab('login');setError('');}}
                   style={{ background:'none', border:'none', cursor:'pointer', color:'rgba(255,255,255,0.5)', fontSize:'13px', fontFamily:'inherit', padding:'8px' }}>
-                  ← Back to Sign In
+                  {isAr?'→ العودة لتسجيل الدخول':'← Back to Sign In'}
                 </button>
               </div>
             </>
