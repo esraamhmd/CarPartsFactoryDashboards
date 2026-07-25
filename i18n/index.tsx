@@ -291,6 +291,7 @@ const AR: Record<string, string> = {
   'machines.form.assignTo': 'تعيين إلى',
   /* maintenance */
   'maintenance.title': 'الصيانة',
+  'maintenance.subtitle': 'جداول الصيانة وسجلاتها',
   'maintenance.totalJobs': 'إجمالي الأعمال',
   'maintenance.scheduled': 'مجدولة',
   'maintenance.inProgress': 'قيد التنفيذ',
