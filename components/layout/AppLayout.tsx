@@ -11,6 +11,18 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname  = usePathname();
   const router    = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  // Restore language direction on mount
+  useEffect(() => {
+    const savedLang = localStorage.getItem('lang');
+    if (savedLang === 'ar') {
+      document.documentElement.dir = 'rtl';
+      document.documentElement.lang = 'ar';
+    } else {
+      document.documentElement.dir = 'ltr';
+      document.documentElement.lang = 'en';
+    }
+  }, []);
   const [user,    setUser]    = useState<any>(null);
   const [mounted, setMounted] = useState(false);
 
