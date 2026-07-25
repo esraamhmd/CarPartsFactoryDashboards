@@ -1,6 +1,10 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+const SURL = 'https://vopgydykkzxcfnnqoize.supabase.co';
+const SKEY = 'sb_publishable_aTFOgIF4IwUsj0c2ehHiLw_slfSIWxi';
+const H = {'apikey':SKEY,'Authorization':'Bearer '+SKEY,'Content-Type':'application/json','Prefer':'return=minimal'};
+
+import { useState, useEffect, useMemo } from 'react';
 import { MdAdd, MdEdit, MdDelete } from 'react-icons/md';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 import PageHeader from '@/components/ui/PageHeader';
@@ -23,6 +27,38 @@ export default function OrdersPage() {
   const { t, lang } = useI18n();
   const toAr = (n: any) => lang==='ar' ? String(n).replace(/[0-9]/g, d => '٠١٢٣٤٥٦٧٨٩'[+d]) : String(n);
   const { toast } = useToast();
+
+  useEffect(() => {
+
+    fetch(SURL+'/rest/v1/orders?select=*&order=created_at.desc&limit=500',{
+
+      headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}
+
+    }).then(r=>r.json()).then(data=>{
+
+      if(Array.isArray(data)&&data.length>0){
+
+        setOrders(data.map((d:any)=>({
+
+          id:String(d.id), customer:d.customer||'', product:d.product||'',
+
+          productAr:d.product_ar||d.product||'', notes:d.notes||'',
+
+          quantity:Number(d.quantity)||1, total:Number(d.total)||0,
+
+          status:d.status||'pending', priority:d.priority||'medium',
+
+          orderDate:d.order_date||'', deliveryDate:d.delivery_date||'',
+
+          progress:Number(d.progress)||0,
+
+        })));
+
+      }
+
+    }).catch(()=>{});
+
+  },[]);
   const [orders, setOrders] = useState<Order[]>([...ordersData]);
   const [modalOpen, setModalOpen] = useState(false);
   const [deleteId, setDeleteId] = useState<string|null>(null);
@@ -60,17 +96,40 @@ export default function OrdersPage() {
       deliveryDate: form.deliveryDate || '2025-02-01', progress: 0,
     };
     setOrders([newOrder, ...orders]);
+
+    fetch(SURL+'/rest/v1/orders',{method:'POST',headers:H,body:JSON.stringify({
+      id:'ORD-'+Date.now(),
+      customer:form.customer, product:form.product, product_ar:form.product,
+
+      quantity:Number(form.quantity)||1, status:'pending', priority:form.priority||'medium',
+
+      order_date:new Date().toISOString().split('T')[0],
+
+      delivery_date:form.deliveryDate||null, notes:form.notes||'', progress:0,
+
+      total:Math.floor(Math.random()*90000+10000),
+
+    })})
+    .then(r=>console.log('ORDER INSERT:',r.status))
+    .catch(e=>console.error('ORDER ERROR:',e));
     toast(t('toast.added'),'success');
     setModalOpen(false);
     setForm({ customer:'',product:'',quantity:'',priority:'medium',deliveryDate:'',notes:'' });
   };
 
   const handleDelete = (id: string) => {
+
     if (SECRET_PW && deletePassword !== SECRET_PW) { setDeletePwError(lang==='ar'?'كلمة مرور خاطئة':'Wrong password'); return; }
+
     setOrders(orders.filter(o=>o.id!==id));
+
     setDeleteId(null);
+
     setDeletePassword('');
+
     toast(t('toast.deleted'),'success');
+
+    fetch(SURL+'/rest/v1/orders?id=eq.'+id,{method:'DELETE',headers:H}).catch(()=>{});
   };
 
   return (

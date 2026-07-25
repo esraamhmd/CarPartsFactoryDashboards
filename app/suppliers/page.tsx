@@ -1,6 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+const SURL = 'https://vopgydykkzxcfnnqoize.supabase.co';
+const SKEY = 'sb_publishable_aTFOgIF4IwUsj0c2ehHiLw_slfSIWxi';
+const H = {'apikey':SKEY,'Authorization':'Bearer '+SKEY,'Content-Type':'application/json','Prefer':'return=minimal'};
+
+import { useState, useEffect } from 'react';
 import { MdAdd, MdStar, MdEdit, MdDelete } from 'react-icons/md';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 import PageHeader from '@/components/ui/PageHeader';
@@ -21,6 +25,7 @@ export default function SuppliersPage() {
   const PER_PAGE = 10;
   const { t, lang } = useI18n();
   const { toast } = useToast();
+
   const [suppliers, setSuppliers] = useState<Supplier[]>([...suppliersData]);
   const [modalOpen, setModalOpen] = useState(false);
   const [editItem, setEditItem] = useState<Supplier | null>(null);
@@ -28,9 +33,42 @@ export default function SuppliersPage() {
   const [form, setForm] = useState({ name:'', contact:'', email:'', phone:'', country:'Egypt', category:'Raw Materials', status:'active' });
   const SECRET_PW = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || '';
   const [password, setPassword] = useState('');
+  const [emailError, setEmailError] = useState('');
   const [pwError, setPwError] = useState('');
   const [deletePw, setDeletePw] = useState('');
   const [deletePwError, setDeletePwError] = useState('');
+
+  // Load from DB on mount
+
+  useEffect(() => {
+
+    fetch(SURL+'/rest/v1/suppliers?select=*&order=id.asc&limit=500',{
+
+      headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}
+
+    }).then(r=>r.json()).then(data=>{
+
+      if(Array.isArray(data)&&data.length>0){
+
+        setSuppliers(data.map((d:any)=>({
+
+          id:d.id, name:d.name||'', contact:d.contact||'', email:d.email||'',
+
+          phone:d.phone||'', category:d.category||'', categoryAr:d.category||'',
+
+          country:d.country||'', status:d.status||'active',
+
+          rating:Number(d.rating)||4.0, totalOrders:Number(d.total_orders)||0,
+
+          onTimeDelivery:Number(d.on_time_delivery)||90, activeOrders:Number(d.active_orders)||0,
+
+        })));
+
+      }
+
+    }).catch(()=>{});
+
+  },[]);
 
   const sortedByRating = [...suppliers].sort((a, b) => b.rating - a.rating);
   const active = suppliers.filter(s => s.status === 'active').length;
@@ -44,26 +82,51 @@ export default function SuppliersPage() {
 
     e.preventDefault();
 
-    if (!editItem) {
-
-      if (!password) { setPwError(lang==='ar'?'كلمة المرور مطلوبة':'Password is required'); return; }
-
-      if (password !== SECRET_PW) { setPwError(lang==='ar'?'كلمة المرور غير صحيحة':'Incorrect password'); return; }
-
-    }
+    if (!password) { setPwError(lang==='ar'?'كلمة المرور مطلوبة':'Password is required'); return; }
+    if (SECRET_PW && password !== SECRET_PW) { setPwError(lang==='ar'?'كلمة المرور غير صحيحة':'Incorrect password'); return; }
     if (!form.name || !form.contact) { toast(t('common.required')+'!','error'); return; }
+    if (!form.email) { setEmailError(lang==='ar'?'البريد الإلكتروني مطلوب':'Email is required'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) { setEmailError(lang==='ar'?'بريد إلكتروني غير صالح':'Invalid email address'); return; }
     if (editItem) {
       setSuppliers(suppliers.map(s => s.id === editItem.id ? { ...s, ...form } : s));
+
       toast(t('toast.updated'), 'success');
+
+      fetch(SURL+'/rest/v1/suppliers?id=eq.'+editItem.id,{method:'PATCH',headers:H,body:JSON.stringify({
+
+        name:form.name, contact:form.contact, email:form.email, phone:form.phone,
+
+        category:form.category, country:form.country||'', status:form.status||'active',
+
+      })}).catch(()=>{});
     } else {
       const newS: Supplier = { id: Date.now(), ...form, categoryAr: form.category, rating: 4.0, onTimeDelivery: 90, totalOrders: 0, activeOrders: 0 };
       setSuppliers([...suppliers, newS]);
+
       toast(t('toast.added'), 'success');
+
+      fetch(SURL+'/rest/v1/suppliers',{method:'POST',headers:H,body:JSON.stringify({
+
+        name:form.name, contact:form.contact, email:form.email, phone:form.phone,
+
+        category:form.category, country:form.country||'', status:form.status||'active',
+
+        rating:4.0, total_orders:0, on_time_delivery:90, active_orders:0,
+
+      })}).then(()=>{
+
+        fetch(SURL+'/rest/v1/suppliers?select=*&order=id.asc&limit=500',{headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}})
+
+        .then(r=>r.json()).then(data=>{ if(Array.isArray(data)&&data.length>0) setSuppliers(data.map((d:any)=>({id:d.id,name:d.name||'',contact:d.contact||'',email:d.email||'',phone:d.phone||'',category:d.category||'',categoryAr:d.category||'',country:d.country||'',status:d.status||'active',rating:Number(d.rating)||4.0,totalOrders:Number(d.total_orders)||0,onTimeDelivery:Number(d.on_time_delivery)||90,activeOrders:Number(d.active_orders)||0}))); });
+
+      }).catch(()=>{});
     }
     setModalOpen(false);
   };
 
   const handleDelete = (id: number) => {
+
+    fetch(SURL+'/rest/v1/suppliers?id=eq.'+id,{method:'DELETE',headers:H}).catch(()=>{});
 
     if (!deletePw) { setDeletePwError(lang==='ar'?'كلمة المرور مطلوبة':'Password is required'); return; }
 
@@ -187,7 +250,7 @@ export default function SuppliersPage() {
             </FormField>
           </FormRow>
           <FormRow>
-            <FormField label={t('suppliers.form.email')}>
+            <FormField label={t('suppliers.form.email')} required error={emailError}>
               <Input type="email" value={form.email} onChange={e=>setForm(p=>({...p, email:e.target.value}))} placeholder="contact@supplier.com" />
             </FormField>
             <FormField label={t('suppliers.form.phone')}>

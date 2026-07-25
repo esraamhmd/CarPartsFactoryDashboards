@@ -40,6 +40,8 @@ export default function InventoryPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!password) { setPwError(lang==='ar'?'كلمة المرور مطلوبة':'Password is required'); return; }
+    if (SECRET_PW && password !== SECRET_PW) { setPwError(lang==='ar'?'كلمة المرور غير صحيحة':'Incorrect password'); return; }
     if (!form.name || !form.quantity) { toast(t('common.required')+'!','error'); return; }
     const qty = Number(form.quantity);
     const min = Number(form.minStock)||0;
@@ -222,6 +224,8 @@ export default function InventoryPage() {
               onChange={e=>{ setPassword(e.target.value); setPwError(''); }}
 
               placeholder={lang==='ar'?'أدخل كلمة المرور':'Enter password'}
+              error={!!pwError}
+              onChange={e=>{setPassword(e.target.value);setPwError('');}}
 
               error={!!pwError} />
 

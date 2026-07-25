@@ -25,7 +25,7 @@ export default function LoginPage() {
     const u = { name, email, initials, isGuest };
     localStorage.setItem('ms_user', JSON.stringify(u));
     document.cookie = `ms_user=${encodeURIComponent(JSON.stringify(u))};path=/;max-age=604800;SameSite=Lax`;
-    showToast('✓ Signed in!');
+    showToast('Signed in!');
     setTimeout(() => { window.location.href = '/'; }, 700);
   };
 
@@ -94,7 +94,7 @@ export default function LoginPage() {
       });
     }
     setLoading(false);
-    showToast('✓ Reset email sent!');
+    showToast('Reset email sent!');
     setTab('login');
   };
 

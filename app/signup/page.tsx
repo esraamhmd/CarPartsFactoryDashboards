@@ -123,7 +123,7 @@ export default function SignupPage() {
       }
 
       setLoading(false);
-      showToast('✓ Account created!');
+      showToast('Account created!');
       setSuccess(true);
 
     } catch (e: any) {
@@ -139,7 +139,7 @@ export default function SignupPage() {
       headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
       body: JSON.stringify({ email:'guest@motorsync.com', full_name:'Guest', logged_in_at: new Date().toISOString() }),
     });
-    showToast('✓ Entering as guest…');
+    showToast('Entering as guest…');
     setTimeout(go, 600);
   };
 

@@ -1,5 +1,9 @@
 'use client';
 
+const SURL = 'https://vopgydykkzxcfnnqoize.supabase.co';
+const SKEY = 'sb_publishable_aTFOgIF4IwUsj0c2ehHiLw_slfSIWxi';
+const H = {'apikey':SKEY,'Authorization':'Bearer '+SKEY,'Content-Type':'application/json','Prefer':'return=minimal'};
+
 import { useState, useMemo } from 'react';
 import dynamic from 'next/dynamic';
 const PieChart   = dynamic(() => import('recharts').then(m=>m.PieChart),   {ssr:false});
@@ -66,6 +70,19 @@ export default function DefectsPage() {
       status:'open', statusAr:'open', inspector:form.inspector,
     };
     setDefects([newD,...defects]);
+
+    fetch(SURL+'/rest/v1/defects',{method:'POST',headers:H,body:JSON.stringify({
+
+      type: form.type, part: form.part, description: form.description||'',
+
+      count: Number(form.count)||1, severity: form.severity,
+
+      line: form.line, inspector: form.inspector||'',
+
+      date: new Date().toISOString().split('T')[0], status: 'open',
+
+    })}).catch(()=>{});
+
     toast(t('toast.added'),'success');
     setModalOpen(false);
     setForm({ type:'Surface Defect',part:'',count:'1',severity:'minor',line:'A',description:'',inspector:'Sara Mohamed' });

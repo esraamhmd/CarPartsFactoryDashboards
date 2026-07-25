@@ -141,6 +141,7 @@ const AR: Record<string, string> = {
   'employees.form.status': 'الحالة',
   /* departments */
   'departments.title': 'الأقسام',
+  'departments.subtitle': 'إدارة أقسام المصنع',
   'departments.headcount': 'عدد الموظفين',
   'departments.avgPerf': 'متوسط الأداء',
   'departments.avgSalary': 'متوسط الراتب',
@@ -159,6 +160,7 @@ const AR: Record<string, string> = {
   'attendance.weekly': 'الحضور الأسبوعي',
   /* payroll */
   'payroll.title': 'الرواتب',
+  'payroll.subtitle': 'إدارة رواتب الموظفين والمدفوعات',
   'payroll.payslips': 'كشوف الرواتب',
   'payroll.totalNetPay': 'إجمالي صافي الرواتب',
   'payroll.totalBonuses': 'إجمالي المكافآت',
@@ -173,6 +175,16 @@ const AR: Record<string, string> = {
   'payroll.deductions': 'الخصومات',
   /* inventory */
   'inventory.title': 'المخزون',
+  'inventory.form.minStock': 'الحد الأدنى للمخزون',
+  'inventory.form.location': 'الموقع',
+  'inventory.form.supplier': 'المورد',
+  'inventory.form.price': 'السعر',
+  'inventory.form.unit': 'الوحدة',
+  'inventory.form.quantity': 'الكمية',
+  'inventory.form.category': 'الفئة',
+  'inventory.form.name': 'اسم العنصر',
+  'inventory.form.editTitle': 'تعديل عنصر',
+  'inventory.subtitle': 'إدارة المخزون ومستويات المواد',
   'inventory.form.title': 'إضافة عنصر',
   'inventory.totalItems': 'إجمالي العناصر',
   'inventory.totalValue': 'إجمالي القيمة',
@@ -194,6 +206,12 @@ const AR: Record<string, string> = {
   'inventory.form.minStock': 'الحد الأدنى',
   /* orders */
   'orders.title': 'الطلبات',
+  'orders.form.priority': 'الأولوية',
+  'orders.form.quantity': 'الكمية',
+  'orders.form.product': 'المنتج',
+  'orders.form.customer': 'العميل',
+  'orders.form.editTitle': 'تعديل طلب',
+  'orders.subtitle': 'إدارة طلبات العملاء والشحن',
   'orders.form.title': 'إضافة طلب',
   'orders.totalOrders': 'إجمالي الطلبات',
   'orders.totalValue': 'إجمالي القيمة',
@@ -212,6 +230,16 @@ const AR: Record<string, string> = {
   'orders.form.notes': 'ملاحظات',
   /* customers */
   'customers.title': 'العملاء',
+  'customers.form.type': 'النوع',
+  'customers.form.status': 'الحالة',
+  'customers.form.country': 'الدولة',
+  'customers.form.phone': 'رقم الهاتف',
+  'customers.form.email': 'البريد الإلكتروني',
+  'customers.form.contact': 'جهة الاتصال',
+  'customers.form.name': 'اسم العميل',
+  'customers.form.editTitle': 'تعديل عميل',
+  'customers.contact': 'جهة الاتصال',
+  'customers.subtitle': 'إدارة قاعدة العملاء والطلبات',
   'customers.form.title': 'إضافة عميل',
   'customers.totalCustomers': 'إجمالي العملاء',
   'customers.totalOrders': 'إجمالي الطلبات',
@@ -224,6 +252,20 @@ const AR: Record<string, string> = {
   'customers.lastOrder': 'آخر طلب',
   /* suppliers */
   'suppliers.title': 'الموردون',
+  'suppliers.status': 'الحالة',
+  'suppliers.country': 'الدولة',
+  'suppliers.rating': 'التقييم',
+  'suppliers.category': 'الفئة',
+  'suppliers.contact': 'جهة الاتصال',
+  'suppliers.form.status': 'الحالة',
+  'suppliers.form.country': 'الدولة',
+  'suppliers.form.category': 'الفئة',
+  'suppliers.form.phone': 'رقم الهاتف',
+  'suppliers.form.email': 'البريد الإلكتروني',
+  'suppliers.form.contact': 'جهة الاتصال',
+  'suppliers.form.name': 'اسم الشركة',
+  'suppliers.form.editTitle': 'تعديل مورد',
+  'suppliers.subtitle': 'إدارة الموردين وعقود التوريد',
   'suppliers.form.title': 'إضافة مورد',
   'suppliers.activeSuppliers': 'الموردون النشطون',
   'suppliers.underReview': 'قيد المراجعة',
@@ -267,6 +309,21 @@ const AR: Record<string, string> = {
   'maintenance.form.hours': 'الساعات المقدرة',
   /* defects */
   'defects.title': 'العيوب',
+  'defects.form.description': 'الوصف',
+  'defects.form.inspector': 'المفتش',
+  'defects.form.line': 'خط الإنتاج',
+  'defects.form.severity': 'الخطورة',
+  'defects.form.count': 'العدد',
+  'defects.form.part': 'القطعة',
+  'defects.form.type': 'نوع العيب',
+  'defects.form.editTitle': 'تعديل العيب',
+  'defects.inspector': 'المفتش',
+  'defects.line': 'خط الإنتاج',
+  'defects.severity': 'الخطورة',
+  'defects.count': 'العدد',
+  'defects.part': 'القطعة',
+  'defects.type': 'نوع العيب',
+  'defects.subtitle': 'تتبع عيوب الجودة والتفتيش',
   'defects.form.title': 'إضافة عيب',
   'defects.totalDefects': 'إجمالي العيوب',
   'defects.criticalIssues': 'مشكلات حرجة',
@@ -471,6 +528,7 @@ const EN: Record<string, string> = {
   'employees.form.status': 'Status',
   /* departments */
   'departments.title': 'Departments',
+  'departments.subtitle': 'Manage factory departments',
   'departments.headcount': 'Headcount',
   'departments.avgPerf': 'Avg Performance',
   'departments.avgSalary': 'Avg Salary',
@@ -489,6 +547,7 @@ const EN: Record<string, string> = {
   'attendance.weekly': 'Weekly Attendance',
   /* payroll */
   'payroll.title': 'Payroll',
+  'payroll.subtitle': 'Manage employee salaries and payments',
   'payroll.payslips': 'Payslips',
   'payroll.totalNetPay': 'Total Net Pay',
   'payroll.totalBonuses': 'Total Bonuses',
@@ -503,6 +562,26 @@ const EN: Record<string, string> = {
   'payroll.deductions': 'Deductions',
   /* inventory */
   'inventory.title': 'Inventory',
+  'inventory.subtitle': 'Manage stock levels and materials',
+
+  'inventory.form.title': 'Add Item',
+
+  'inventory.form.editTitle': 'Edit Item',
+
+  'inventory.form.itemName': 'Item Name',
+
+  'inventory.form.category': 'Category',
+
+  'inventory.form.quantity': 'Quantity',
+
+  'inventory.form.unit': 'Unit',
+
+  'inventory.form.minStock': 'Min Stock',
+
+  'inventory.form.price': 'Unit Price',
+
+  'inventory.form.location': 'Location',
+  'inventory.form.supplier': 'Supplier',
   'inventory.totalItems': 'Total Items',
   'inventory.totalValue': 'Total Value',
   'inventory.totalVal': 'Total Value',
@@ -523,6 +602,21 @@ const EN: Record<string, string> = {
   'inventory.form.minStock': 'Min Stock',
   /* orders */
   'orders.title': 'Orders',
+  'orders.subtitle': 'Manage customer orders and shipping',
+
+  'orders.form.title': 'Create Order',
+
+  'orders.form.editTitle': 'Edit Order',
+
+  'orders.form.customer': 'Customer',
+
+  'orders.form.product': 'Product',
+
+  'orders.form.quantity': 'Quantity',
+
+  'orders.form.priority': 'Priority',
+
+  'orders.form.notes': 'Notes',
   'orders.totalOrders': 'Total Orders',
   'orders.totalValue': 'Total Value',
   'orders.pending': 'Pending',
@@ -540,6 +634,17 @@ const EN: Record<string, string> = {
   'orders.form.notes': 'Notes',
   /* customers */
   'customers.title': 'Customers',
+  'customers.form.type': 'Type',
+  'customers.form.status': 'Status',
+  'customers.form.country': 'Country',
+  'customers.form.phone': 'Phone',
+  'customers.form.email': 'Email',
+  'customers.form.contact': 'Contact Person',
+  'customers.form.name': 'Company Name',
+  'customers.form.editTitle': 'Edit Customer',
+  'customers.form.title': 'Add Customer',
+  'customers.contact': 'Contact',
+  'customers.subtitle': 'Manage customer base and orders',
   'customers.totalCustomers': 'Total Customers',
   'customers.totalOrders': 'Total Orders',
   'customers.totalRevenue': 'Total Revenue',
@@ -551,6 +656,11 @@ const EN: Record<string, string> = {
   'customers.lastOrder': 'Last Order',
   /* suppliers */
   'suppliers.title': 'Suppliers',
+  'suppliers.status': 'Status',
+  'suppliers.country': 'Country',
+  'suppliers.rating': 'Rating',
+  'suppliers.category': 'Category',
+  'suppliers.contact': 'Contact',
   'suppliers.activeSuppliers': 'Active Suppliers',
   'suppliers.underReview': 'Under Review',
   'suppliers.avgRating': 'Avg Rating',
@@ -560,6 +670,26 @@ const EN: Record<string, string> = {
   'suppliers.totalOrd': 'Total Orders',
   'suppliers.allSuppliers': 'All Suppliers',
   'suppliers.topByRating': 'Top by Rating',
+  'suppliers.subtitle': 'Manage suppliers and supply contracts',
+
+  'suppliers.form.title': 'Add Supplier',
+
+  'suppliers.form.editTitle': 'Edit Supplier',
+
+  'suppliers.form.name': 'Company Name',
+
+  'suppliers.form.contact': 'Contact Person',
+
+  'suppliers.form.email': 'Email',
+
+  'suppliers.form.phone': 'Phone',
+
+  'suppliers.form.category': 'Category',
+
+  'suppliers.form.country': 'Country',
+
+  'suppliers.form.status': 'Status',
+
   /* machines */
   'machines.title': 'Machines',
   'machines.form.title': 'Add Machine',
@@ -575,6 +705,7 @@ const EN: Record<string, string> = {
   'machines.form.assignTo': 'Assign To',
   /* maintenance */
   'maintenance.title': 'Maintenance',
+  'maintenance.subtitle': 'Maintenance schedules and records',
   'maintenance.totalJobs': 'Total Jobs',
   'maintenance.scheduled': 'Scheduled',
   'maintenance.inProgress': 'In Progress',
@@ -593,6 +724,22 @@ const EN: Record<string, string> = {
   'maintenance.form.hours': 'Est. Hours',
   /* defects */
   'defects.title': 'Defects',
+  'defects.form.editTitle': 'Edit Defect',
+  'defects.form.title': 'Report Defect',
+  'defects.form.description': 'Description',
+  'defects.form.inspector': 'Inspector',
+  'defects.form.line': 'Production Line',
+  'defects.form.severity': 'Severity',
+  'defects.form.count': 'Count',
+  'defects.form.part': 'Part',
+  'defects.form.type': 'Defect Type',
+  'defects.inspector': 'Inspector',
+  'defects.line': 'Line',
+  'defects.severity': 'Severity',
+  'defects.count': 'Count',
+  'defects.part': 'Part',
+  'defects.type': 'Type',
+  'defects.subtitle': 'Track quality defects and inspections',
   'defects.totalDefects': 'Total Defects',
   'defects.criticalIssues': 'Critical Issues',
   'defects.byType': 'By Type',

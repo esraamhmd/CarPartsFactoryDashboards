@@ -50,9 +50,9 @@ export default function QualityPage() {
   const [deletePassword, setDeletePassword] = useState('');
   const [deletePwError, setDeletePwError] = useState('');
   const { toast } = useToast();
-  const [inspections, setInspections] = useState(initInspections);
+  const [inspections, setInspections] = useState<any[]>([]);
   const [modalOpen, setModalOpen] = useState(false);
-  const [editItem, setEditItem] = useState<typeof initInspections[0] | null>(null);
+  const [editItem, setEditItem] = useState<any>(null);
   const [deleteId, setDeleteId] = useState<string | null>(null);
   const [form, setForm] = useState({ item:'', inspector:'Sara Mohamed', checks:'20' });
 
@@ -72,7 +72,7 @@ export default function QualityPage() {
 
       if(Array.isArray(data)&&data.length>0){
 
-        setQuality(data.map((d:any)=>({
+        setInspections(data.map((d:any)=>({
 
           id:d.id, item:d.item||'', itemAr:d.item||'',
 
@@ -100,17 +100,17 @@ export default function QualityPage() {
   ];
 
   const openAdd = () => { setEditItem(null); setForm({ item:'', inspector:'Sara Mohamed', checks:'20' }); setModalOpen(true); };
-  const openEdit = (insp: typeof initInspections[0]) => { setEditItem(insp); setForm({ item: insp.item, inspector: insp.inspector, checks: String(insp.checks) }); setModalOpen(true); };
+  const openEdit = (insp: any) => { setEditItem(insp); setForm({ item: insp.item, inspector: insp.inspector, checks: String(insp.checks) }); setModalOpen(true); };
 
   useEffect(() => {
     fetch(SURL+'/rest/v1/quality_inspections?select=*&order=id.desc&limit=500',{
       headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}
     }).then(r=>r.json()).then(data=>{
       if(Array.isArray(data)&&data.length>0){
-        setInspections(data.map((d:any)=>({
+        setInspections(data.map((d:any)=>({ 
           id:String(d.id), item:d.item||'', inspector:d.inspector||'',
           date:d.date||'', result:d.status||'pass', score:Number(d.score)||0,
-          checks:20, failed:0,
+          checks:20, failed:0, itemAr:d.item||'',
         })));
       }
     }).catch(()=>{});
@@ -123,6 +123,7 @@ export default function QualityPage() {
     if (editItem) {
       setInspections(inspections.map(i => i.id === editItem.id ? { ...i, item: form.item, inspector: form.inspector, checks: Number(form.checks) } : i));
       toast(lang === 'ar' ? 'تم تحديث الفحص!' : 'Inspection updated!', 'success');
+      console.log('PATCH id:', editItem.id);
       fetch(SURL+'/rest/v1/quality_inspections?id=eq.'+editItem.id,{method:'PATCH',headers:H,body:JSON.stringify({
         item: form.item, inspector: form.inspector,
       })}).catch(()=>{});
@@ -146,6 +147,7 @@ export default function QualityPage() {
   };
 
   const handleDelete = (id: string) => {
+    if (SECRET_PW && deletePassword !== SECRET_PW) { setDeletePwError(lang==='ar'?'كلمة مرور خاطئة':'Wrong password'); return; }
     setInspections(inspections.filter(i => i.id !== id));
     setDeleteId(null);
     toast(lang === 'ar' ? 'تم حذف الفحص!' : 'Inspection deleted!', 'success');

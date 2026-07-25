@@ -222,7 +222,7 @@ export default function Dashboard() {
             {t('dashboard.recentOrders')}
           </div>
           <div className="table-wrap">
-            <table>
+            <table style={{ minWidth:600 }}>
               <thead><tr>
                 <th>{lang==='ar'?'رقم الطلب':'Order'}</th>
                 <th className="hide-mob">{lang==='ar'?'العميل':'Customer'}</th>
@@ -249,7 +249,7 @@ export default function Dashboard() {
             {t('dashboard.todayAtt')}
           </div>
           <div className="table-wrap">
-            <table>
+            <table style={{ minWidth:600 }}>
               <thead><tr>
                 <th>{lang==='ar'?'الاسم':'Name'}</th>
                 <th className="hide-mob">{lang==='ar'?'وقت الدخول':'Check In'}</th>

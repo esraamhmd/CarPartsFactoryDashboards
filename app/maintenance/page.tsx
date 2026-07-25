@@ -42,6 +42,8 @@ export default function MaintenancePage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!password) { setPwError(lang==='ar'?'كلمة المرور مطلوبة':'Password is required'); return; }
+    if (SECRET_PW && password !== SECRET_PW) { setPwError(lang==='ar'?'كلمة المرور غير صحيحة':'Incorrect password'); return; }
     if (!form.machine || !form.technician) { toast(t('common.required')+'!','error'); return; }
     const newItem: Maint = {
       id: `MNT-${Date.now()}`, machine:form.machine, type:form.type, actualHours:0, cost:0,
@@ -88,7 +90,7 @@ export default function MaintenancePage() {
 
       {/* Maintenance Cards - responsive grid */}
       <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(280px,1fr))', gap:16, marginBottom:24 }}>
-        {items.map(m=>(
+        {items.slice((page-1)*PER_PAGE, page*PER_PAGE).map(m=>(
           <div key={m.id} className="card card-hover" style={{ padding:20 }}>
             <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', marginBottom:12 }}>
               <div style={{ display:'flex', alignItems:'center', gap:10 }}>
@@ -119,6 +121,7 @@ export default function MaintenancePage() {
           </div>
         ))}
       </div>
+      <Pagination page={page} total={items.length} perPage={PER_PAGE} onChange={setPage} />
 
       {/* Chart */}
       <div className="card" style={{ padding:20, marginBottom:24 }}>

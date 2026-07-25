@@ -54,7 +54,7 @@ const toEmployee = (d: any): Employee => ({
 });
 
 const BLANK: EmployeeForm = { name:'', email:'', phone:'', role:'', department:'Production', shift:'morning', salary:5000, status:'active' };
-const SECRET_PASSWORD = 'admin';
+const SECRET_PASSWORD = 'alaacoco';
 
 const BarChart = dynamic(() => import('recharts').then(m => m.BarChart), { ssr: false });
 const Bar = dynamic(() => import('recharts').then(m => m.Bar), { ssr: false });

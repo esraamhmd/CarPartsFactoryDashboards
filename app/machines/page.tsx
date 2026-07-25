@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { MdAdd, MdEdit, MdDelete, MdPrecisionManufacturing } from 'react-icons/md';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 import PageHeader from '@/components/ui/PageHeader';
@@ -15,6 +15,10 @@ import machinesData from '@/data/machines.json';
 
 type Machine = typeof machinesData[0];
 
+const SURL = 'https://vopgydykkzxcfnnqoize.supabase.co';
+const SKEY = 'sb_publishable_aTFOgIF4IwUsj0c2ehHiLw_slfSIWxi';
+const H = {'apikey':SKEY,'Authorization':'Bearer '+SKEY,'Content-Type':'application/json','Prefer':'return=minimal'};
+
 const statusColor: Record<string,string> = { running:'#00C68D', maintenance:'#CC0000', 'under-performing':'#FFD400', idle:'#9EA8BB' };
 
 export default function MachinesPage() {
@@ -22,15 +26,29 @@ export default function MachinesPage() {
   const PER_PAGE = 10;
   const { t, lang, tStatus } = useI18n();
   const { toast } = useToast();
-  const [machines, setMachines] = useState<Machine[]>([...machinesData]);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [editItem, setEditItem] = useState<Machine|null>(null);
-  const [deleteId, setDeleteId] = useState<number|null>(null);
   const SECRET_PW = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || '';
   const [password, setPassword] = useState('');
   const [pwError, setPwError] = useState('');
   const [deletePw, setDeletePw] = useState('');
   const [deletePwError, setDeletePwError] = useState('');
+  const [machines, setMachines] = useState<Machine[]>([...machinesData]);
+
+  useEffect(() => {
+    fetch(SURL+'/rest/v1/machines?select=*&order=id.asc&limit=500',{
+      headers:{'apikey':SKEY,'Authorization':'Bearer '+SKEY}
+    }).then(r=>r.json()).then(data=>{
+      if(Array.isArray(data)&&data.length>0) setMachines(data.map((d:any)=>({
+        id:d.id, name:d.name||'', type:d.type||'CNC', location:d.location||'Line A',
+        status:d.status||'running', utilization:Number(d.utilization)||0,
+        efficiency:Number(d.efficiency)||0, downtime:Number(d.downtime)||0,
+        assignedTo:d.assigned_to||'', lastMaintenance:d.last_maintenance||'',
+        nextMaintenance:d.next_maintenance||'', hoursRun:Number(d.hours_run)||0,
+      })));
+    }).catch(()=>{});
+  },[]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [editItem, setEditItem] = useState<Machine|null>(null);
+  const [deleteId, setDeleteId] = useState<number|null>(null);
   const [form, setForm] = useState({ name:'', type:'CNC', status:'running', assignedTo:'', location:'Line A', nextMaintenance:'' });
 
   const running = machines.filter(m=>m.status==='running').length;
@@ -42,26 +60,29 @@ export default function MachinesPage() {
   const openEdit = (m: Machine) => { setEditItem(m); setForm({ name:m.name,type:m.type,status:m.status,assignedTo:m.assignedTo,location:m.location,nextMaintenance:m.nextMaintenance }); setPassword(''); setPwError(''); setModalOpen(true); };
 
   const handleSubmit = (e: React.FormEvent) => {
-
     e.preventDefault();
-
     if (!password) { setPwError(lang==='ar'?'كلمة المرور مطلوبة':'Password is required'); return; }
-
-    if (password !== SECRET_PW) { setPwError(lang==='ar'?'كلمة المرور غير صحيحة':'Incorrect password'); return; }
-
+    if (SECRET_PW && password !== SECRET_PW) { setPwError(lang==='ar'?'كلمة المرور غير صحيحة':'Incorrect password'); return; }
     if (!form.name) { toast(t('common.required')+'!','error'); return; }
     if (editItem) {
       setMachines(machines.map(m=>m.id===editItem.id?{...m,...form}:m));
       toast(t('toast.updated'),'success');
+      fetch(SURL+'/rest/v1/machines?id=eq.'+editItem.id,{method:'PATCH',headers:H,body:JSON.stringify({name:form.name,type:form.type,status:form.status,assigned_to:form.assignedTo||'',location:form.location,next_maintenance:form.nextMaintenance||null})}).catch(()=>{});
     } else {
       const newM = { id:Date.now(),...form, utilization:form.status==='running'?80:0, efficiency:form.status==='running'?85:0, downtime:0, lastMaintenance:new Date().toISOString().split('T')[0], nextMaintenance:'', assignedTo:form.assignedTo||'', hoursRun:0 } as Machine;
       setMachines([...machines,newM]);
       toast(t('toast.added'),'success');
+      fetch(SURL+'/rest/v1/machines',{method:'POST',headers:H,body:JSON.stringify({name:form.name,type:form.type,status:form.status,assigned_to:form.assignedTo||'',location:form.location,next_maintenance:form.nextMaintenance||null,utilization:form.status==='running'?80:0,efficiency:form.status==='running'?85:0,downtime:0,hours_run:0})}).catch(()=>{});
     }
     setModalOpen(false);
   };
 
-  const handleDelete = (id: number) => { setMachines(machines.filter(m=>m.id!==id)); setDeleteId(null); toast(t('toast.deleted'),'success'); };
+  const handleDelete = (id: number) => {
+    if (!deletePw) { setDeletePwError(lang==='ar'?'كلمة المرور مطلوبة':'Password is required'); return; }
+    if (SECRET_PW && deletePw !== SECRET_PW) { setDeletePwError(lang==='ar'?'كلمة المرور غير صحيحة':'Incorrect password'); return; }
+    setMachines(machines.filter(m=>m.id!==id)); setDeleteId(null); setDeletePw(''); toast(t('toast.deleted'),'success');
+    fetch(SURL+'/rest/v1/machines?id=eq.'+id,{method:'DELETE',headers:H}).catch(()=>{});
+  };
 
   return (
     <div className="animate-in">
@@ -121,7 +142,7 @@ export default function MachinesPage() {
 
       {/* Machine Cards */}
       <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(280px,1fr))', gap:16 }}>
-        {machines.map(m=>(
+        {machines.slice((page-1)*PER_PAGE, page*PER_PAGE).map(m=>(
           <div key={m.id} className="card card-hover" style={{ padding:20 }}>
             <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', marginBottom:14 }}>
               <div style={{ display:'flex', alignItems:'center', gap:10 }}>
@@ -162,6 +183,7 @@ export default function MachinesPage() {
           </div>
         ))}
       </div>
+      <Pagination page={page} total={machines.length} perPage={PER_PAGE} onChange={setPage} />
 
       <Modal isOpen={modalOpen} onClose={()=>setModalOpen(false)} title={editItem?(lang==='ar'?'تعديل آلة':'Edit Machine'):t('machines.form.title')} size="md">
         <form onSubmit={handleSubmit}>
@@ -199,53 +221,29 @@ export default function MachinesPage() {
             </FormField>
           </FormRow>
           <FormField label={lang==='ar'?'كلمة المرور':'Password'} required>
-
-            <Input type="password" value={password}
-
-              onChange={e=>{ setPassword(e.target.value); setPwError(''); }}
-
-              placeholder={lang==='ar'?'أدخل كلمة المرور':'Enter password'}
-
-              error={!!pwError} />
-
-            {pwError && <div style={{ fontSize:11.5, color:'#dc2626', marginTop:4 }}>⚠ {pwError}</div>}
-
+            <Input type="password" value={password} onChange={e=>{setPassword(e.target.value);setPwError('');}}
+              placeholder={lang==='ar'?'أدخل كلمة المرور':'Enter password'} error={!!pwError} />
+            {pwError && <div style={{color:'#dc2626',fontSize:12,marginTop:4}}>⚠ {pwError}</div>}
           </FormField>
-
           <FormActions>
-
-            <Button variant="secondary" type="button" onClick={()=>setModalOpen(false)}>{t('common.cancel')}</Button>
+            <Button variant="secondary" type="button" onClick={()=>{setModalOpen(false);setPassword('');setPwError('');}}>{t('common.cancel')}</Button>
             <Button variant="primary" type="submit">{editItem?t('common.save'):t('common.addMachine')}</Button>
           </FormActions>
         </form>
       </Modal>
 
-      <Modal isOpen={deleteId!==null} onClose={()=>setDeleteId(null)} title={t('common.delete')} size="sm">
+      <Modal isOpen={deleteId!==null} onClose={()=>{setDeleteId(null);setDeletePw('');setDeletePwError('');}} title={t('common.delete')} size="sm">
         <div style={{ textAlign:'center', padding:'8px 0 16px' }}>
           <MdDelete aria-hidden="true" size={40} style={{ color:'#CC0000', marginBottom:12 }} />
-          <p style={{ fontSize:14, fontWeight:600, marginBottom:20 }}>{lang==='ar'?'حذف هذه الآلة؟':'Delete this machine?'}</p>
-          <div style={{ marginBottom:16, textAlign:'start' }}>
-
-            <label style={{ fontSize:12.5, fontWeight:600, color:'var(--text-secondary)', display:'block', marginBottom:6 }}>
-
-              {lang==='ar'?'كلمة المرور':'Password'}*
-
-            </label>
-
-            <input type="password" value={deletePw}
-
-              onChange={e=>{ setDeletePw(e.target.value); setDeletePwError(''); }}
-
+          <p style={{ fontSize:14, fontWeight:600, marginBottom:14 }}>{lang==='ar'?'حذف هذه الآلة؟':'Delete this machine?'}</p>
+          <div style={{ marginBottom:14, textAlign:'start' }}>
+            <input type="password" value={deletePw} onChange={e=>{setDeletePw(e.target.value);setDeletePwError('');}}
               placeholder={lang==='ar'?'أدخل كلمة المرور':'Enter password'}
-
-              style={{ width:'100%', padding:'9px 12px', borderWidth:'1px', borderStyle:'solid', borderColor:deletePwError?'#dc2626':'var(--border)', borderRadius:8, fontSize:13, background:'var(--bg-input)', color:'var(--text-primary)', outline:'none', boxSizing:'border-box' as any }} />
-
-            {deletePwError && <div style={{ fontSize:11.5, color:'#dc2626', marginTop:4 }}>⚠ {deletePwError}</div>}
-
+              style={{ width:'100%',padding:'9px 12px',borderRadius:8,border:'1px solid var(--border)',background:'var(--bg-input)',fontSize:13,color:'var(--text-primary)',outline:'none' }} />
+            {deletePwError && <div style={{color:'#dc2626',fontSize:12,marginTop:4}}>⚠ {deletePwError}</div>}
           </div>
-
           <div style={{ display:'flex', gap:10, justifyContent:'center' }}>
-            <Button variant="secondary" onClick={()=>setDeleteId(null)}>{t('common.cancel')}</Button>
+            <Button variant="secondary" onClick={()=>{setDeleteId(null);setDeletePw('');setDeletePwError('');}}>{t('common.cancel')}</Button>
             <Button variant="danger" onClick={()=>deleteId&&handleDelete(deleteId)}>{t('common.delete')}</Button>
           </div>
         </div>
