@@ -206,7 +206,7 @@ export default function SignupPage() {
             style={{ width:'100%', padding:'13px', background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.10)', borderRadius:10, color:'rgba(255,255,255,0.55)', fontSize:14, fontWeight:600, cursor:'pointer', fontFamily:'inherit' }}
             onMouseEnter={e=>{e.currentTarget.style.background='rgba(255,255,255,0.09)';e.currentTarget.style.color='#fff';}}
             onMouseLeave={e=>{e.currentTarget.style.background='rgba(255,255,255,0.04)';e.currentTarget.style.color='rgba(255,255,255,0.55)';}}>
-            Try without signing in
+            {isAr?'المتابعة بدون تسجيل':'Try without signing in'}
           </button>
         </div>  
 
@@ -250,12 +250,12 @@ export default function SignupPage() {
             </div>
             <button type="submit" disabled={loading}
               style={{ width:'100%', padding:'13px', background:loading?'rgba(200,30,30,0.5)':'linear-gradient(135deg,#c81e1e,#e63535)', color:'#fff', border:'none', borderRadius:10, fontSize:14, fontWeight:700, cursor:loading?'not-allowed':'pointer', boxShadow:'0 4px 20px rgba(200,30,30,0.35)', fontFamily:'inherit' }}>
-              {loading?'Creating account…':'Create Account'}
+              {loading?(isAr?'جاري الإنشاء…':'Creating account…'):(isAr?'إنشاء حساب':'Create Account')}
             </button>
           </form>
 
           <div style={{ textAlign:'center', marginTop:16, fontSize:13 }}>
-            <span style={{ color:'rgba(255,255,255,0.4)' }}>Already have an account? </span>
+            <span style={{ color:'rgba(255,255,255,0.4)' }}>{isAr?'لديك حساب بالفعل؟ ':'Already have an account? '}</span>
             <Link href="/login" style={{ color:'#c81e1e', fontWeight:600, textDecoration:'none' }}>{isAr?'تسجيل الدخول':'Sign In'}</Link>
           </div>
         </div>
