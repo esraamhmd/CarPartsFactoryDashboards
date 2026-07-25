@@ -222,7 +222,7 @@ input, select, textarea { font-family: inherit; }
 }
 
 /* ══════════ TABLES ══════════ */
-.table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; display: block; }
 .table-wrap::-webkit-scrollbar { height: 4px; }
 table { width: 100%; min-width: 520px; border-collapse: collapse; font-size: 13px; }
 thead th {
@@ -400,3 +400,6 @@ input:focus, select:focus, textarea:focus {
   box-shadow: 0 0 0 3px rgba(200,30,30,0.12) !important;
   outline: none !important;
 }
+
+.grid-cols-2 > * { min-width: 0; }
+.chart-2col > * { min-width: 0; }
