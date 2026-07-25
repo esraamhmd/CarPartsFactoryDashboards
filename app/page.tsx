@@ -217,12 +217,12 @@ export default function Dashboard() {
       {/* Tables row — stacks on tablet */}
       <div className="grid-cols-2" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:18 }}>
         {/* Recent orders */}
-        <div className="card">
+        <div className="card" style={{ overflow:'hidden' }}>
           <div style={{ padding:'13px 18px', borderBottom:'1px solid var(--border)', fontWeight:700, fontSize:14 }}>
             {t('dashboard.recentOrders')}
           </div>
-          <div className="table-wrap">
-            <table style={{ minWidth:600 }}>
+          <div style={{ overflowX:'auto', WebkitOverflowScrolling:'touch', width:'100%' }}>
+            <table style={{ minWidth:600, width:'100%' }}>
               <thead><tr>
                 <th>{lang==='ar'?'رقم الطلب':'Order'}</th>
                 <th className="hide-mob">{lang==='ar'?'العميل':'Customer'}</th>
@@ -248,8 +248,8 @@ export default function Dashboard() {
           <div style={{ padding:'13px 18px', borderBottom:'1px solid var(--border)', fontWeight:700, fontSize:14 }}>
             {t('dashboard.todayAtt')}
           </div>
-          <div className="table-wrap">
-            <table style={{ minWidth:600 }}>
+          <div style={{ overflowX:'auto', WebkitOverflowScrolling:'touch', width:'100%' }}>
+            <table style={{ minWidth:600, width:'100%' }}>
               <thead><tr>
                 <th>{lang==='ar'?'الاسم':'Name'}</th>
                 <th className="hide-mob">{lang==='ar'?'وقت الدخول':'Check In'}</th>
