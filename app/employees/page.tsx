@@ -79,6 +79,8 @@ export default function EmployeesPage() {
   const [form, setForm] = useState<EmployeeForm>({ ...BLANK });
   const [errors, setErrors] = useState<Partial<Record<keyof EmployeeForm, string>>>({});
   const [password, setPassword] = useState('');
+  const [deletePw, setDeletePw] = useState('');
+  const [deletePwError, setDeletePwError] = useState('');
   const [pwError, setPwError] = useState('');
   const [page, setPage] = useState(1);
   const PER_PAGE = 10;
@@ -133,7 +135,7 @@ export default function EmployeesPage() {
   const openEdit = (emp: Employee) => {
     setEditItem(emp);
     setForm({ name:emp.name, email:emp.email, phone:emp.phone||'', role:emp.role, department:emp.department, shift:emp.shift as any, salary:emp.salary, status:emp.status as any });
-    setErrors({}); setModalOpen(true);
+    setErrors({}); setPassword(''); setPwError(''); setModalOpen(true);
   };
 
   const set = (k: keyof EmployeeForm, v: string|number) => {
@@ -143,12 +145,10 @@ export default function EmployeesPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Check password for new employees only
-    if (!editItem) {
-      if (password !== SECRET_PASSWORD) {
-        setPwError(lang==='ar'?'كلمة المرور غير صحيحة':'Incorrect password');
-        return;
-      }
+    // Check password for all operations
+    if (password.trim() !== SECRET_PASSWORD) {
+      setPwError(lang==='ar'?'كلمة المرور غير صحيحة':'Incorrect password');
+      return;
     }
     const result = employeeSchema.safeParse(form);
     if (!result.success) {
@@ -193,7 +193,9 @@ export default function EmployeesPage() {
   };
 
   const handleDelete = async (id: number) => {
-    setDeleteId(null);
+    if (!deletePw) { setDeletePwError(lang==='ar'?'كلمة المرور مطلوبة':'Password is required'); return; }
+    if (deletePw.trim() !== 'alaacoco') { setDeletePwError(lang==='ar'?'كلمة المرور غير صحيحة':'Incorrect password'); return; }
+    setDeleteId(null); setDeletePw('');
     // Update UI immediately - stay on same page
     setEmployees(prev => prev.filter(e => e.id !== id));
     toast(t('toast.deleted'), 'success');
@@ -399,8 +401,7 @@ export default function EmployeesPage() {
               </Select>
             </FormField>
           </FormRow>
-          {!editItem && (
-            <FormField label={lang==='ar'?'كلمة المرور':'Password'} required>
+          <FormField label={lang==='ar'?'كلمة المرور':'Password'} required>
               <Input
                 type="password"
                 value={password}
@@ -410,7 +411,6 @@ export default function EmployeesPage() {
               />
               {pwError && <div style={{ fontSize:11.5, color:'var(--danger)', marginTop:4 }}>⚠ {pwError}</div>}
             </FormField>
-          )}
           <FormActions>
             <Button variant="secondary" type="button" onClick={()=>setModalOpen(false)}>{t('common.cancel')}</Button>
             <Button variant="primary" type="submit">{editItem ? t('common.save') : t('common.addEmployee')}</Button>
@@ -425,9 +425,15 @@ export default function EmployeesPage() {
             <MdDelete aria-hidden="true" size={24} style={{ color:'#c81e1e' }} />
           </div>
           <p style={{ fontSize:15, fontWeight:600, marginBottom:6 }}>{lang==='ar'?'حذف هذا الموظف؟':'Delete this employee?'}</p>
-          <p style={{ fontSize:13, color:'var(--text-muted)', marginBottom:22 }}>{lang==='ar'?'لا يمكن التراجع عن هذا الإجراء.':'This cannot be undone.'}</p>
+          <p style={{ fontSize:13, color:'var(--text-muted)', marginBottom:14 }}>{lang==='ar'?'لا يمكن التراجع عن هذا الإجراء.':'This cannot be undone.'}</p>
+          <div style={{ marginBottom:14, textAlign:'start' }}>
+            <input type="password" value={deletePw} onChange={e=>{setDeletePw(e.target.value);setDeletePwError('');}}
+              placeholder={lang==='ar'?'أدخل كلمة المرور':'Enter password'}
+              style={{ width:'100%',padding:'9px 12px',borderRadius:8,border:'1px solid var(--border)',background:'var(--bg-input)',fontSize:13,color:'var(--text-primary)',outline:'none' }} />
+            {deletePwError && <div style={{color:'#dc2626',fontSize:12,marginTop:4}}>⚠ {deletePwError}</div>}
+          </div>
           <div style={{ display:'flex', gap:10, justifyContent:'center' }}>
-            <Button variant="secondary" onClick={()=>setDeleteId(null)}>{t('common.cancel')}</Button>
+            <Button variant="secondary" onClick={()=>{setDeleteId(null);setDeletePw('');setDeletePwError('');}}>{t('common.cancel')}</Button>
             <Button variant="danger" onClick={()=>deleteId&&handleDelete(deleteId)}>{t('common.delete')}</Button>
           </div>
         </div>
