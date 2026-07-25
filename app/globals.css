@@ -435,3 +435,8 @@ input:focus, select:focus, textarea:focus {
 @media (max-width: 599px) {
   .machines-grid { grid-template-columns: 1fr !important; }
 }
+
+@media (max-width: 479px) {
+  .kpi-grid { grid-template-columns: 1fr !important; }
+  .machines-grid { grid-template-columns: 1fr !important; }
+}
