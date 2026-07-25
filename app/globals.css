@@ -418,3 +418,14 @@ input:focus, select:focus, textarea:focus {
     grid-template-columns: 1fr !important;
   }
 }
+
+.machines-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+@media (max-width: 599px) {
+  .machines-grid {
+    grid-template-columns: 1fr;
+  }
+}
