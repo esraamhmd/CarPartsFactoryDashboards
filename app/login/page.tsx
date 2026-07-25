@@ -157,7 +157,7 @@ export default function LoginPage() {
                   <label style={{ display:'block', fontSize:'13px', fontWeight:600, color:'rgba(255,255,255,0.65)', marginBottom:'7px' }}>Email Address</label>
                   <div style={{ position:'relative' }}>
                     <svg style={{ position:'absolute', left:'14px', top:'50%', transform:'translateY(-50%)', pointerEvents:'none' }} width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-                    <input type="email" value={email} onChange={e=>setEmail(e.target.value)} placeholder="admin@motorsync.com" style={inp} autoComplete="email" required />
+                    <input type="email" value={email} onChange={e=>setEmail(e.target.value)} placeholder={isAr?'admin@motorsync.com':'admin@motorsync.com'} style={inp} autoComplete="email" required />
                   </div>
                 </div>
 
@@ -203,7 +203,7 @@ export default function LoginPage() {
                   <label style={{ display:'block', fontSize:'13px', fontWeight:600, color:'rgba(255,255,255,0.65)', marginBottom:'7px' }}>Email Address</label>
                   <div style={{ position:'relative' }}>
                     <svg style={{ position:'absolute', left:'14px', top:'50%', transform:'translateY(-50%)', pointerEvents:'none' }} width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-                    <input type="email" value={email} onChange={e=>setEmail(e.target.value)} placeholder="admin@motorsync.com" style={inp} required />
+                    <input type="email" value={email} onChange={e=>setEmail(e.target.value)} placeholder={isAr?'admin@motorsync.com':'admin@motorsync.com'} style={inp} required />
                   </div>
                 </div>
                 <button type="submit" disabled={loading}
