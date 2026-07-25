@@ -90,7 +90,7 @@ export default function MachinesPage() {
         action={<Button variant="primary" onClick={openAdd}><MdAdd aria-hidden="true" size={16}/>{t('common.addMachine')}</Button>}
       />
 
-      <div className="grid-4" style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:16, marginBottom:24 }}>
+      <div className="kpi-grid" style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:16, marginBottom:24 }}>
         {[
           { label:lang==='ar'?'تعمل':'Running', value:running, color:'#00C68D' },
           { label:t('machines.inMaintenance'), value:maintenance, color:'#CC0000' },
