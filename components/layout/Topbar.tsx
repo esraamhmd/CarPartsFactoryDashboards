@@ -184,7 +184,7 @@ export default function Topbar({ onMenuClick }: { onMenuClick: () => void }) {
             {unread>0 && <span style={{ position:'absolute', top:4, insetInlineEnd:4, width:8, height:8, borderRadius:'50%', background:'#dc2626', border:'2px solid var(--bg-card)' }}/>}
           </button>
           {showNotifs && (
-            <div style={{ position:'absolute', top:46, insetInlineEnd:0, background:'var(--bg-card)', borderWidth:'1px',borderStyle:'solid',borderColor:'var(--border)', borderRadius:14, width:340, maxHeight:420, boxShadow:'0 20px 60px rgba(0,0,0,0.20)', zIndex:400, overflow:'hidden', display:'flex', flexDirection:'column' }}>
+            <div style={{ position:'fixed', top:70, insetInlineEnd:8, insetInlineStart:8, background:'var(--bg-card)', borderWidth:'1px',borderStyle:'solid',borderColor:'var(--border)', borderRadius:14, width:'min(340px, calc(100vw - 16px))', maxHeight:'70vh', boxShadow:'0 20px 60px rgba(0,0,0,0.20)', zIndex:9999, overflow:'hidden', display:'flex', flexDirection:'column' }}>
               <div style={{ padding:'11px 16px', borderBottom:'1px solid var(--border)', display:'flex', justifyContent:'space-between', alignItems:'center', flexShrink:0 }}>
                 <span style={{ fontWeight:700, fontSize:14 }}>{lang==='ar'?'الإشعارات':'Notifications'} {unread>0 && <span style={{ background:'#dc2626', color:'#fff', borderRadius:99, padding:'0 7px', fontSize:11, marginInlineStart:6 }}>{unread}</span>}</span>
                 {unread>0 && <button onClick={()=>setNotifs(notifs.map(n=>({...n,read:true})))} style={{ background:'none', border:'none', fontSize:11, color:'#2563eb', cursor:'pointer', fontWeight:600 }}>{lang==='ar'?'تعيين الكل كمقروء':'Mark all read'}</button>}
@@ -226,7 +226,7 @@ export default function Topbar({ onMenuClick }: { onMenuClick: () => void }) {
           </button>
 
           {showUser && (
-            <div style={{ position:'absolute', top:44, insetInlineEnd:0, background:'var(--bg-card)', borderWidth:'1px',borderStyle:'solid',borderColor:'var(--border)', borderRadius:14, width:240, boxShadow:'0 20px 60px rgba(0,0,0,0.18)', zIndex:400, overflow:'hidden' }}>
+            <div style={{ position:'fixed', top:70, insetInlineEnd:8, background:'var(--bg-card)', borderWidth:'1px',borderStyle:'solid',borderColor:'var(--border)', borderRadius:14, width:'min(240px, calc(100vw - 16px))', boxShadow:'0 20px 60px rgba(0,0,0,0.18)', zIndex:9999, overflow:'hidden' }}>
               {/* User info */}
               <div style={{ padding:'14px 16px', borderBottom:'1px solid var(--border)', background:isGuest?'linear-gradient(135deg,rgba(71,85,105,0.15),rgba(100,116,139,0.10))':'linear-gradient(135deg,rgba(200,30,30,0.08),rgba(37,99,235,0.06))' }}>
                 <div style={{ display:'flex', alignItems:'center', gap:10 }}>
