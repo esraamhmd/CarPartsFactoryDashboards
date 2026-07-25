@@ -403,3 +403,18 @@ input:focus, select:focus, textarea:focus {
 
 .grid-cols-2 > * { min-width: 0; }
 .chart-2col > * { min-width: 0; }
+
+/* Prevent card grid overflow */
+.animate-in > div { min-width: 0; }
+
+/* Fix card grid overflow on small screens */
+@media (max-width: 899px) {
+  div[style*="auto-fill"] {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
+  }
+}
+@media (max-width: 599px) {
+  div[style*="auto-fill"] {
+    grid-template-columns: 1fr !important;
+  }
+}
