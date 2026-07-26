@@ -94,7 +94,7 @@ export default function DefectsPage() {
         action={<Button variant="primary" onClick={()=>setModalOpen(true)}><MdAdd aria-hidden="true" size={16}/>{t('common.reportDefect')}</Button>}
       />
 
-      <div className="grid-4" style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:16, marginBottom:24 }}>
+      <div className="kpi-grid" style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:16, marginBottom:24 }}>
         {[
           { label:t('defects.totalDefects'), value:total, color:'#CC0000' },
           { label:t('defects.criticalIssues'), value:defects.filter(d=>d.severity==='critical').length, color:'#CC0000' },
