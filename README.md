@@ -18,7 +18,7 @@
 Built with modern web technologies, featuring full Arabic/English bilingual support with RTL layout.
 
 🌐 **Live Demo**: [motorsync.vercel.app](https://motorsync.vercel.app)
-📁 **Repository**: [github.com/esraamhmd/CarPartsFactoryDashboards](https://github.com/esraamhmd/CarPartsFactoryDashboards)
+
 
 </div>
 
@@ -137,66 +137,9 @@ Built with modern web technologies, featuring full Arabic/English bilingual supp
 | **Settings** | Theme, language, notification preferences |
 
 ---
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js 18+
-- npm or yarn
-- A [Supabase](https://supabase.com) account
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/esraamhmd/CarPartsFactoryDashboards.git
-
-# Navigate to project
-cd CarPartsFactoryDashboards/motorsync
-
-# Install dependencies
-npm install
-
-# Copy environment variables
-cp .env.example .env.local
-
-# Start development server
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Build for Production
-
-```bash
-npm run build
-npm start
-```
-
----
-
-## 🔑 Environment Variables
-
-Create a `.env.local` file in the project root:
-
-```env
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-NEXT_PUBLIC_ADMIN_PASSWORD=your_admin_password
-```
-
-| Variable | Description |
-|---|---|
-| `NEXT_PUBLIC_SUPABASE_URL` | Your Supabase project URL |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Your Supabase anonymous key |
-| `NEXT_PUBLIC_ADMIN_PASSWORD` | Password required for all write operations |
-
----
-
 ## 🗄️ Database Setup
 
-Run the following in your **Supabase SQL Editor** to create all tables. All tables have **Row Level Security (RLS)** enabled with policies for `anon` and `authenticated` roles.
+All tables have **Row Level Security (RLS)** enabled with policies for `anon` and `authenticated` roles.
 
 ### Tables
 
@@ -229,76 +172,6 @@ Run the following in your **Supabase SQL Editor** to create all tables. All tabl
 
 > **Guest Mode** is available for read-only access without signing in.
 
----
-
-## 📁 Project Structure
-
-```
-motorsync/
-├── app/                        # Next.js App Router
-│   ├── page.tsx                # Main Dashboard
-│   ├── login/page.tsx          # Login (AR + EN)
-│   ├── signup/page.tsx         # Sign Up (AR + EN)
-│   ├── employees/page.tsx
-│   ├── departments/page.tsx
-│   ├── inventory/page.tsx
-│   ├── orders/page.tsx
-│   ├── customers/page.tsx
-│   ├── suppliers/page.tsx
-│   ├── machines/page.tsx
-│   ├── maintenance/page.tsx
-│   ├── quality/page.tsx
-│   ├── defects/page.tsx
-│   ├── payroll/page.tsx
-│   ├── attendance/page.tsx
-│   ├── production/page.tsx
-│   ├── finance/page.tsx
-│   ├── analytics/page.tsx
-│   ├── reports/page.tsx
-│   ├── notifications/page.tsx
-│   └── settings/page.tsx
-│
-├── components/
-│   ├── layout/
-│   │   ├── AppLayout.tsx       # Main layout wrapper
-│   │   ├── Sidebar.tsx         # Navigation sidebar
-│   │   └── Topbar.tsx          # Top navigation bar
-│   └── ui/
-│       ├── Button.tsx
-│       ├── Modal.tsx
-│       ├── FormField.tsx       # Input, Select, Textarea
-│       ├── Toast.tsx           # Notification toasts
-│       ├── Pagination.tsx
-│       ├── Badge.tsx
-│       └── PageHeader.tsx
-│
-├── data/                       # JSON seed data (100 records each)
-│   ├── employees.json
-│   ├── inventory.json
-│   ├── orders.json
-│   ├── customers.json
-│   ├── suppliers.json
-│   ├── machines.json
-│   ├── maintenance.json
-│   └── defects.json
-│
-├── i18n/
-│   └── index.tsx               # Arabic + English translations
-│
-├── lib/
-│   ├── supabase.ts             # Supabase client
-│   ├── auth.tsx                # Authentication helpers
-│   ├── useDB.ts                # Database CRUD helpers
-│   ├── theme.ts                # Theme management
-│   └── validations.ts          # Zod schemas
-│
-├── middleware.ts               # Auth middleware
-├── next.config.ts              # Next.js configuration
-└── app/globals.css             # Global styles + CSS variables
-```
-
----
-
 ## 🌍 Internationalization
 
 | Language | Direction | Status |
@@ -308,30 +181,14 @@ motorsync/
 
 Switch language instantly from the topbar. All pages, forms, charts, error toasts, and modals support both languages.
 
----
 
-## 🎨 Design System
-
-| Token | Value | Used For |
-|---|---|---|
-| Primary | `#c81e1e` | Buttons, active states, key accents |
-| Accent Blue | `#0055DA` | Info badges, links |
-| Accent Green | `#00C68D` | Success states, stock OK |
-| Accent Yellow | `#FFD400` | Warnings, pending status |
-| Dark Background | CSS variable | Full dark theme via `prefers-color-scheme` |
-
-Font: system font stack for maximum performance across Arabic and Latin scripts.
-
----
 
 ## 📄 License
 
-MIT © 2026 MotorSync — Esraa Mohammed
-
----
+This project is licensed under the MIT License .
 
 <div align="center">
 
-**Built with ❤️ for the Egyptian manufacturing industry**
+**Built with ❤️ using Next.js + Supabase **
 
 </div>
