@@ -54,6 +54,7 @@ export default function Modal({ isOpen, onClose, title, children, size = 'md' }:
         paddingLeft: 16,
         paddingRight: 16,
         overflowY: 'auto',
+        WebkitOverflowScrolling: 'touch',
       }}
     >
       <div
@@ -64,7 +65,7 @@ export default function Modal({ isOpen, onClose, title, children, size = 'md' }:
           border: '1px solid var(--border)',
           boxShadow: '0 32px 80px rgba(0,0,0,0.35), 0 8px 32px rgba(0,0,0,0.18)',
           width: WIDTHS[size],
-          maxHeight: 'none',
+          maxHeight: '90vh',
           display: 'flex',
           flexDirection: 'column',
           overflow: 'hidden',
@@ -114,7 +115,7 @@ export default function Modal({ isOpen, onClose, title, children, size = 'md' }:
         </div>
 
         {/* Body */}
-        <div style={{ padding: '20px 24px 24px', overflowY: 'auto', flex: 1, maxHeight: 'calc(90vh - 120px)', paddingBottom: 32 }}>
+        <div style={{ padding: '20px 24px 24px', overflowY: 'auto', flex: 1, maxHeight: 'calc(85vh - 120px)', paddingBottom: 32 }}>
           {children}
         </div>
       </div>
