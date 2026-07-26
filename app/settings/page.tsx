@@ -62,7 +62,7 @@ export default function SettingsPage() {
 
   const toggleNotif = (key: keyof typeof notifToggles) => {
     setNotifToggles(p => ({ ...p, [key]: !p[key] }));
-    toast(lang==='ar' ? `${({'lowStock':'المخزون المنخفض','machineFailure':'عطل الآلة','attendance':'الحضور','maintenance':'الصيانة','orderUpdates':'الطلبات','qualityAlerts':'الجودة'} as any)[key]||key} ${!notifToggles[key]?'مفعّل':'معطّل'}` : `${String(key)} ${!notifToggles[key]?'enabled':'disabled'}`, 'info');
+    toast(`${String(key)} alerts ${!notifToggles[key] ? 'enabled' : 'disabled'}`, 'info');
   };
 
   const inputStyle = { width:'100%', padding:'10px 14px', background:'var(--bg-input)', borderWidth:'1px', borderStyle:'solid', borderColor:'var(--border)', borderRadius:8, fontSize:14, color:'var(--text-primary)', outline:'none', fontFamily:'inherit' };
