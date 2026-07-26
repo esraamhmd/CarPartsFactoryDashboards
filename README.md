@@ -167,7 +167,6 @@ All tables have **Row Level Security (RLS)** enabled with policies for `anon` an
 | Field | Value |
 |---|---|
 | Email | `admin@motorsync.com` |
-| Password | `MotorSync2025!` |
 | Admin Password | Contact repository owner |
 
 > **Guest Mode** is available for read-only access without signing in.
