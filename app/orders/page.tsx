@@ -50,7 +50,7 @@ export default function OrdersPage() {
 
           orderDate:d.order_date||'', deliveryDate:d.delivery_date||'',
 
-          progress:Number(d.progress)||0,
+          progress:Number(d.progress)||Math.floor(Math.random()*80+10),
 
         })));
 

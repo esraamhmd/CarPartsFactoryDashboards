@@ -220,15 +220,9 @@ export default function InventoryPage() {
           <FormField label={lang==='ar'?'كلمة المرور':'Password'} required>
 
             <Input type="password" value={password}
-
               onChange={e=>{ setPassword(e.target.value); setPwError(''); }}
-
               placeholder={lang==='ar'?'أدخل كلمة المرور':'Enter password'}
-              error={!!pwError}
-              onChange={e=>{setPassword(e.target.value);setPwError('');}}
-
               error={!!pwError} />
-
             {pwError && <div style={{ fontSize:11.5, color:'#dc2626', marginTop:4 }}>⚠ {pwError}</div>}
 
           </FormField>
