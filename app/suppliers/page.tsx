@@ -146,7 +146,7 @@ export default function SuppliersPage() {
         action={<Button variant="primary" onClick={openAdd}><MdAdd aria-hidden="true" size={16}/>{t('common.addSupplier')}</Button>}
       />
 
-      <div className="grid-4" style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:16, marginBottom:24 }}>
+      <div className="kpi-grid" style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:16, marginBottom:24 }}>
         {[
           { label:t('suppliers.activeSuppliers'), value:active, color:'#00C68D' },
           { label:t('suppliers.avgRating'), value:avgRating+'/5', color:'#FFD400' },
