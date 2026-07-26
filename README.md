@@ -1,15 +1,18 @@
-
 <div align="center">
 
 # 🏭 MotorSync ERP Dashboard
 
 ### Full-Stack Car Parts Factory Management System
 
-[![Next.js](https://img.shields.io/badge/Next.js-16.2-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
-[![Supabase](https://img.shields.io/badge/Supabase-Database-green?style=for-the-badge&logo=supabase)](https://supabase.com/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
-[![Vercel](https://img.shields.io/badge/Deployed-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/)
+[![Next.js](https://img.shields.io/badge/Next.js-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![Supabase](https://img.shields.io/badge/Supabase-green?style=for-the-badge&logo=supabase)](https://supabase.com/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![Zod](https://img.shields.io/badge/Zod-3E67B1?style=for-the-badge&logo=zod&logoColor=white)](https://zod.dev/)
+[![Recharts](https://img.shields.io/badge/Recharts-FF6384?style=for-the-badge)](https://recharts.org/)
+[![Vercel](https://img.shields.io/badge/Deployed_on_Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/)
 
 **A comprehensive Enterprise Resource Planning (ERP) dashboard for a car parts manufacturing factory.**
 Built with modern web technologies, featuring full Arabic/English bilingual support with RTL layout.
@@ -74,21 +77,22 @@ Built with modern web technologies, featuring full Arabic/English bilingual supp
 ## 🚀 Tech Stack
 
 ### Frontend
-- **Next.js 16.2** — App Router with Turbopack for fast local development
-- **React 19** — Client components for interactive dashboards
-- **Tailwind CSS v4** — Custom red/dark theme tokens, RTL-aware utilities
+- **Next.js** — App Router with Turbopack for fast local development
+- **React** — Client components for interactive dashboards
+- **TypeScript** — End-to-end type safety across all modules
+- **Tailwind CSS** — Custom red/dark theme tokens, RTL-aware utilities
 - **Recharts** — Bar charts, progress bars, and KPI cards
-- **React Icons 5.6** — Material Design icon set throughout
+- **React Icons** — Material Design icon set throughout
 
 ### Backend & Database
-- **Supabase (PostgreSQL)** — Hosted database with Row Level Security policies
+- **Supabase** — Hosted PostgreSQL with Row Level Security policies
+- **PostgreSQL** — Relational database powering all 14 tables
 - **Zod** — Schema validation on all form submissions
 - **Next.js API Routes** — Server-side logic deployed as serverless functions
 
 ### Infrastructure
 - **Vercel** — Zero-config production deployment
 - **Cookie-based Auth** — Middleware-level session management
-- **14 database tables** — All with RLS enabled for `anon` and `authenticated` roles
 
 ---
 
