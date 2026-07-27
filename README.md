@@ -19,7 +19,8 @@ Built with modern web technologies, featuring full Arabic/English bilingual supp
 
 🌐 **Live Demo**: [motorsync.vercel.app](https://motorsync.vercel.app)
 <br/><br/>
-**video Demo ** https://drive.google.com/file/d/1FmeSMwJHharEShjtkTf2GVA8RtwrhQJi/view?usp=drive_link
+https://github.com/user-attachments/assets/d7306e8c-de9b-4486-a61c-b2ae026e0e1a
+
 
 
 
