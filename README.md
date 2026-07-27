@@ -22,7 +22,13 @@ Built with modern web technologies, featuring full Arabic/English bilingual supp
  
 
 
-<img width="1918" height="907" alt="d" src="[https://github.com/user-attachments/assets/2936812e-b856-4296-859d-709f3b5a5445](https://github.com/user-attachments/assets/d7306e8c-de9b-4486-a61c-b2ae026e0e1a)" />
+
+<img width="1918" height="907" alt="d" src="https://github.com/user-attachments/assets/3f39b24f-b1fa-4bb7-a7d2-b42eecfb85a5" />
+
+
+
+
+
 
 
 
