@@ -21,11 +21,10 @@ Built with modern web technologies, featuring full Arabic/English bilingual supp
 <br/><br/>
  
 
+https://github.com/user-attachments/assets/a4af3440-d938-48fc-91d1-76635143b8e0
 
 
 
-
-<img width="1918" height="907" alt="d" src="https://github.com/user-attachments/assets/a4af3440-d938-48fc-91d1-76635143b8e0" />
 
 
 
