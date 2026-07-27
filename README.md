@@ -23,8 +23,11 @@ Built with modern web technologies, featuring full Arabic/English bilingual supp
 
 
 
-<img width="1918" height="907" alt="d" src="https://github.com/user-attachments/assets/3f39b24f-b1fa-4bb7-a7d2-b42eecfb85a5" />
 
+https://github.com/user-attachments/assets/a4af3440-d938-48fc-91d1-76635143b8e0
+
+
+<img width="1918" height="907" alt="d" src="https://github.com/user-attachments/assets/a4af3440-d938-48fc-91d1-76635143b8e0" />
 
 
 
