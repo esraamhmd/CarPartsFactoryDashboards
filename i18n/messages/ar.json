@@ -1,0 +1,226 @@
+{
+  "nav": {
+    "dashboard": "لوحة التحكم", "employees": "الموظفون", "departments": "الأقسام",
+    "production": "الإنتاج", "machines": "الآلات", "inventory": "المخزون",
+    "suppliers": "الموردون", "orders": "الطلبات", "customers": "العملاء",
+    "defects": "العيوب", "quality": "مراقبة الجودة", "maintenance": "الصيانة",
+    "payroll": "الرواتب", "attendance": "الحضور", "finance": "المالية",
+    "analytics": "التحليلات", "reports": "التقارير", "notifications": "الإشعارات",
+    "settings": "الإعدادات"
+  },
+  "groups": { "people": "الأفراد", "factory": "المصنع", "supply": "سلسلة التوريد", "quality": "الجودة", "insights": "التحليلات", "system": "النظام" },
+  "common": {
+    "search": "بحث في كل شيء...", "filter": "تصفية", "export": "تصدير", "add": "إضافة",
+    "edit": "تعديل", "delete": "حذف", "save": "حفظ", "cancel": "إلغاء",
+    "close": "إغلاق", "view": "عرض الكل", "loading": "جاري التحميل...", "noData": "لا توجد بيانات",
+    "actions": "الإجراءات", "status": "الحالة", "date": "التاريخ", "name": "الاسم",
+    "total": "المجموع", "today": "اليوم", "thisMonth": "هذا الشهر", "thisWeek": "هذا الأسبوع",
+    "markAllRead": "تحديد الكل كمقروء", "download": "تحميل", "generate": "إنشاء تقرير",
+    "addEmployee": "إضافة موظف", "addMachine": "إضافة آلة", "addItem": "إضافة عنصر",
+    "createOrder": "إنشاء طلب", "addSupplier": "إضافة مورد", "addCustomer": "إضافة عميل",
+    "reportDefect": "الإبلاغ عن عيب", "newInspection": "فحص جديد",
+    "scheduleMaintenance": "جدولة صيانة", "exportPayroll": "تصدير الرواتب",
+    "addDepartment": "إضافة قسم", "saveChanges": "حفظ التغييرات",
+    "updatePassword": "تحديث كلمة المرور", "submit": "إرسال", "reset": "إعادة تعيين",
+    "searchPlaceholder": "بحث...", "email": "البريد الإلكتروني", "phone": "الهاتف",
+    "address": "العنوان", "confirm": "تأكيد", "back": "رجوع", "next": "التالي",
+    "optional": "اختياري", "required": "مطلوب", "role": "الدور"
+  },
+  "toast": {
+    "saved": "تم الحفظ بنجاح!", "deleted": "تم الحذف بنجاح!",
+    "error": "حدث خطأ ما.", "added": "تمت الإضافة بنجاح!",
+    "updated": "تم التحديث بنجاح!", "copied": "تم النسخ!"
+  },
+  "dashboard": {
+    "title": "لوحة التحكم", "subtitle": "مصنع قطع غيار السيارات — نظرة عامة لحظية",
+    "totalEmployees": "إجمالي الموظفين", "activeMachines": "الآلات النشطة",
+    "productionToday": "إنتاج هذا الأسبوع", "inventoryAlerts": "تنبيهات المخزون",
+    "defectRate": "معدل العيوب", "revenue": "الإيرادات",
+    "pendingOrders": "الطلبات المعلقة", "attendanceRate": "نسبة الحضور",
+    "active": "نشط", "runningNow": "يعمل الآن", "unitsProduced": "وحدة منتجة",
+    "itemsNeedAttention": "عناصر تحتاج انتباه", "thisWeek": "هذا الأسبوع",
+    "thisMonth": "هذا الشهر", "inProgress": "قيد التنفيذ",
+    "monthlyProduction": "الإنتاج الشهري", "targetVsActual": "المستهدف مقابل الفعلي (وحدة)",
+    "expenseBreakdown": "توزيع المصروفات", "dailyProduction": "الإنتاج اليومي هذا الأسبوع",
+    "machineStatus": "حالة الآلات", "recentOrders": "أحدث الطلبات",
+    "todayAttendance": "حضور اليوم", "target": "المستهدف", "actual": "الفعلي",
+    "order": "الطلب", "customer": "العميل", "checkIn": "وقت الدخول",
+    "vsLastMonth": "مقارنة بالشهر الماضي"
+  },
+  "employees": {
+    "title": "الموظفون", "addEmployee": "إضافة موظف",
+    "active": "نشط", "onLeave": "في إجازة", "morningShift": "الوردية الصباحية",
+    "avgPerformance": "متوسط الأداء", "performanceVsAttendance": "الأداء مقابل الحضور",
+    "byDepartment": "حسب القسم", "role": "المنصب", "department": "القسم",
+    "shift": "الوردية", "attendance": "الحضور", "performance": "الأداء",
+    "salary": "الراتب", "joinDate": "تاريخ الانضمام", "allDepartments": "كل الأقسام",
+    "searchPlaceholder": "بحث عن موظف...", "results": "نتائج",
+    "form": {
+      "title": "إضافة موظف جديد", "editTitle": "تعديل بيانات الموظف",
+      "fullName": "الاسم الكامل", "email": "البريد الإلكتروني", "phone": "الهاتف",
+      "role": "المسمى الوظيفي", "department": "القسم", "shift": "الوردية",
+      "salary": "الراتب (جنيه)", "joinDate": "تاريخ الانضمام", "status": "الحالة"
+    }
+  },
+  "machines": {
+    "title": "الآلات", "subtitle": "آلة مراقبة",
+    "running": "تعمل", "inMaintenance": "في الصيانة",
+    "underPerforming": "أداء ضعيف", "avgUtilization": "متوسط الاستخدام",
+    "utilizationChart": "معدل استخدام الآلات (%)", "statusOverview": "نظرة عامة على الحالة",
+    "utilization": "الاستخدام", "efficiency": "الكفاءة",
+    "downtime": "وقت التوقف (ساعة)", "assignedTo": "مخصصة لـ",
+    "nextMaintenance": "الصيانة القادمة", "location": "الموقع",
+    "form": { "title": "إضافة آلة", "machineName": "اسم الآلة", "type": "النوع", "location": "الموقع", "assignTo": "تعيين لـ" }
+  },
+  "inventory": {
+    "title": "المخزون", "subtitle": "إدارة المخزون والتنبيهات",
+    "totalItems": "إجمالي العناصر", "totalValue": "القيمة الإجمالية",
+    "lowStock": "مخزون منخفض", "outOfStock": "نفذ من المخزون",
+    "stockLevels": "مستويات المخزون (الكمية)", "byCategory": "حسب الفئة",
+    "itemName": "اسم العنصر", "category": "الفئة", "quantity": "الكمية",
+    "minStock": "الحد الأدنى", "unitPrice": "سعر الوحدة", "totalVal": "القيمة الكلية",
+    "supplier": "المورد", "searchPlaceholder": "بحث في المخزون...",
+    "form": { "title": "إضافة عنصر للمخزون", "itemName": "اسم العنصر", "category": "الفئة", "quantity": "الكمية", "unit": "الوحدة", "minStock": "الحد الأدنى", "reorderPoint": "نقطة إعادة الطلب", "price": "سعر الوحدة", "supplier": "المورد", "location": "الموقع" }
+  },
+  "orders": {
+    "title": "الطلبات", "subtitle": "تتبع وإدارة طلبات العملاء",
+    "totalOrders": "إجمالي الطلبات", "pending": "معلق", "inProduction": "قيد الإنتاج",
+    "completedShipped": "مكتمل/مشحون", "totalValue": "القيمة الإجمالية",
+    "ordersByStatus": "الطلبات حسب الحالة", "activeProgress": "تقدم الطلبات النشطة",
+    "allOrders": "جميع الطلبات", "orderId": "رقم الطلب", "customer": "العميل",
+    "product": "المنتج", "qty": "الكمية", "priority": "الأولوية",
+    "progress": "التقدم", "delivery": "التسليم",
+    "form": { "title": "إنشاء طلب جديد", "customer": "العميل", "product": "المنتج", "quantity": "الكمية", "priority": "الأولوية", "deliveryDate": "تاريخ التسليم", "notes": "ملاحظات" }
+  },
+  "finance": {
+    "title": "المالية", "subtitle": "نظرة عامة على الإيرادات والمصروفات والأرباح",
+    "revenue": "الإيرادات", "expenses": "المصروفات", "netProfit": "صافي الربح",
+    "profitMargin": "هامش الربح", "vsLastMonth": "مقارنة بالشهر الماضي",
+    "revenueVsExpenses": "الإيرادات مقابل المصروفات والأرباح",
+    "expenseCategories": "فئات المصروفات", "recentTransactions": "أحدث المعاملات",
+    "description": "الوصف", "amount": "المبلغ"
+  },
+  "production": {
+    "title": "الإنتاج", "subtitle": "خطوط الإنتاج، المخرجات، وتتبع الكفاءة",
+    "weekOutput": "إنتاج الأسبوع", "weekTarget": "المستهدف الأسبوعي",
+    "efficiency": "الكفاءة", "totalDefects": "إجمالي العيوب",
+    "thisWeek": "هذا الأسبوع", "units": "وحدات",
+    "dailyOutput": "الإنتاج اليومي هذا الأسبوع", "monthlyTrend": "الاتجاه الشهري (6 أشهر)",
+    "weeklySummary": "ملخص الإنتاج الأسبوعي",
+    "week": "الأسبوع", "target": "المستهدف", "actual": "الفعلي",
+    "variance": "الفرق", "unitsToday": "وحدات اليوم"
+  },
+  "attendance": {
+    "title": "الحضور", "subtitle": "تسجيل الدخول اليومي وتتبع القوى العاملة",
+    "present": "حاضر", "late": "متأخر", "absent": "غائب",
+    "attendanceRate": "نسبة الحضور", "weeklyTrend": "اتجاه الحضور الأسبوعي",
+    "todaySummary": "ملخص اليوم", "presentOnTime": "حاضر وفي الوقت",
+    "lateArrivals": "وصول متأخر", "todayLog": "سجل حضور اليوم",
+    "employee": "الموظف", "shift": "الوردية", "checkIn": "وقت الدخول", "checkOut": "وقت الخروج"
+  },
+  "payroll": {
+    "title": "الرواتب", "subtitle": "إدارة رواتب يناير 2025",
+    "totalNetPay": "إجمالي صافي الرواتب", "totalBonuses": "إجمالي المكافآت",
+    "totalDeductions": "إجمالي الخصومات", "employees": "الموظفون",
+    "netPayByEmployee": "صافي الراتب لكل موظف", "payBreakdown": "توزيع الراتب",
+    "payslips": "كشوف رواتب يناير 2025", "baseSalary": "الراتب الأساسي",
+    "bonus": "المكافأة", "overtime": "العمل الإضافي",
+    "deductions": "الخصومات", "netPay": "صافي الراتب"
+  },
+  "maintenance": {
+    "title": "الصيانة", "subtitle": "جدولة وتتبع صيانة الآلات",
+    "inProgress": "قيد التنفيذ", "scheduled": "مجدولة",
+    "totalJobs": "إجمالي المهام", "estHours": "الساعات المقدرة",
+    "priority": "الأولوية", "technician": "الفني", "hours": "ساعات مقدرة",
+    "hoursByMachine": "ساعات الصيانة لكل آلة", "scheduledDate": "التاريخ المجدول",
+    "form": { "title": "جدولة صيانة", "machine": "الآلة", "type": "النوع", "priority": "الأولوية", "technician": "الفني", "date": "التاريخ المجدول", "hours": "الساعات المقدرة", "description": "الوصف" }
+  },
+  "suppliers": {
+    "title": "الموردون", "subtitle": "إدارة ومراقبة شركاء سلسلة التوريد",
+    "activeSuppliers": "الموردون النشطون", "avgRating": "متوسط التقييم",
+    "totalOrders": "إجمالي الطلبات", "underReview": "قيد المراجعة",
+    "onTimeDelivery": "أداء التسليم في الوقت (%)",
+    "topByRating": "أفضل الموردين تقييماً", "allSuppliers": "جميع الموردون",
+    "contact": "جهة الاتصال", "category": "الفئة", "rating": "التقييم",
+    "onTime": "في الوقت", "totalOrd": "إجمالي الطلبات", "activeOrd": "الطلبات النشطة",
+    "form": { "title": "إضافة مورد", "name": "اسم المورد", "contact": "المسؤول", "email": "البريد الإلكتروني", "phone": "الهاتف", "country": "الدولة", "category": "الفئة" }
+  },
+  "customers": {
+    "title": "العملاء", "subtitle": "إدارة حسابات العملاء وسجل الطلبات",
+    "totalCustomers": "إجمالي العملاء", "totalRevenue": "إجمالي الإيرادات",
+    "totalOrders": "إجمالي الطلبات", "avgSatisfaction": "متوسط الرضا",
+    "revenueByCustomer": "الإيرادات لكل عميل ($ألف)", "topCustomers": "أفضل العملاء",
+    "allCustomers": "جميع العملاء", "contact": "جهة الاتصال",
+    "totalSpent": "إجمالي الإنفاق", "lastOrder": "آخر طلب", "orders": "طلبات",
+    "form": { "title": "إضافة عميل", "name": "اسم الشركة", "contact": "المسؤول", "email": "البريد الإلكتروني", "phone": "الهاتف" }
+  },
+  "defects": {
+    "title": "العيوب", "subtitle": "تتبع مشكلات الجودة وتحليلها",
+    "totalDefects": "إجمالي العيوب", "criticalIssues": "مشكلات حرجة",
+    "resolved": "محلولة", "open": "مفتوحة",
+    "byType": "العيوب حسب النوع", "bySeverity": "حسب الخطورة",
+    "statusBreakdown": "توزيع الحالة", "defectLog": "سجل العيوب",
+    "type": "النوع", "part": "القطعة", "count": "العدد", "severity": "الخطورة",
+    "line": "الخط", "inspector": "المفتش",
+    "form": { "title": "الإبلاغ عن عيب", "type": "نوع العيب", "part": "القطعة المتأثرة", "count": "العدد", "severity": "الخطورة", "line": "خط الإنتاج", "description": "الوصف" }
+  },
+  "quality": {
+    "title": "مراقبة الجودة", "subtitle": "تقارير الفحص ومقاييس الجودة",
+    "passRate": "نسبة النجاح", "avgScore": "متوسط درجة الجودة",
+    "inspectionsMTD": "الفحوصات (الشهر الحالي)", "failedChecks": "الفحوصات الفاشلة",
+    "radarTitle": "رادار مقاييس الجودة", "scoresTitle": "درجات الفحص",
+    "reportsTitle": "تقارير الفحص", "reportId": "رقم التقرير",
+    "item": "العنصر", "inspector": "المفتش", "checks": "الفحوصات",
+    "failed": "فاشلة", "score": "الدرجة", "result": "النتيجة"
+  },
+  "analytics": {
+    "title": "التحليلات", "subtitle": "مؤشرات الأداء، الاتجاهات، التوقعات وأداء المصنع",
+    "kpiTrends": "اتجاهات مؤشرات الأداء (6 أشهر)",
+    "kpiSubtitle": "الكفاءة · الجودة · رضا العملاء",
+    "factoryRadar": "رادار أداء المصنع",
+    "forecast": "توقعات الإنتاج", "forecastSubtitle": "الفعلي + توقع 3 أشهر",
+    "revenueTrend": "اتجاه الإيرادات والأرباح",
+    "revenueSubtitle": "الأداء المالي الشهري",
+    "kpiSummary": "ملخص مؤشرات الأداء الرئيسية",
+    "factoryEfficiency": "كفاءة المصنع", "qualityPassRate": "نسبة اجتياز الجودة",
+    "machineUptime": "وقت تشغيل الآلات", "onTimeDelivery": "التسليم في الوقت المحدد",
+    "employeeAttendance": "حضور الموظفين"
+  },
+  "reports": {
+    "title": "التقارير", "subtitle": "إنشاء وتحميل تقارير المصنع",
+    "totalReports": "إجمالي التقارير", "pdfReports": "تقارير PDF",
+    "excelReports": "تقارير Excel", "generatedMonth": "تم إنشاؤها هذا الشهر",
+    "download": "تحميل"
+  },
+  "notifications": {
+    "title": "الإشعارات", "unread": "إشعار غير مقروء",
+    "unreads": "إشعارات غير مقروءة", "total": "الإجمالي",
+    "errors": "أخطاء", "warnings": "تحذيرات",
+    "markRead": "تحديد كمقروء",
+    "types": { "error": "خطأ", "warning": "تحذير", "success": "نجاح", "info": "معلومة" }
+  },
+  "settings": {
+    "title": "الإعدادات", "subtitle": "تكوين لوحة تحكم MotorSync",
+    "general": "عام", "appearance": "المظهر",
+    "notificationPrefs": "الإشعارات", "security": "الأمان", "language": "اللغة",
+    "factoryName": "اسم المصنع", "factoryId": "معرف المصنع",
+    "location": "الموقع", "managerEmail": "البريد الإلكتروني للمدير", "contactPhone": "رقم الهاتف",
+    "generalSettings": "الإعدادات العامة", "themeMode": "وضع السمة",
+    "lightMode": "الوضع الفاتح", "darkMode": "الوضع الداكن", "brandColors": "ألوان العلامة التجارية",
+    "interfaceLang": "لغة الواجهة",
+    "currentPassword": "كلمة المرور الحالية", "newPassword": "كلمة المرور الجديدة",
+    "confirmPassword": "تأكيد كلمة المرور الجديدة",
+    "notifItems": {
+      "lowStock": "تنبيهات المخزون المنخفض", "lowStockDesc": "عند انخفاض المخزون عن الحد الأدنى",
+      "machineFailure": "تنبيهات أعطال الآلات", "machineFailureDesc": "إشعارات حالة الآلات في الوقت الفعلي",
+      "attendance": "تنبيهات الحضور", "attendanceDesc": "إشعارات ملخص الحضور اليومي",
+      "maintenance": "تذكيرات الصيانة", "maintenanceDesc": "تنبيهات الصيانة المجدولة القادمة",
+      "orderUpdates": "تحديثات الطلبات", "orderUpdatesDesc": "طلبات جديدة وتغييرات حالة الطلب",
+      "qualityAlerts": "تنبيهات مراقبة الجودة", "qualityAlertsDesc": "تقارير الفحص الفاشلة"
+    }
+  },
+  "departments": {
+    "title": "الأقسام", "subtitle": "قسم في المصنع",
+    "avgPerf": "متوسط الأداء", "avgSalary": "متوسط الراتب", "headcount": "عدد الموظفين حسب القسم"
+  }
+}

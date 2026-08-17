@@ -1,0 +1,13 @@
+{
+  "name": "MotorSync ERP",
+  "short_name": "MotorSync",
+  "description": "Car Parts Factory ERP Dashboard",
+  "start_url": "/login",
+  "display": "standalone",
+  "background_color": "#0d1120",
+  "theme_color": "#c81e1e",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

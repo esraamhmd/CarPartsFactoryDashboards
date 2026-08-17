@@ -1,0 +1,1048 @@
+{
+  "today": [
+    {
+      "employeeId": 1,
+      "name": "Ahmed Hassan",
+      "department": "Quality Control",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "08:58",
+      "checkOut": "18:40",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 2,
+      "name": "Sara Mohamed",
+      "department": "Maintenance",
+      "shift": "evening",
+      "status": "on-time",
+      "checkIn": "08:44",
+      "checkOut": "17:59",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 3,
+      "name": "Omar Khaled",
+      "department": "Inventory",
+      "shift": "night",
+      "status": "on-time",
+      "checkIn": "09:28",
+      "checkOut": "17:09",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 4,
+      "name": "Nour Ibrahim",
+      "department": "HR",
+      "shift": "morning",
+      "status": "late",
+      "checkIn": "07:07",
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 5,
+      "name": "Youssef Ali",
+      "department": "Finance",
+      "shift": "morning",
+      "status": "absent",
+      "checkIn": null,
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 6,
+      "name": "Fatma Saad",
+      "department": "Sales",
+      "shift": "evening",
+      "status": "on-time",
+      "checkIn": "07:52",
+      "checkOut": "16:23",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 7,
+      "name": "Karim Mostafa",
+      "department": "Engineering",
+      "shift": "night",
+      "status": "on-time",
+      "checkIn": "08:27",
+      "checkOut": "16:54",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 8,
+      "name": "Layla Mahmoud",
+      "department": "Production",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "07:22",
+      "checkOut": "15:23",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 9,
+      "name": "Hassan Ahmed",
+      "department": "Quality Control",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "09:19",
+      "checkOut": "16:25",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 10,
+      "name": "Mona Farouk",
+      "department": "Maintenance",
+      "shift": "evening",
+      "status": "late",
+      "checkIn": "09:25",
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 11,
+      "name": "Tariq Nasser",
+      "department": "Inventory",
+      "shift": "night",
+      "status": "absent",
+      "checkIn": null,
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 12,
+      "name": "Rania Hossam",
+      "department": "HR",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "08:26",
+      "checkOut": "18:03",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 13,
+      "name": "Bassem Gamal",
+      "department": "Finance",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "07:52",
+      "checkOut": "17:34",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 14,
+      "name": "Dina Ramadan",
+      "department": "Sales",
+      "shift": "evening",
+      "status": "on-time",
+      "checkIn": "08:25",
+      "checkOut": "15:34",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 15,
+      "name": "Sherif Lotfy",
+      "department": "Engineering",
+      "shift": "night",
+      "status": "on-time",
+      "checkIn": "08:47",
+      "checkOut": "15:39",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 16,
+      "name": "Iman Khalil",
+      "department": "Production",
+      "shift": "morning",
+      "status": "late",
+      "checkIn": "07:37",
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 17,
+      "name": "Wael Abdel",
+      "department": "Quality Control",
+      "shift": "morning",
+      "status": "absent",
+      "checkIn": null,
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 18,
+      "name": "Heba Samir",
+      "department": "Maintenance",
+      "shift": "evening",
+      "status": "on-time",
+      "checkIn": "09:16",
+      "checkOut": "16:05",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 19,
+      "name": "Tamer Ezz",
+      "department": "Inventory",
+      "shift": "night",
+      "status": "on-time",
+      "checkIn": "07:13",
+      "checkOut": "16:50",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 20,
+      "name": "Azza Fouad",
+      "department": "HR",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "07:24",
+      "checkOut": "17:39",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 21,
+      "name": "Magdy Salem",
+      "department": "Finance",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "09:52",
+      "checkOut": "16:50",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 22,
+      "name": "Noha Adel",
+      "department": "Sales",
+      "shift": "evening",
+      "status": "late",
+      "checkIn": "07:21",
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 23,
+      "name": "Khaled Farid",
+      "department": "Engineering",
+      "shift": "night",
+      "status": "absent",
+      "checkIn": null,
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 24,
+      "name": "Samira Hatem",
+      "department": "Production",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "09:02",
+      "checkOut": "16:41",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 25,
+      "name": "Amr Zaki",
+      "department": "Quality Control",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "08:39",
+      "checkOut": "16:55",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 26,
+      "name": "Ghada Mansour",
+      "department": "Maintenance",
+      "shift": "evening",
+      "status": "on-time",
+      "checkIn": "09:01",
+      "checkOut": "16:41",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 27,
+      "name": "Essam Badr",
+      "department": "Inventory",
+      "shift": "night",
+      "status": "on-time",
+      "checkIn": "07:20",
+      "checkOut": "15:58",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 28,
+      "name": "Marwa Samy",
+      "department": "HR",
+      "shift": "morning",
+      "status": "late",
+      "checkIn": "08:31",
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 29,
+      "name": "Fady Wahid",
+      "department": "Finance",
+      "shift": "morning",
+      "status": "absent",
+      "checkIn": null,
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 30,
+      "name": "Nadia Helmy",
+      "department": "Sales",
+      "shift": "evening",
+      "status": "on-time",
+      "checkIn": "08:08",
+      "checkOut": "16:56",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 31,
+      "name": "Mostafa Shaban",
+      "department": "Engineering",
+      "shift": "night",
+      "status": "on-time",
+      "checkIn": "08:49",
+      "checkOut": "16:16",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 32,
+      "name": "Reem Tantawi",
+      "department": "Production",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "09:22",
+      "checkOut": "17:55",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 33,
+      "name": "Adel Ragab",
+      "department": "Quality Control",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "08:47",
+      "checkOut": "16:24",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 34,
+      "name": "Salma Badawi",
+      "department": "Maintenance",
+      "shift": "evening",
+      "status": "late",
+      "checkIn": "07:27",
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 35,
+      "name": "Emad Gohar",
+      "department": "Inventory",
+      "shift": "night",
+      "status": "absent",
+      "checkIn": null,
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 36,
+      "name": "Doaa Atef",
+      "department": "HR",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "07:21",
+      "checkOut": "15:45",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 37,
+      "name": "Walid Hamdy",
+      "department": "Finance",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "08:24",
+      "checkOut": "18:22",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 38,
+      "name": "Asmaa Yehia",
+      "department": "Sales",
+      "shift": "evening",
+      "status": "on-time",
+      "checkIn": "09:57",
+      "checkOut": "16:22",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 39,
+      "name": "Alaa Morsy",
+      "department": "Engineering",
+      "shift": "night",
+      "status": "on-time",
+      "checkIn": "08:44",
+      "checkOut": "16:22",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 40,
+      "name": "Hana Fouad",
+      "department": "Production",
+      "shift": "morning",
+      "status": "late",
+      "checkIn": "09:56",
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 41,
+      "name": "Ramzy Nabil",
+      "department": "Quality Control",
+      "shift": "morning",
+      "status": "absent",
+      "checkIn": null,
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 42,
+      "name": "Lobna Kamal",
+      "department": "Maintenance",
+      "shift": "evening",
+      "status": "on-time",
+      "checkIn": "09:40",
+      "checkOut": "16:31",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 43,
+      "name": "Samir Galal",
+      "department": "Inventory",
+      "shift": "night",
+      "status": "on-time",
+      "checkIn": "08:00",
+      "checkOut": "15:01",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 44,
+      "name": "Enas Sherif",
+      "department": "HR",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "08:00",
+      "checkOut": "17:04",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 45,
+      "name": "Mahmoud Gaber",
+      "department": "Finance",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "09:58",
+      "checkOut": "18:26",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 46,
+      "name": "Amal Rashad",
+      "department": "Sales",
+      "shift": "evening",
+      "status": "late",
+      "checkIn": "09:51",
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 47,
+      "name": "Ibrahim Osman",
+      "department": "Engineering",
+      "shift": "night",
+      "status": "absent",
+      "checkIn": null,
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 48,
+      "name": "Yasmin Tarek",
+      "department": "Production",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "09:21",
+      "checkOut": "17:39",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 49,
+      "name": "Fayez Hilal",
+      "department": "Quality Control",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "07:22",
+      "checkOut": "18:31",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 50,
+      "name": "Shaimaa Nasr",
+      "department": "Maintenance",
+      "shift": "evening",
+      "status": "on-time",
+      "checkIn": "08:36",
+      "checkOut": "18:21",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 51,
+      "name": "Hazem Saber",
+      "department": "Inventory",
+      "shift": "night",
+      "status": "on-time",
+      "checkIn": "09:50",
+      "checkOut": "16:15",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 52,
+      "name": "Mirna Attia",
+      "department": "HR",
+      "shift": "morning",
+      "status": "late",
+      "checkIn": "07:07",
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 53,
+      "name": "Osama Wahdan",
+      "department": "Finance",
+      "shift": "morning",
+      "status": "absent",
+      "checkIn": null,
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 54,
+      "name": "Rasha Barakat",
+      "department": "Sales",
+      "shift": "evening",
+      "status": "on-time",
+      "checkIn": "08:42",
+      "checkOut": "16:23",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 55,
+      "name": "Medhat Anwar",
+      "department": "Engineering",
+      "shift": "night",
+      "status": "on-time",
+      "checkIn": "08:45",
+      "checkOut": "16:19",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 56,
+      "name": "Hoda Nassar",
+      "department": "Production",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "08:57",
+      "checkOut": "17:47",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 57,
+      "name": "Sayed Sobhy",
+      "department": "Quality Control",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "08:19",
+      "checkOut": "15:54",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 58,
+      "name": "Mervat Helal",
+      "department": "Maintenance",
+      "shift": "evening",
+      "status": "late",
+      "checkIn": "09:40",
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 59,
+      "name": "Ehab Sharaf",
+      "department": "Inventory",
+      "shift": "night",
+      "status": "absent",
+      "checkIn": null,
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 60,
+      "name": "Nermeen Khairy",
+      "department": "HR",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "07:43",
+      "checkOut": "17:39",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 61,
+      "name": "Gamal Farouk",
+      "department": "Finance",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "08:37",
+      "checkOut": "17:56",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 62,
+      "name": "Ola Mamdouh",
+      "department": "Sales",
+      "shift": "evening",
+      "status": "on-time",
+      "checkIn": "07:34",
+      "checkOut": "15:22",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 63,
+      "name": "Rafaat Aziz",
+      "department": "Engineering",
+      "shift": "night",
+      "status": "on-time",
+      "checkIn": "09:07",
+      "checkOut": "15:50",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 64,
+      "name": "Sahar Zohair",
+      "department": "Production",
+      "shift": "morning",
+      "status": "late",
+      "checkIn": "09:20",
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 65,
+      "name": "Nashwa Saad",
+      "department": "Quality Control",
+      "shift": "morning",
+      "status": "absent",
+      "checkIn": null,
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 66,
+      "name": "Bahaa Eldin",
+      "department": "Maintenance",
+      "shift": "evening",
+      "status": "on-time",
+      "checkIn": "09:25",
+      "checkOut": "18:50",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 67,
+      "name": "Vivian Nagib",
+      "department": "Inventory",
+      "shift": "night",
+      "status": "on-time",
+      "checkIn": "07:01",
+      "checkOut": "18:10",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 68,
+      "name": "Maged Ghoneim",
+      "department": "HR",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "08:17",
+      "checkOut": "16:07",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 69,
+      "name": "Abeer Shalaby",
+      "department": "Finance",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "08:58",
+      "checkOut": "18:31",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 70,
+      "name": "Reda Tohamy",
+      "department": "Sales",
+      "shift": "evening",
+      "status": "late",
+      "checkIn": "07:37",
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 71,
+      "name": "Hanaa Fadel",
+      "department": "Engineering",
+      "shift": "night",
+      "status": "absent",
+      "checkIn": null,
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 72,
+      "name": "Wafaa Ibrahim",
+      "department": "Production",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "08:57",
+      "checkOut": "16:28",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 73,
+      "name": "Sami Elsayed",
+      "department": "Quality Control",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "09:24",
+      "checkOut": "17:56",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 74,
+      "name": "Engy Ramzy",
+      "department": "Maintenance",
+      "shift": "evening",
+      "status": "on-time",
+      "checkIn": "09:40",
+      "checkOut": "18:00",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 75,
+      "name": "Hamdy Karam",
+      "department": "Inventory",
+      "shift": "night",
+      "status": "on-time",
+      "checkIn": "07:22",
+      "checkOut": "18:56",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 76,
+      "name": "Zeinab Awad",
+      "department": "HR",
+      "shift": "morning",
+      "status": "late",
+      "checkIn": "09:01",
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 77,
+      "name": "Mourad Selim",
+      "department": "Finance",
+      "shift": "morning",
+      "status": "absent",
+      "checkIn": null,
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 78,
+      "name": "Amira Fathy",
+      "department": "Sales",
+      "shift": "evening",
+      "status": "on-time",
+      "checkIn": "09:35",
+      "checkOut": "16:59",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 79,
+      "name": "Gamal Othman",
+      "department": "Engineering",
+      "shift": "night",
+      "status": "on-time",
+      "checkIn": "08:26",
+      "checkOut": "18:53",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 80,
+      "name": "Aya Mansour",
+      "department": "Production",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "08:35",
+      "checkOut": "18:02",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 81,
+      "name": "Ashraf Wahby",
+      "department": "Quality Control",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "08:09",
+      "checkOut": "18:29",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 82,
+      "name": "Maha Shafik",
+      "department": "Maintenance",
+      "shift": "evening",
+      "status": "late",
+      "checkIn": "09:53",
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 83,
+      "name": "Nader Sabry",
+      "department": "Inventory",
+      "shift": "night",
+      "status": "absent",
+      "checkIn": null,
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 84,
+      "name": "Randa Ezzat",
+      "department": "HR",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "09:52",
+      "checkOut": "18:59",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 85,
+      "name": "Tarek Soliman",
+      "department": "Finance",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "08:54",
+      "checkOut": "17:23",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 86,
+      "name": "Sanaa Abdelhamed",
+      "department": "Sales",
+      "shift": "evening",
+      "status": "on-time",
+      "checkIn": "08:40",
+      "checkOut": "18:01",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 87,
+      "name": "Yaser Moussa",
+      "department": "Engineering",
+      "shift": "night",
+      "status": "on-time",
+      "checkIn": "07:20",
+      "checkOut": "15:50",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 88,
+      "name": "Ghalia Fikry",
+      "department": "Production",
+      "shift": "morning",
+      "status": "late",
+      "checkIn": "08:35",
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 89,
+      "name": "Sameh Gawish",
+      "department": "Quality Control",
+      "shift": "morning",
+      "status": "absent",
+      "checkIn": null,
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 90,
+      "name": "Nermin Khalil",
+      "department": "Maintenance",
+      "shift": "evening",
+      "status": "on-time",
+      "checkIn": "09:30",
+      "checkOut": "15:32",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 91,
+      "name": "Usama Amin",
+      "department": "Inventory",
+      "shift": "night",
+      "status": "on-time",
+      "checkIn": "07:11",
+      "checkOut": "15:37",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 92,
+      "name": "Rabab Khalifa",
+      "department": "HR",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "07:44",
+      "checkOut": "16:25",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 93,
+      "name": "Shady Hamam",
+      "department": "Finance",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "07:20",
+      "checkOut": "16:41",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 94,
+      "name": "Mona Zahran",
+      "department": "Sales",
+      "shift": "evening",
+      "status": "late",
+      "checkIn": "07:56",
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 95,
+      "name": "Fouad Okacha",
+      "department": "Engineering",
+      "shift": "night",
+      "status": "absent",
+      "checkIn": null,
+      "checkOut": null,
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 96,
+      "name": "Aisha Diab",
+      "department": "Production",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "07:20",
+      "checkOut": "17:45",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 97,
+      "name": "Khaled Safwat",
+      "department": "Quality Control",
+      "shift": "morning",
+      "status": "on-time",
+      "checkIn": "08:40",
+      "checkOut": "15:18",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 98,
+      "name": "Dalia Abdelaziz",
+      "department": "Maintenance",
+      "shift": "evening",
+      "status": "on-time",
+      "checkIn": "08:05",
+      "checkOut": "17:50",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 99,
+      "name": "Sherihan Mounir",
+      "department": "Inventory",
+      "shift": "night",
+      "status": "on-time",
+      "checkIn": "07:56",
+      "checkOut": "15:43",
+      "date": "2026-07-10"
+    },
+    {
+      "employeeId": 100,
+      "name": "Fathi Boghdady",
+      "department": "HR",
+      "shift": "morning",
+      "status": "late",
+      "checkIn": "09:33",
+      "checkOut": null,
+      "date": "2026-07-10"
+    }
+  ],
+  "weekly_stats": [
+    {
+      "day": "Mon",
+      "present": 88,
+      "late": 7,
+      "absent": 5
+    },
+    {
+      "day": "Tue",
+      "present": 91,
+      "late": 5,
+      "absent": 4
+    },
+    {
+      "day": "Wed",
+      "present": 85,
+      "late": 9,
+      "absent": 6
+    },
+    {
+      "day": "Thu",
+      "present": 90,
+      "late": 6,
+      "absent": 4
+    },
+    {
+      "day": "Fri",
+      "present": 87,
+      "late": 8,
+      "absent": 5
+    },
+    {
+      "day": "Sat",
+      "present": 78,
+      "late": 12,
+      "absent": 10
+    },
+    {
+      "day": "Sun",
+      "present": 82,
+      "late": 10,
+      "absent": 8
+    }
+  ]
+}

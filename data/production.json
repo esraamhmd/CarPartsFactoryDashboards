@@ -1,0 +1,32 @@
+{
+  "daily": [
+    {"day":"Mon","target":120,"actual":115,"defects":3},
+    {"day":"Tue","target":120,"actual":128,"defects":2},
+    {"day":"Wed","target":120,"actual":110,"defects":5},
+    {"day":"Thu","target":120,"actual":125,"defects":1},
+    {"day":"Fri","target":120,"actual":118,"defects":4},
+    {"day":"Sat","target":100,"actual":95,"defects":2},
+    {"day":"Sun","target":100,"actual":88,"defects":3}
+  ],
+  "weekly": [
+    {"week":"W1","target":700,"actual":679,"efficiency":97},
+    {"week":"W2","target":700,"actual":712,"efficiency":102},
+    {"week":"W3","target":700,"actual":685,"efficiency":98},
+    {"week":"W4","target":700,"actual":698,"efficiency":100}
+  ],
+  "monthly": [
+    {"month":"Jul","target":3000,"actual":2870,"revenue":2500000},
+    {"month":"Aug","target":3000,"actual":3120,"revenue":2700000},
+    {"month":"Sep","target":3200,"actual":3050,"revenue":2650000},
+    {"month":"Oct","target":3200,"actual":3280,"revenue":2850000},
+    {"month":"Nov","target":3500,"actual":3420,"revenue":2950000},
+    {"month":"Dec","target":3500,"actual":3380,"revenue":2900000},
+    {"month":"Jan","target":3500,"actual":3510,"revenue":3050000}
+  ],
+  "lines": [
+    {"id":"A","name":"Line A — Engine Assembly","status":"running","efficiency":94,"output":145},
+    {"id":"B","name":"Line B — Brake Systems","status":"running","efficiency":88,"output":98},
+    {"id":"C","name":"Line C — Transmission","status":"maintenance","efficiency":0,"output":0},
+    {"id":"D","name":"Line D — Suspension","status":"running","efficiency":79,"output":67}
+  ]
+}
